@@ -1,0 +1,509 @@
+\chapter{Bilinear Algebra}
+\section{Linear Forms}\label{2.1}
+\quad In this section, we fix a unitary ring $K$. (In practice, we will only need the case, when $K$ is commutative.)
+
+\begin{definitionenv}\label{2.1.1}
+    Let $V$ be a left $K$ module, we denote by $V^\vee $ the set of left $K$-module homomorphisms from $V$ to $K$.
+
+    \quad Note that $V^\vee$ is equipped with the following structure of right $K$-module
+    $$ \begin{array}{rcl}
+        K \times V^\vee & \rightarrow & V^\vee\\
+        (a,f) & \mapsto & f(\cdot) a.
+    \end{array}$$
+    Recall that in the particular case where 
+    $$
+    V\coloneq \{(a_1, \cdots, a_n)\mid \forall i\in \{1,\cdots,n\},a_i\in K\}
+    $$
+    is the set of vectors, the set $V^\vee$ is composed of the column vectors
+    $$
+    V^\vee \coloneq \left\{ 
+        \begin{pmatrix}
+        a_1\\
+        \vdots\\
+        a_n
+        \end{pmatrix}\mid \forall i\in \{1,\cdots , n\}, a_i\in K \right\}.
+    $$
+    In other words, if we view $K^n$ as a left $K$-module, then $(K^n)^{\vee}$ is isomorphic to $K^n$ viewed as a right $K$-module.
+\end{definitionenv}
+\begin{definitionenv}
+    Let $V,W$ be left $K$-modules, $\varphi: V\rightarrow W$ be a homomorphism of left $K$-modules. We denote $\varphi^\vee : W^\vee \rightarrow V^\vee$ the homomorphism of right $K$-modules that sends $(g:W\rightarrow K) \in W^\vee$ to $g\circ \varphi \in V^\vee$.
+    \begin{center}
+    \begin{tikzcd}
+    V \arrow[r,  "\varphi"] \arrow[dr,  swap,  "\varphi^{\vee} (g)"] &W \arrow[d,  "g"] \\
+    & K
+    \end{tikzcd}
+    \end{center}
+    Note that for any $a\in K$, one has
+    $$
+    \left(g\circ \varphi\right)\left(\cdot\right) a = g\left(\varphi\left(\cdot\right)\right) a = \left(g\left(\cdot\right)a \right) \circ \varphi.
+    $$
+\end{definitionenv}
+\begin{propositionenv}
+    Let $E,F,G$ be left $K$-modules, and $\varphi : E\rightarrow F$ and $\psi: F\rightarrow G$, be homomorphisms of left $K$-modules. Then 
+    $$
+    \left(\psi \circ \varphi\right)^\vee = \varphi^\vee \circ \psi^\vee.
+    $$
+\end{propositionenv}
+\begin{proofenv}
+    Let $g \in G^\vee$. By definition, $\psi^\vee(g) = g \circ \psi$. Hence
+    $$
+    \varphi^\vee \left(\psi^\vee (g)\right) = \varphi^\vee \left(g \circ \psi\right) = \left( g\circ \psi \right) \circ \varphi = g\circ \left(\psi \circ\phi\right) = \left(\psi \circ \varphi \right)^\vee (g).
+    $$
+\end{proofenv}
+\begin{exampleenv}
+    Let $n,p \in \NN$, and
+    $$\begin{array}{rrcl}
+        \beta : & \left(K^p\right)^\vee & \rightarrow & K^p\\
+        \alpha : & \left(K^n\right)^\vee & \rightarrow & K^n
+    \end{array}$$
+    isomorphisms of right $K$-modules. If $\varphi : K^n\rightarrow K^p$ a homomorphism of left $K$-modules, then we denote by $\varphi^\tau : K^p \rightarrow K^n$ the homomorphism right $K$-modules 
+    $$ \alpha \circ \varphi^\vee \circ \beta^{-1} : K^p \rightarrow K^n.$$
+    Note that the following diagram is commutative
+    \begin{center}
+\begin{tikzcd}
+\left(K^p\right)^\vee \arrow[r,  "\varphi^\vee"] \arrow[d,  swap,  "\beta"] & \left(K^n\right)^\vee \arrow[d,  "\alpha"] \\
+K^p \arrow[r,"\varphi^\tau"]& K^n
+\end{tikzcd}
+\end{center}
+Suppose that $\varphi$ is given by a matrix
+$$
+\begin{pmatrix}
+    b_{1,1} & b_{1,2} & \cdots & b_{1,n}\\
+    b_{2,1} & b_{2,2} & \cdots & b_{2,n}\\
+    \vdots  & \vdots  & \ddots & \vdots\\
+    b_{n,1} & b_{n,2} & \cdots & b_{n,n}
+\end{pmatrix}
+$$
+Then $\varphi$ sends $\left(a_1,\cdots,a_n\right) \in K^{n}$ to 
+$$
+\left(\sum_{i=1}^{n} a_i b_{i,1}, \cdots , \sum_{i=1}^{n} a_i b_{i,n}\right).
+$$
+Let
+$$
+g = 
+\begin{pmatrix}
+    y_1\\
+    \vdots\\
+    y_p
+\end{pmatrix}
+\in \left(K^p\right)^\vee
+$$
+which sends $\left(\lambda_1,\cdots,\lambda_p\right)$ to $\lambda_1 y_1 + \cdots +\lambda_p y_p$. Then $ g \circ \varphi$ sends $\left(a_1,\cdots, a_n\right)\in K^n$ to 
+$$
+\sum_{j=1}^{p}\sum_{i=1}^{n} a_i b_{i,j} y_j = \sum_{i=1}^{n}a_i\sum_{j=1}^{p} b_{i,j} y_j.
+$$
+Therefore, $g\circ \varphi$ can be represented by the following column vector
+$$
+\begin{pmatrix}
+    b_{1,1} y_1 + \cdots + b_{1,p} y_p\\
+    b_{2,1} y_1 + \cdots + b_{2,p} y_p\\
+    \vdots\\
+    b_{n,1} y_1 + \cdots + b_{n,p} y_p
+\end{pmatrix}.
+$$
+Let $K^\op$ be the opposite ring of $K$. As a homomorphism of left $K^\op$-modules, $\varphi^\tau$ sends $\left(y_1,\cdots, y_p\right)$ to $\left(\sum_{j = 1}^{p} y_j b_{1,j}, \cdots , \sum_{j = 1}^{p} y_j b_{n,j}\right)$. It is represented by 
+$$
+\begin{pmatrix}
+    b_{1,1} & b_{2,1} & \cdots & b_{n,1} \\
+    b_{1,2} & b_{2,2} & \cdots & b_{n,2} \\
+    \vdots & \vdots & \ddots & \vdots\\
+    b_{1,n} & b_{2,n} & \cdots & b_{n,n} \\
+\end{pmatrix}
+$$
+\end{exampleenv}
+\begin{propositionenv}
+    Let $V$ be a \textit{free} left $K$-module of finite rank $r$ and $\left(e_i\right)_{i=1}^{r}$ be a basis of $V$. For any $i \in \{1,\cdots ,r\}$ let 
+    $$ 
+    \begin{array}{rccl}
+        e_i^\vee : & V & \rightarrow & K\\
+        & \lambda_1 e_1 + \cdots + \lambda_r e_r &\mapsto & \lambda_i
+    \end{array}
+    $$
+    Then $V^\vee$ is a free right $K$-module, and 
+    $\left(e_i^\vee\right)_{i=1}^{r}$ is a basis of $V^\vee$ called the \textbf{dual basis} of $\left(e_i\right)_{i=1}^{r}$.
+\end{propositionenv}
+\begin{proofenv}
+    Let $f: V\rightarrow K$ be a linear form. Then 
+    $$
+    v\coloneq f\left(\sum_{i=1}^{r}\lambda_i e_i\right) = \sum_{i=1}^{r}\lambda_i f(e_i)= \sum_{i=1}^{r}e_i^\vee(v) f(e_i).
+    $$
+    So,
+    $$
+    f\left(\cdot\right) = e_1^\vee \left(\cdot\right)f(e_1) + \cdots + e_r^\vee \left(\cdot\right) f(e_r).
+    $$
+    If $\left(b_1,\cdots ,b_r\right) \in K^r$ such that
+    $$
+    f\left(\cdot\right) = e_1^\vee \left(\cdot\right) b_1 + \cdots + e_r^\vee\left(\cdot\right)b_r.
+    $$
+    For any $i\in \{1,\cdots ,r\}$,
+    $$ f(e_i) = e_1^\vee (e_1) b_1 + \cdots + e_r^\vee (e_i) b_r = b_i.
+    $$
+    We conclude that $f$ can be written in a unique way as a linear combination of $e_1^\vee,\cdots ,e_r^\vee$. Hence $\left(e_i^\vee\right)_{i=1}^r$ is a basis of $V^\vee$.
+\end{proofenv}
+
+\section{Bilinear Forms}
+\quad In this section, $K$ is a commutative unitary ring.
+\begin{definitionenv}
+    Let $V$ be a $K$-module. We call \textbf{linear form} on $V$ any homomorphism of $K$-modules from $V$ to $K$ (it also applies to the previous section).
+    The set of linear forms on $V$ forms a sub-$K$-module of $K^V$. As in \ref{2.1}, we will denote it as $V^\vee$ following the notation from \ref{2.1.1}.
+    
+    \quad We call \textbf{bilinear form} on $V$ any bilinear mapping from $V\times V$ to $K$.
+    The set of bilinear forms on $V$ forms a sub-$K$-module of $K^{V\times V}$. We will denote it as $\mathrm{Bil}_K\left(V\right)$.
+    
+    \quad We say that a bilinear form $\varphi: V\times V\rightarrow K$ is
+    \begin{itemize}
+        \item Symmetric if
+        $$\forall (x,y)\in V\times V, \varphi(x,y) = \varphi(y,x).$$
+        \item Alternating if
+        $$ \forall x\in V, \varphi (x,x) = 0.$$
+    \end{itemize}
+\end{definitionenv}
+\begin{exampleenv}
+    Let $n\in \NN$,
+    $$ \begin{array}{rcl}
+        K^n\times K^n & \rightarrow & K\\
+        \left((x_1,\cdots,x_n), (y_1,\cdots,y_n)\right) & \mapsto & \dis \sum_{i=1}^{n} x_i y_i.
+    \end{array}$$
+\end{exampleenv}
+\begin{definitionenv}
+    Let $V$ be a $K$-module and $\varphi: V\times V \rightarrow K$ a symmetric bilinear form. We say that $x,y \in V$ are $\varphi$ orthogonal (and we write $x \perp_\varphi y$) if
+    $$ \varphi\left(x,y\right) = 0.$$
+    Let $A\subseteq V$. We denote by $A^\perp$ the following set
+    $$ A^\perp \coloneq \{y\in V\mid \forall x\in A, \varphi (x,y) = 0\}.$$
+\end{definitionenv}
+\begin{propositionenv}
+    Let $V$ be a $K$-module, $\varphi:V\times V\rightarrow K$ a symmetric bilinear form.
+    \begin{enumerate}
+        \item For any $A\in \mathscr{P}(V)$, $A^\perp$ is a sub-$K$-module of $V$.
+        \item For any $A\in \mathscr{P}(V)$, the sub-$K$-module generated by $A$ is contained in $\left(A^\perp\right)^\perp$.
+        \item For any $A,B\in \mathscr{P}(V)$, if $A\subseteq B$ then $B^\perp\subseteq A^\perp$. 
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    \quad
+    \begin{enumerate}
+        \item Let $x,y\in A^\perp$, $a,b\in K$ and $z\in A$.
+        $$ \varphi\left(z, ax+by\right) = a \varphi \left(z,x\right) + b \varphi \left(z,y\right) = 0.$$
+        Hence, $ax+by\in A^\perp$.
+        \item It suffices to check that $A\subseteq \left(A^\perp\right)^\perp$. For any $x\in A$, $y\in A^\perp$, $\varphi(x,y) = 0$, so $x\in \left(A^\perp\right)^\perp$.
+        \item We take $y \in B^\perp$ and $x\in A$. Then $x\in B$ and hence $\varphi(x,y)=0$. Therefore $y\in A^\perp$.
+    \end{enumerate}
+\end{proofenv}
+
+\begin{definitionenv}
+    Let $V$ be a $K$-module, $\varphi:V\times V\rightarrow K$ be \textit{symmetric} bilinear form.
+    We define
+    $$
+    \begin{array}{rrcl}
+        l_\varphi : & V& \rightarrow & V^\vee\\
+        & x &\mapsto & \varphi(x,\cdot).
+    \end{array}
+    $$
+    The kernel of $l_\varphi$ is called the \textbf{kernel} of $\varphi$.
+    We say that $\varphi$ is \textbf{non-degenerate} when $l_\varphi$ is an isomorphism.
+\end{definitionenv}
+\begin{theoremenv}
+    Let $K$ be a field, $V$ be a finite dimensional vector space over $K$, $\varphi : V\times V\rightarrow K$ be a symmetric bilinear form.
+    $\varphi$ is non-degenerate if and only if its kernel is $\{0\}$.
+\end{theoremenv}
+\begin{proofenv}
+    If $l_\varphi$ is an isomorphism, then its kernel is $\{0\}$. ($\varphi$ non-degenerate implies that the kernel of $\varphi$ is $\{0\}$.)
+
+    \quad Now suppose that the kernel of $l_\varphi$ is $\{0\}$ (kernel of $\varphi$ is $0$.) Then $l_\varphi$ is injective. We have 
+    $$ \dim_{K}(V) = \dim_{K} \ker(l_\varphi) + \dim_{K} \mathrm{Im}(l_\varphi).$$
+    Hence $\dim_{K}(V) = \dim_{K} \mathrm{Im}(l_\varphi)$, which means
+    $$ \mathrm{Im}(l_\varphi) \cong  V.$$
+    So $l_\varphi$ is also surjective.
+\end{proofenv}
+
+\section{Quadratic Forms}
+\quad Let $K$ be a commutative ring.
+
+\begin{definitionenv}
+    Let $V$ be a $K$-module. We call \textbf{quadratic form} over $K$ any mapping
+    $$ q : V\rightarrow K,$$
+    such that there exists a bilinear form $\varphi:V\times V\rightarrow K$ such that
+    $$ \forall x\in V, q(x) = \varphi(x,x).$$
+    The set of quadratic forms on $V$ can be seen as a $K$-submodule of $K^{V}$.
+\end{definitionenv}
+\begin{propositionenv}
+    Let $V$ be a $K$-module and $q:V\rightarrow K$ be a quadratic form. Then for any $x\in V$, $a\in K$ one has 
+    $$q(ax) = a^2 q(x).$$
+\end{propositionenv}
+\begin{proofenv}
+    Let $\varphi : V\times V\rightarrow K$ such that $\forall x\in V$, $q(x) = \varphi(x,x)$. For any $(a,x) \in K \times V$,
+    $$ q(ax) = \varphi (ax,ax) = a^2 \varphi(x,x) = a^2 q(x).$$
+\end{proofenv}
+\begin{definitionenv}
+    Let $V$ be a $K$-module, $q: V\rightarrow K$ a quadratic form. The set 
+    $$ C(q) \coloneq \{x\in V\mid q(x) =0 \}$$
+    is a cone in $V$. (i.e. for any $x\in C(q)$ and any $\lambda \in K$, $\lambda x \in C(q)$.)
+    We call it the \textbf{isotropic cone} of $q$.
+    
+    \quad If there exists at least one non-zero element in $C(q)$, we say that $q$ is \textbf{isotropic}.
+\end{definitionenv}
+\begin{propositionenv}\label{2.3.4}
+    Let $V$ be a $K$-module, $a:V\rightarrow K$ a quadratic form.
+    \begin{enumerate}
+        \item The mapping $\psi: V\times V\rightarrow K$ defined as
+        $$\psi (x,y) = q(x+y) -q(x) -q(y)$$
+        is a symmetric bilinear form.
+        \item Assume that $2$ is invertible in $K$, then 
+        $ \forall x\in V, q(x) = \frac{1}{2} \psi(x,x).$
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    \quad
+    \begin{enumerate}
+        \item Let $\varphi : V\times V\rightarrow K$ is such that $q(x) = \psi (x,x)$. We have 
+        $$ q(x,y) -q(x) -q(y) = \varphi (x+y,x+y) - \varphi (x,x) - \varphi(y,y) = \varphi(x,y) + \varphi(y,x).$$
+        \item If $2$ is invertible in $K$, 
+        $$ \frac{1}{2} \psi(x,x) = \frac{1}{2} \left(\varphi (x,x) + \varphi(x,x)\right) = \varphi(x,x) = q(x).$$
+    \end{enumerate}
+\end{proofenv}
+\begin{remark}
+    Assume $2$ is invertible in $K$, proposition \ref{2.3.4} shows that the correspondence
+    $$ q\leftrightarrow \left(\varphi_q : V\times V\rightarrow K, (x,y) \mapsto \frac{1}{2} \left(q(x+y) - q(x) -q(y)\right)\right)$$
+    defines an isomorphism between the $K$-module of all quadratic forms. And the $K$-module of all bilinear symmetric forms on $V$. The bilinear form $\varphi_q$ is called the \textbf{polarization} of $q$. The kernel of $\varphi_q$ defined as 
+    $$\{x\in V\mid  \forall y\in V, \varphi_q(x,y) = 0\}$$
+    is also called the kernel of $q$, and denoted as $\ker q$. We have $\ker q\subseteq C(q)$.
+\end{remark}
+\begin{definitionenv}
+    Let $K$ be a field, $V$ a vector space over $K$, $\varphi:V\times V\rightarrow K$ symmetric bilinear form, $\left(e_i\right)_{i\in I}$ a family of non-zero elements of $V$.
+    
+    \quad If for any $i\neq j\in I$, one has $e_i\perp e_j$, then we say that the family $\left(e_i\right)_{i\in I}$ is \textbf{orthogonal} with respect to $\varphi$.
+\end{definitionenv}
+\begin{propositionenv}
+    Let $K$ a field, $V$ a vector space over $K$, $\varphi:V\times V\rightarrow K$ bilinear symmetric form and $q: V\rightarrow K$ quadratic form such that $q(x)\coloneq \varphi(x,x)$.
+
+    \quad Assume that $q$ is not isotropic. If $\left(e_i\right)_{i\in I}$ is an orthogonal family of elements in $V$, then $\left(e_i\right)_{i\in I}$ is linearly independent over $K$.
+\end{propositionenv}
+\begin{proofenv}
+    Without losing of generality, we may assume $I=\{1,\cdots,n\}$, $n\in \NN^+$. Let $\left(a_1,\cdots,a_n\right)\in K^n$ be such that 
+    $$ \sum_{i=1}^{n} a_i e_i = 0.$$
+    For any $i\in \{1,\cdots,n\}$, we can write 
+    $$0 = \varphi\left(\sum_{i=1}^{n}a_i e_i ,e_j\right) = a_j \varphi(e_j,e_j).$$
+    Since $\varphi$ is not isotropic, $\varphi(e_j,e_j)\neq 0 $ implies that $a_j=0$.
+\end{proofenv}
+\begin{propositionenv}
+    Let $K$ be a field, $2$ is invertible in $K$, V is a finite dimensional vectors space in $K$, $\varphi : V\times V\rightarrow K$ symmetric bilinear. There exists a basis of $V$ which is $\varphi$-orthogonal.
+\end{propositionenv}
+\begin{proofenv}
+    Induction with respect to $r = \dim_{K}(V)$. If $r=0,1$, the result is trivial. Assume that $r \ge 2$, if $\varphi$ is zero bilinear form, then any basis is. In the remaining case, there exists $e_1\in V_1$ such that $\varphi(e_1,e_1) \neq 0$.
+    
+    Consider
+    $$\begin{array}{rrcl}
+        l_{e_1} : & V& \rightarrow & K\\ & x &\mapsto &\varphi(e_1,x).
+    \end{array}$$
+    It is linear, non-zero, so surjective. $\dim_{K}\left(\ker l_{e_1}\right) = r- 1 $. Apply the induction hypothesis to $\ker l_{e_1}$, $\varphi : \ker l_{e_1} \times \ker l_{e_1} \rightarrow K$.
+\end{proofenv}
+\begin{propositionenv}
+    Let $K$ be a field, $2^{-1}\in K$, $V$ a finite dimensional vector space over $K$, $q: V\rightarrow K$ quadratic form.
+
+    \quad There exists a basis $\left(\alpha_i\right)_{i=1}^{n}$ of $V^\vee$ and $\left(\lambda_1,\cdots,\lambda_r\right)\in K^r$ such that
+    $$ \forall x\in V, q(x) = \sum_{i=1}^{r} \lambda_i \alpha_i(x)^2.$$
+\end{propositionenv}
+\begin{proofenv}
+    Let $\varphi : V\times V\rightarrow K$ symmetric bilinear form such that $q(x) = \varphi(x,x)$ and $\left(e_i\right)_{i=1}^{r}$ a $\varphi$-orthogonal basis of $V$.
+    Take $\left(\alpha_i\right)_{i=1}^{n}$ the dual basis of $\left(e_i\right)_{i=1}^{r}$. 
+    For any $x\in V$, we can write $x = \sum_{i=1}^{r} a_i e_i$. We have
+    $$ q(x) = \varphi\left(\sum_{i=1}^{r} a_i e_i, \sum_{i=1}^{r} a_i e_i\right) = \sum_{i=1}^{r} a_i^2 \varphi(e_i,e_i) = \sum_{i=1}^{r} \varphi(e_i,e_i) \alpha_i(x)^2.$$
+\end{proofenv}
+\begin{remark}
+    Let $K$ be a field, $2^{-1}\in K$, $V$ a finite dimensional vector space over $K$, $\varphi : V\times V\rightarrow K$ symmetric bilinear form, $q: V\rightarrow K$ quadratic form such that $\forall x\in V, q(x) = \varphi(x,x)$.
+
+    \quad Assume that $q$ can be written as 
+    $$ q(x) = \sum_{i=1}^{r} \lambda_i \alpha_i(x)^2,\ r =\dim_{K}V,$$
+    where $\left(\alpha_i\right)_{i=1}^{r}$ is a basis of $V^\vee$ and $\left(\lambda_1,\cdots,\lambda_r\right)\in K^r$. 
+    Assume that $\left(\alpha_i\right)_{i=1}^{r}$ is dual to a basis $\left(e_i\right)_{i=1}^{r}$ of $V$.
+    Then 
+    $$ q \left(\sum_{i=1}^{r} b_i e_i\right) = \sum_{i=1}^{r} \lambda_i b_i^2. $$
+    In particular, for $i,j \in \{1,2,\cdots,r\},\ i\neq j$,
+    $$ q(e_i + e_j) - q(e_i) - q(e_j) = 0.$$
+    which shows that $\left(e_i\right)_{i=1}^{r}$ is $\varphi$-orthogonal.
+\end{remark}
+\begin{remark}
+    Let $K$ be a field, $\mathrm{char} K \neq 2$, $q: K^r \rightarrow K$ a quadratic form.
+    $$ q(x_1,\cdots,x_r) = \sum_{1\le i \le j\le r} a_{ij} x_i x_j. $$
+    We use an algorithm, to write $q$ as a linear combination of squares of linearly independent linear forms. We can assume that $q$ is non-zero.
+    Consider the case, when $a_{i,i}\neq 0,$
+    $$ q(x_1,\cdots,x_r) = a_{i,i} x_i^2 +\left(\sum_{j<i} a_{i,j} x_j + \sum_{j>i} a_{i,j} x_j\right)x_i + \tilde{q}\left(x_1,\cdots,x_r\right).$$
+    $\tilde{q}:K^{r}\rightarrow K$ is a quadratic form with expression independent on $x_i$. 
+
+    \quad After completing the square, we can write $q$ as
+    $$ q(x_1,\cdots,x_r) = a_{i,i} \left(x_i + \frac{1}{2 a_{i,i}} \left(\sum_{j<i} a_{i,j} x_j + \sum_{j>i} a_{i,j} x_j\right)\right)^2 + q^*\left(x_1,\cdots,x_r\right),$$
+    where,
+    $$ q^* \left(x_1,\cdots,x_r\right)=\tilde{q}\left(x_1,\cdots,x_r\right) - \frac{1}{4 a_{i,i}^2} \left(\sum_{j<i} a_{i,j} x_j + \sum_{j>i} a_{i,j} x_j\right)^2.$$
+    $i,j\in\{1,\cdots,r\}$, $i<j$, $a_{i,j}\neq 0$.
+    $$ q(x_1,\cdots,x_r) = a_{i,j} x_i x_j + \varphi(x_1,\cdots,x_r)x_i + \psi(x_1,\cdots,x_r) + q_1(x_1,\cdots,x_r).$$
+    where $\varphi, \psi : K^r \rightarrow K$ are linear forms and $q_1: K^r\rightarrow K$ is a quadratic form.
+    $$ q(x_1,\cdots,x_r) = a_{i,j} \left(x_i + \frac{1}{a_{i,j}} \psi(x_1,\cdots,x_r)\right) \left(x_j + \frac{1}{a_{i,j}} \varphi(x_1,\cdots,x_r)\right) + q_2,$$
+    where
+    $$ q_2(x_1,\cdots,x_r) = q_1(x_1,\cdots,x_r) - \frac{1}{a_{i,j}} \varphi(x_1,\cdots,x_r) \psi(x_1,\cdots,x_r).$$
+    $f_1,f_2\in \left(K^r\right)^\vee$,
+    $$ f_1(x_1,\cdots,x_r) = x_i + \frac{1}{a_{i,j}} \psi(x_1,\cdots,x_r) + x_j + \frac{1}{a_{i,j}}\varphi(x_1,\cdots,x_r)$$
+    $$ f_2(x_1,\cdots,x_r) = x_i + \frac{1}{a_{i,j}} \psi(x_1,\cdots,x_r) - x_j - \frac{1}{a_{i,j}}\varphi(x_1,\cdots,x_r).$$
+    One has
+    $$ q(x_1,\cdots,x_r) = \frac{a_{i,j}}{4} f_1(x_1,\cdots,x_r)^2 - \frac{a_{i,j}}{4} f_2(x_1,\cdots,x_r)^2 + q_2(x_1,\cdots,x_r).$$
+\end{remark}
+
+\section{Quadratic Forms over a Real Vector Space}
+\begin{definitionenv}
+    Let $V$ be a vector space over $\RR$, $q: V\rightarrow \RR$ a quadratic form. If $q(V) \subseteq \RR_{\ge 0}$, we say that $q$ is \textbf{positive semi-definite}. If for any $x\in V\backslash\{0\}$, $q(x)>0$, then we say that $q$ is \textbf{positive definite}. (Resp. for negative.)
+
+    \quad The restriction of $q$ to any $\RR$-vector subspace of $V$ induces the listed properties on the subspace.
+\end{definitionenv}
+\begin{definitionenv}
+    Let $V$ be a vector space over $\RR$, $\varphi: V\times V\rightarrow \RR$ symmetric bilinear form.
+    If the quadratic form $x\mapsto \varphi(x,x)$ is positive semi-definite (resp. negative) then we say that $\varphi$ is \textbf{positive semi-definite}.
+\end{definitionenv}
+\begin{lemmaenv}\label{2.4.3}
+    Let $V$ be a vector space over $\RR$, $q:V\rightarrow \RR$ is a quadratic form which is semi-definite (positive or negative).
+    Then the kernel of $q$ is equal to the isotropic cone if $q$.
+\end{lemmaenv}
+\begin{proofenv}
+    Without losing of generality, suppose that $q$ is positive semi-definite. By definition, the kernel of $q$ is contained in the isotropic cone of $q$.
+    $$ C(q) = \{ x\in V\mid \varphi(x,x) = 0 \},\ \ker(q) = \{x\in V\mid \forall y\in V, \varphi(x,y) = 0\},$$
+    so,
+    $$ C(q) \supseteq \ker(q).$$
+    Let $x\in C(q)$ and let $y\in V$. For any $t\in\RR$,
+    $$ 0\le q(y+ tx)  = q (y) + 2t\varphi(x,y) + t^2 q(x).$$
+    This is positive if and only if $\varphi(x,y) = 0.$
+\end{proofenv}
+\begin{theoremenv}[Cauchy-Schwarz]
+    Let $V$ be a $\RR$-vector space, $\varphi:V\times V\rightarrow \RR$ a symmetric positive definite bilinear form, $q : V\rightarrow \RR$ a quadratic form such that $\forall x\in V,\ q(x) = \varphi(x,x).$
+    For any $(x,y)\in V^2$,
+    $$ \varphi(x,y)^2 \le q(x)q(y).$$
+    Thw equality holds if and only if $[x]$ and $[y]$ are colinear in $V/\ker(\varphi)$.
+\end{theoremenv}
+\begin{remark}
+    $$\varphi \coloneq \left((x_1,\cdots,x_n),(y_1,\cdots,y_n)\right)\mapsto \sum_{i=1}^{n}x_iy_i.$$
+    Then we obtain the classical Cauchy-Schwarz inequality.
+\end{remark}
+\begin{proofenv}
+    \quad
+    \begin{enumerate}[label=(\roman*)]
+        \item If $x$ or $y$ belongs to $\ker(\varphi)$, then
+        $$ 0 =\varphi(x,y) = q(x)q(y).$$
+        $[x]$ or $[y]$ is equal to $\ker(\varphi) =[0]$ in $V/\ker(\varphi)$.
+        \item $x,y\notin \ker(\varphi)$, then $x\notin C(q)$, $q(x)\neq 0$, let
+        $$ t = - \frac{\varphi(x,y)}{q(x)},$$
+        we have 
+        $$ 0\le q(y+tx) = q(y) +2t\varphi(x,y) +t^2q(x) = q(y) - 2\frac{\varphi(x,y)^2}{q(x)} + \frac{\varphi(x,y)^2}{q(x)}.$$
+        The equality holds if and only if $y +tx \in C(q) = \ker(\varphi).$ (i.e. $[y] = t[x]$.)
+    \end{enumerate}
+\end{proofenv}
+\begin{definitionenv}
+    Let $K$ be a commutative unitary ring, $V$ be a $K$-module and $\left(V_i\right)_{i\in I}$ a family of $K$-submodules of $V$.
+    We say that $V$ is \textbf{generated} by $\left(V_i\right)_{i\in I}$ (resp. a direct sum of $\left(V_i\right)_{i\in I}$) if the homomorphism of $K$-modules
+    $$ \begin{array}{rcl}
+        \dis \bigoplus _{i\in I} V_i & \rightarrow & V\\
+        \left(x_i\right)_{i\in I} & \mapsto & \dis \sum_{i\in I} x_i
+    \end{array}$$
+    is surjective (resp. is an isomorphism). 
+    
+    \quad Note that $V$ is a direct sum of $\left(V_i\right)_{i\in I}$ if any $x\in V$ can be decomposed in a unique way as a sum.
+    $$ x = \sum_{i\in I} x_i \text{ with } x_i \in V_i$$
+    and $x_i=0$ for all but finitely many $i\in I$.
+\end{definitionenv}
+\begin{propositionenv}
+    Let $K$ be a commutative unitary ring, $V$ be a $K$-module. Let $W_1,W_2$ be $K$-submodule of $V$, such that $V$ is generated by $W_1$ and $W_2$. 
+    Then $V$ is a direct sum of $W_1$ and $W_2$ if and only if $W_1\cap W_2 =\{0\}$.
+\end{propositionenv}
+\begin{proofenv}
+    Assume that $V$ is a direct sum of $W_1$ and $W_2$, and we have a homomorphism
+    $$ \begin{array}{rrcl}
+        f: & W_1\oplus W_2 & \rightarrow & V\\
+        & (x,y) & \mapsto & x+y.
+    \end{array}$$
+    If $x\in W_1\cap W_2$, then $f(x, -x) = x - x = 0$, we must have $x = 0$.
+
+    \quad Conversely, if $W_1\cap W_2 =\{0\}$, then for any $(x,y)\in \ker(f)^2$, $x = - y \in W_1\cap W_2$, hence $x - y = 0$.
+\end{proofenv}
+\begin{definitionenv}
+    Let $V$ be a vector space over $\RR$, and $q: V\rightarrow \RR$ a quadratic form.
+    We call a \textbf{Sylvester decomposition} of $q$ any decomposition of $V$ into the direct sum of three vector subspace
+    $$ V = V_+ + V_- +V_0,$$
+    where
+    \begin{itemize}
+        \item $q|_{V_+}$ is positive definite.
+        \item $q|_{V_-}$ is negative definite.
+        \item $q|_{V_0}$ is identically zero.
+    \end{itemize}
+\end{definitionenv}
+\begin{propositionenv}
+    Let $V$ be a finitely dimensional $\RR$-vector space, $q: V\rightarrow \RR$ a quadratic form.
+    Let 
+    $$ V = V_+ + V_- + V_0$$
+    be a Sylvester decomposition of $V$. Then $V_0$ identifies with $\ker(q)$.
+\end{propositionenv}
+\begin{proofenv}
+    $q|_{V_+ + V_0}$ is positive semi-definite, $q|_{V_- + V_0}$ is negative semi-definite.
+    By definition, $V_0$ is the isotropic cone for both the restrictions, by lemma \ref{2.4.3}, $V_0 = \ker \left(q|_{V_+ + V_0}\right) = \ker\left(q|_{V_-+V_0}\right)$, hence $V_0$ is orthogonal to $V_+ + V_0$ and $V_0$ is orthogonal to $V_- + V_0$.
+    One conclude that $V_0\subseteq \ker (q)$.
+
+    \quad We need to show $V_0 \supseteq \ker(q)$.
+    Let $x \in \ker(q)$, and let $\varphi$ be the polarization of $q$.
+    $$ x = x_+ +x_- + x_0,\ x_+ \in V_+, x_- \in V_-, x_0\in V_0.$$
+    $x_0 \in \ker(q)$ and therefore $x - x_0 = x_+ + x_- \in \ker(q)$.
+    In particular,
+    $$ 0 = \varphi(x_+ +x_- ,x_+) = q(x_+) + \varphi(x_- + x_+) \Leftrightarrow \varphi (x_-,x_+) = -q(x_+) \le 0.$$
+    $$ 0 = \varphi(x_+ + x_-,x_-) = q(x_-) + \varphi(x_+,x_-) \Leftrightarrow \varphi(x_-, x_+) = -q(x_-) \ge 0.$$
+    So 
+    $$ q(x_-) = q(x_+)= 0 =\varphi(x_+,x_-) = \varphi(x_-,x_+).$$
+    $q(x_+ +x_- +x_0) = 0.$
+\end{proofenv}
+
+
+\begin{propositionenv}
+    Let $K$ be a unitary ring, $M$ is a left $K$-module, $E,F$ be left $K$-submodules, then the mapping
+    $$ E/(E\cap F )\rightarrow (E+F)/ F$$
+    which sends the class of $x$ in $E/(E\cap F)$ of the class of $x$ in $(E+F)/F$ is an isomorphism. 
+    
+    \quad In particular, if $K$ is a field and $M$ is finite dimensional over $K$, then
+    $$ \dim \left(E\cap F\right) + \dim \left(E+F\right) = \dim\left(E\right) + \dim \left(F\right).$$
+\end{propositionenv}
+\begin{proofenv}
+    Consider the left $K$-module homomorphism
+    $$ \begin{array}{rrcl}
+        f: & E & \rightarrow & (E+F)/F\\
+        & x & \mapsto & [x]
+    \end{array}.$$
+    Note that $(x,y)\in E\times F$, then $[x+y] = [x]$ in $(E+F)/F$.
+    We conclude that $f$ is surjective, its kernel equals $E\cap F$.
+\end{proofenv}
+\begin{theoremenv}[Sylvester's law of inertia]
+    Let $V$ be a finite dimensional $\RR$-vector space, $q : V\rightarrow \RR$ be a quadratic form.
+    \begin{enumerate}
+        \item $q$ admits Sylvester decomposition.
+        \item If $V = V_+ + V_- +V_0 = W_+ +W_- + W_0$ are two Sylvester decompositions, then
+        $$ \dim_{\RR} V_+ = \dim_{\RR} W_+,\ \dim_{\RR} V_- = \dim_{\RR} W_-,\ \dim_{\RR} V_0 = \dim_{\RR} W_0.$$
+    \end{enumerate}
+\end{theoremenv}
+\begin{proofenv}
+    \quad 
+    \begin{enumerate}
+        \item Let $\varphi$ be polarization of $q$, $\left(e_i\right)_{i=1}^r $ be $\varphi$-orthogonal basis of $V$, $r = \dim_{\RR}(V)$, $\left(\alpha_i\right)_{i=1}^r$ the dual basis, then 
+            $$ q(x) = \sum_{i=1}^{r} \lambda_{i} \alpha_i(x) ,\ \left(\lambda_1,\cdots , \lambda_r\right) \in \RR^r.$$
+            Let
+            $$ V_+ = \sum_{\substack{i\in \{1,\cdots,r\}\\ \lambda_i>0}} \RR e_i, V_- = \sum_{\substack{i\in \{1,\cdots,r\}\\ \lambda_i<0}} \RR e_i,\ V_0 = \sum_{\substack{i\in \{1,\cdots,r\}\\ \lambda_i=0}} \RR e_i,$$
+            $V = V_+ + V_- +V_0$ is a Sylvester decomposition of $q$.
+        \item $q|_{V_- + V_0}$ is negative semi-definite, $q|_{W_+}$ is positive define. 
+            Hence 
+            $$ \left(V_0 + V_-\right)\cap W_+ = \{0\}.$$
+            Therefore,
+            $$ \dim\left(V_- + V_0\right) + \dim_{W_+} \le \dim(V).$$
+            So,
+            $$ \dim(W_+) \le \dim(V) - \dim(V_- + V_0) = \dim(V_+).$$
+            Similarly, we get
+            $$ \dim(V_+) \le \dim(W_+).$$
+            So, $\dim(V_+)= \dim(W_+)$. Similarly we obtain $\dim(V_-) = \dim(W_-)$.
+    \end{enumerate}
+    
+\end{proofenv}
+\begin{definitionenv}
+    Let $V$ be a finite dimensional $\RR$-vector space, $q:V\rightarrow \RR$ a quadratic form.
+    If $V = V_0 + V_+ +V_-$, is a Sylvester decomposition, then the triple
+    $$ \left(\dim_{\RR} V_+, \dim_{\RR} V_-, \dim_{\RR} V_0\right)$$
+    is called \textbf{Sylvester inertia} of $q$.
+\end{definitionenv}
