@@ -140,7 +140,7 @@ Let $K = \RR$ or $K =\CC$.
 \begin{propositionenv}
     Let $\left(V,\langle \cdot ,\cdot\rangle\right)$ be an inner product space, $\left\| \cdot \right\|$ a norm such that $\| x\| = \sqrt{\langle x,x\rangle}$ for any $x\in V$.
     \begin{enumerate}
-        \item For any subset $A \subseteq V$, $A\perp$ is a closed subset of $V$.
+        \item For any subset $A \subseteq V$, $A^\perp$ is a closed subset of $V$.
         \item Let $A \subseteq V$, $B = \bar{A}$, then $A^\perp = B^\perp$.
     \end{enumerate}
 \end{propositionenv}
@@ -164,6 +164,7 @@ Let $K = \RR$ or $K =\CC$.
     Conversely, suppose that for any $(x,y)\in V^2$, we have
     $$ \| x+y\|^2 + \| x-y\|^2 = 2\| x\|^2 + 2\| y\|^2.$$
     We define $\langle \cdot ,\cdot\rangle : V\times V \rightarrow K$ as follows:
+    $$ \langle x,y\rangle = \frac{1}{2}\left(\|x+y\|^2 - \|x-y\|^2\right).$$
 \end{proofenv}
 
 \section{Orthogonal Projection}
@@ -179,26 +180,28 @@ Let $K = \RR$ or $K =\CC$.
     \quad In particular, if $V$ is finite-dimensional, then $V$ is a Hilbert space.
 \end{definitionenv}
 
-\begin{theoremenv}
+\begin{theoremenv}\label{3.2.2}
     Let $\left(V,\langle \cdot,\cdot\rangle\right)$ be a inner product space and $W$ be a vector subspace of $V$. We assume that $\left(W, \left.\langle\cdot,\cdot\rangle\right|_{W}\right)$ is a Hilbert space.
     
     \quad For any $x\in V$, there exist a \textit{unique} element $p_W(x) \in W$ such that $\left\| x - p_W(x)\right\|$ minimizes the function $ \left(y \in W\right) \mapsto \left\| x - y\right\|$.
-    $p_W(x)$ is the only element of $W$ such that $x - p_w(x) \in W^\perp$.
+    
+    \quad $p_W(x)$ is the only element of $W$ such that $x - p_W(x) \in W^\perp$.
 \end{theoremenv}
 \begin{proofenv}
     We first prove the existence of $p_W(x)$. 
     Consider $\left( y \in W\right) \mapsto \left\| x- y\right\|$.
-    Put $c\coloneq \inf_{y \in W} \left\| x- y\right\|$.
+    Put $\dis c\coloneq \inf_{y \in W} \left\| x- y\right\|$.
     Take a sequence $\left(y_n\right)_{n\in \NN}$ in $W$ such that $$\lim_{n\rightarrow \infty} \left\| x - y_n\right\| = c.$$
     Note that for any $m,n\in \NN$,
     $$\begin{array}{rl}
-         \left\| y_n - y_m\right\|^2 =& 2\left\| y_n - x\right\|^2 + 2\left\| y_m - x\right\|^2 - \left\| y_m + y_n -2x\right\|^2 \\
+        \left\| y_n - y_m\right\|^2 =& 2\left\| y_n - x\right\|^2 + 2\left\| y_m - x\right\|^2 - \left\| y_m + y_n -2x\right\|^2 \\
+        = & 2\left\| y_n - x\right\|^2 + 2\left\| y_m - x\right\|^2 - 4 \left\| \frac{y_m + y_n}{2} - x \right\|^2 \\
         \le& 2 \left\| y_n - x\right\|^2 + 2 \left\| y_m - x\right\|^2 - 4 c^2.
     \end{array}.$$
     So, 
     $$ \lim_{ N \rightarrow +\infty} \sup_{n,m\ge N} \left\| y_n - y_m\right\|^2 = 0,$$
     and hence $\left(y_n\right)_{n\in \NN}$ is a Cauchy sequence in $W$.
-    Put $\dis p_W(x) \coloneq \lim_{n\rightarrow \infty} y_n$.
+    Put $\dis p_W(x) \coloneq \lim_{n\rightarrow \infty} y_n$, then
     $$ \left\| x - p_W(x)\right\| = \inf_{y\in W} \left\| x - y\right\|.$$
     We now prove that $x - p_W(x) \in W^\perp$.
     Let $y\in W$, $a\in K$ such that $|a|=1$, and $a \langle x -p_W(x) , y\rangle = \left| \langle x- p_W(x), y\rangle\right|.$
@@ -276,5 +279,102 @@ Let $K = \RR$ or $K =\CC$.
         $$ I' = \bigcup_{\varepsilon \in \QQ} \left\{i\in I \mid \left|a_i\right|\left\|x_i\right\| > \varepsilon\right\}$$
         is countable.
         \item We will prove that the series is a Cauchy sequence, i.e. for any $\varphi : \NN \rightarrow I'$, $\dis \sum_{n\in\NN} a_{\varphi(n)} x_{\varphi(n)}$ is a Cauchy sequence.
+        For any $N\in \NN$, $n,m\in \NN$, $n>m\ge N$, one has 
+        $$ \left\| \sum_{k = m + 1}^{n} a_{\varphi(k)} x_{\varphi(k)}\right\|^2 = \sum_{k = m + 1}^{n} |a_{\varphi(k)}|^2 \cdot \|x_{\varphi(k)}\|^2.$$
+        We assume that
+        $$ \sum_{n\in \NN} |a_{\varphi(n)}|^2 \|x_{\varphi(n)}\|^2 = \sum_{i \in I} |a_i|^2 \|x_i\|^2 < +\infty.$$
+        We deduce that 
+        $$ \lim_{N\rightarrow +\infty} \sup_{n>m\ge N} \left\| \sum_{k = m + 1}^{n} a_{\varphi(k)} x_{\varphi(k)}\right\|^2 = 0.$$
+        Hence $\dis  \sum_{n\in \NN} a_{\varphi(n)} x_{\varphi(n)}$ is a Cauchy sequence and converges to $x \in V$.
+        
+        \quad For any $n\in \NN$, 
+        $$ \begin{aligned}
+            \left\| x - \sum_{n = 0}^{N} a_{\varphi(n)} x_{\varphi(n)}\right\|^2 &= \lim_{m\rightarrow +\infty} \left\| \sum_{n = 0}^{N + m} a_{\varphi(n)} x_{\varphi(n)} - \sum_{n = 0}^{N} a_{\varphi(n)} x_{\varphi(n)}\right\|^2\\
+            & = \lim_{m\rightarrow +\infty} \left\| \sum_{n = N + 1}^{N + m} a_{\varphi(n)} x_{\varphi(n)}\right\|^2\\
+            & = \sum_{n = N + 1}^{\infty} |a_{\varphi(n)}|^2 \|x_{\varphi(n)}\|^2
+        \end{aligned}$$
+        We need to check that $\dis \sum_{ n\in \NN} a_{\varphi(n)} x_{\varphi(n)}$ does not depend on the choice of $\varphi$.
+
+        \quad Let $\psi: \NN \rightarrow I'$ be another bijection. 
+        For any $N\in \NN$, there exists $M\in \NN$ such that
+        $$ \{\varphi(0),\cdots \varphi(N)\}\subseteq \{\psi(0), \cdots \psi(M) \},\ M \coloneq \max\{\psi^{-1} \left(\varphi(i)\right)\}.$$
+        equivalently,
+        $$\{\psi(n)\mid  b\ge M + 1 \}\subseteq \{\varphi(m) \mid n\ge N + 1\}.$$
+        Therefore, 
+        $$ \left\| x - \sum_{n = 0}^{M} a_{\psi(n)} x_{\psi(n)}\right\|^2 = \sum_{n = M + 1}^{\infty} |a_{\psi(n)}|^2 \|x_{\psi(n)}\|^2\le \sum_{n = N + 1}^{+\infty} |a_{\varphi(n)}|^2 \|x_{\varphi(n)}\|^2,$$
+        which gives
+        $$ \lim_{M\rightarrow +\infty} \left\| x - \sum_{n = 0}^{M} a_{\psi(n)} x_{\psi(n)}\right\|^2 = 0.$$
+        \item Pick a bijection $\varphi : \NN\rightarrow I'$, the mapping $\|\cdot\|^2$ is continuous,
+        $$ \begin{aligned}
+            \left\| \sum_{i\in I} a_i x_i\right\|^2 &= \lim_{N\rightarrow +\infty} \left\| \sum_{n = 0}^{N} a_{\varphi(n)} x_{\varphi(n)}\right\|^2\\
+            & = \lim_{N\rightarrow +\infty} \sum_{n = 0}^{N} \left|a_{\varphi(n)}\right|^2 \cdot \left\|x_{\varphi(n)}\right\|^2\\
+            & = \sum_{i\in I} \left|a_i\right|^2 \cdot \left\|x_i\right\|^2
+        \end{aligned}$$
+        By Cauchy Schwarz,
+        $$\begin{aligned}
+            \left| \langle \sum_{i\in I} a_i x_i, y\rangle - \sum_{n=0}^{N}\langle a_{\varphi(n)} x_{\varphi(n)}, y\rangle \right| = & \left| \left\langle \sum_{n =N+1}^{+\infty} a_{\varphi(n)} x_{\varphi(n)}, y\right\rangle \right|\\
+            & \le \left(\sum_{n=N+1}^{+\infty} |a_{\varphi(n)}|^2 \right)^{1/2} \cdot \left\|y\right\|.
+        \end{aligned}$$
+        Hence, 
+        $$\lim_{N\rightarrow +\infty} \left| \langle \sum_{i\in I} a_i x_i, y\rangle - \sum_{n=0}^{N}\langle a_{\varphi(n)} x_{\varphi(n)}, y\rangle \right| = 0.$$
+        Now, we will check that $\dis i\in I \left| \left\langle a_i x_i, y\right\rangle\right|<+\infty $.
+
+        \quad For any $i\in I$, pick $b_i \in K$, such that $|b_i|=1$,
+        $$ \langle b_i a_i x_i, y\rangle = \left|\langle a_i x_i, y\rangle\right|.$$
+        We know that 
+        $$ \sum_{i\in I} |b_i a_i|^2 \left\|x_i\right\|^2 = \sum_{i\in I} \left|a_i\right|^2 \cdot \left\|x_i\right\|^2 < +\infty.$$
+        We obtain,
+        $$ \sum_{i\in I} |\langle a_i x_i, y\rangle|^2 = \sum_{n\in \NN} \langle b_{\varphi(n)} a_{\varphi(n)} x_{\varphi(n)}, y\rangle^2 < +\infty.$$
     \end{enumerate}
+\end{proofenv}
+\begin{propositionenv}[Parseval]
+    Let $\left(V,\langle \cdot, \cdot\rangle\right)$ be an inner product space, $W\subseteq V$ be a subspace, such that $\left(W,\langle\cdot,\cdot\rangle|_W\right)$ is a Hilbert space.
+    \begin{enumerate}
+        \item The mapping $p_W : V\rightarrow W$ is $K$-linear.
+        \item For any $x\in W$, $p_W(x) = x$. In particular, $p_W\circ p_W = p_W$.
+        \item Let $\left(e_i\right)_{i\in I}$ be an orthonormal basis of $W$, then for any $x\in V$,
+        $$ \sum_{i\in I} |\langle e_i, x\rangle|^2 \le \| x\|^2,$$
+        and 
+        $$ p_W(x) = \sum_{i\in I} \langle e_i, x\rangle e_i.$$
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    \quad
+    \begin{enumerate}
+        \item Let $(x,y)\in V\times V$, $(a,b)\in K^2$. For any $z\in W$,
+        $$ \langle z,\left(ax +by\right) - \left(a p_W(x) + bp_W(y)\right)\rangle = a\langle z, x - p_W(x)\rangle + b\langle z, y - p_W(y)\rangle,$$
+        which is $0$. By theorem \ref{3.2.2} we obtain,
+        $$p_W(x) (ax + by) = ap_W(x) + bp_W(x).$$
+        \item For any $z\in W$, $0 = z-z$ belongs to $W^\perp$. Hence, $p_W(z) = z$.
+        We also get $p_W(p_W(x)) = p_W(x)$, $\forall x\in V$.
+        \item First consider finite $I=\{1,\cdots,n\}$. Take
+        $$ y\coloneq x - \sum_{i=1}^{n} \langle e_i , x\rangle e_i.$$
+        For any $j \in \{1,\cdots ,n\}$,
+        $$ \langle e_j,y \rangle = \langle e_j, x\rangle - \langle e_j, x\rangle \langle e_j,e_j\rangle = 0.$$
+        So, $y\in W^\perp$. Therefore $\dis p_W(x) = \sum_{i=1}^{n} \langle e_i,x\rangle e_i.$
+        In particular,
+        $$ \left\| p_W(x)\right\|^2 = \sum_{i=1}^{n} \left|\langle e_i,x\rangle\right|^2 \le \left\|x\right\|^2.$$
+        Now $I$ is general. For any $J\subseteq I$ finite,
+        $$ \sum_{i\in J} |\langle e_i,x\rangle|^2 \le \|x\|^2.$$
+        Taking sup over all possible $J$, we obtain
+        $$ \sum_{i\in I} |\langle e_i,x\rangle|^2 \le \|x\|^2.$$
+        So $\dis \sum_{i\in I} |\langle e_i,x\rangle|^2 $ is well-defined.
+        For an $j\in I$, 
+        $$ \langle e_j,\sum_{i\in I} |\langle e_i,x\rangle e_i\rangle = \langle e_i,x\rangle.$$
+        So, 
+        $$ x - \sum_{i\in I} \langle e_i, x\rangle e_i \in \{e_i \mid i\in I\}^\perp = W^\perp$$
+        which allows us to conclude that $\dis p_W(x) = \sum_{i\in I} \langle e_i,x\rangle.$
+    \end{enumerate}
+\end{proofenv}
+
+\begin{theoremenv}[Gram-Schmidt]
+    Let $\left(V,\langle \cdot, \cdot\rangle\right)$ be an inner product space,
+    $$ \{0\} = V_0\subseteq V_1 \subseteq \cdots \subseteq V_n$$
+    sequence of vector space such that $\forall i\in \{1,\cdots,n\}$, $\dim \left(V_i\right) = i.$
+    Then there exists an orthonormal family $\left(x_i\right)_{i=1}^n$ in $V$ such that $x_{i} \in V_i\setminus V_{i-1}$ for any $i\in \{1,\cdots,n\}$.
+\end{theoremenv}
+\begin{proofenv}
+    For any $i \in \{1,\cdots,n\}$, pick $y_{i}\in V_i\setminus V_{i-1}$ and 
+    $$ x_i = \frac{y_i - p_{V_i} (y_i)}{\| y_i - p_{V_{i-1}}(y_i)\|},\ x_i \in \left(V_i \setminus V_{i-1}\right)\cap V_{i-1}^\perp.$$
+    $\left(x_i\right)_{i=1}^n$ is orthonormal.
 \end{proofenv}
