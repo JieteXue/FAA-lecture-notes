@@ -84,7 +84,7 @@ Let $K = \RR$ or $K =\CC$.
             \langle \cdot ,\cdot\rangle^\sim : & \left(V/W\right) \times \left(V/W\right) & \rightarrow & K\\
             & \langle [x], [y] \rangle & \mapsto & \langle x,y\rangle.
         \end{array}$$
-        Moreover, if $W = V^\perp$, then $\langle \cdot, \cdot\rangle^\sim$ is and inner product on $V/W$.
+        Moreover, if $W = V^\perp$, then $\langle \cdot, \cdot\rangle^\sim$ is an inner product on $V/W$.
     \end{enumerate}
 \end{propositionenv}
 \begin{proofenv}
@@ -96,7 +96,7 @@ Let $K = \RR$ or $K =\CC$.
         $$ \| x+y\|^2 = \langle x+y,x+y\rangle = \langle x,x\rangle + 2\mathrm{Re}\langle x, y\rangle + \langle y, y\rangle.$$
         By Cauchy-Schwarz, $\mathrm{Re}\langle x,y\rangle \le |\langle x, y\rangle| \le \|x\|\|y\|$, hence
         $$ \| x+y \|^2 \le \| x\|^2 +\|y \|^2 + 2\|x\|\|y\| = \left(\|x\| +\|y\|\right)^2.$$
-        \item $$ V^\perp = \{x \in V\mid \| x\| = 0\}.$$
+        \item $$ V^\perp \subseteq \{x \in V\mid \| x\| = 0\}.$$
         It remains to show the opposite inclusion. Let $x\in V$ such that $\| x\| = 0$. For any $y\in V$, by Cauchy-Schwarz,
         $$ |\langle x,y\rangle|^2 \le \| x\|^2 \cdot \| y\|^2 =0.$$
         So $\langle x,y\rangle =0$, so $x\in V^\perp$.
@@ -134,7 +134,7 @@ Let $K = \RR$ or $K =\CC$.
     \begin{enumerate}
         \item By Cauchy-Schwarz, $\left| \langle x,y\rangle \right| \le \left\| x \right\| \cdot \left\| y \right\|$, for any $y \in V$.
         So $l_x$ is bounded, and since $l_x (x) = \left\| x\right\|^2$ so the norm of $l_x$ is equal to $\| x\|$.
-        \item On has $l_x - l_y = l_{x-y}$, so $\| l_x - l_y \| = \|x -y\|$. So $l_x - l_y =0$ if and only if $x - y =0$.
+        \item One has $l_x - l_y = l_{x-y}$, so $\| l_x - l_y \| = \|x -y\|$. So $l_x - l_y =0$ if and only if $x - y =0$.
     \end{enumerate}
 \end{proofenv}
 \begin{propositionenv}
