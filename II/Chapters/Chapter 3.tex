@@ -117,7 +117,7 @@ Let $K = \RR$ or $K =\CC$.
         If $W = V^\perp$, then $\langle [x], [x]\rangle^\sim = \| x\| = 0$ if and only if $[x]=0$ in $V/W$.
     \end{enumerate}
 \end{proofenv}
-\begin{propositionenv}
+\begin{propositionenv}\label{prop:3.1.8}
     Let $(V,\langle \cdot ,\cdot\rangle)$ be a inner product space. $\| \cdot \|: V\rightarrow \RR_{\ge 0}$ a norm such that $\| x\| = \sqrt{\langle x,x\rangle}$ for any $x\in V$.
     \begin{enumerate}
         \item For any $ x\in V $, the mapping
@@ -137,7 +137,7 @@ Let $K = \RR$ or $K =\CC$.
         \item One has $l_x - l_y = l_{x-y}$, so $\| l_x - l_y \| = \|x -y\|$. So $l_x - l_y =0$ if and only if $x - y =0$.
     \end{enumerate}
 \end{proofenv}
-\begin{propositionenv}
+\begin{propositionenv}\label{prop:3.1.9}
     Let $\left(V,\langle \cdot ,\cdot\rangle\right)$ be an inner product space, $\left\| \cdot \right\|$ a norm such that $\| x\| = \sqrt{\langle x,x\rangle}$ for any $x\in V$.
     \begin{enumerate}
         \item For any subset $A \subseteq V$, $A^\perp$ is a closed subset of $V$.
@@ -378,3 +378,114 @@ Let $K = \RR$ or $K =\CC$.
     $$ x_i = \frac{y_i - p_{V_i} (y_i)}{\| y_i - p_{V_{i-1}}(y_i)\|},\ x_i \in \left(V_i \setminus V_{i-1}\right)\cap V_{i-1}^\perp.$$
     $\left(x_i\right)_{i=1}^n$ is orthonormal.
 \end{proofenv}
+\begin{remark}
+    In the proof of Gram-Schmidt theorem, the family $\left(x_j\right)_{j=1}^{i-1}$ forms an orthogonal basis.
+    Hence the vector $x_i$ can be construct in recursive way:
+    $$ z_i \coloneq y_i - \sum_{j=1}^{i-1} \langle y_i,x_j\rangle x_j, y_i \in V_i\setminus V_{i-1},\ x_i = \frac{z_i}{\|z_i\|}.$$
+    $$ \|z_i\|^2 = \|y_i\|^2 - \sum_{j=1}^{i-1} |\langle x_j ,y_j \rangle|^2 = \|y_i\|^2 - \sum_{j=1}^{i-1}\frac{|\langle z_i, y_i\rangle|^2}{\|z_j\|^2}.$$
+\end{remark}
+
+
+\section{Adjoint of a Bounded Linear Mapping}
+
+\begin{lemmaenv}\label{lem:3.3.1}
+    Let $\left(V,\langle \cdot,\cdot\rangle\right)$ be a Hilbert space and $W\subseteq V$ be a vector space of $V$.
+    If $W$ is not dense in $V$, then $W^\perp$ is non-zero.
+\end{lemmaenv}
+\begin{proofenv}
+    By proposition \ref{prop:3.1.9}, if $W' = \overline{W}$, then $\left(W'\right)^\perp = W^\perp$, so without losing of generality,
+    we can assume that $W$ is closed (i.e. $\left(W, \left.\langle\cdot,\cdot\rangle\right|_{W}\right)$ is a Hilbert space) and $W \neq V$.
+    Let $x\in V\setminus W$. Then $p_W (x)\neq x$.
+    $$ x - p_W(x) \in W^\perp\setminus \{0\}.$$
+\end{proofenv}
+
+\begin{definitionenv}
+    Let $V,W$ be vector spaces over $K$.
+    We call \textbf{conjugate homomorphism} from $V$ to $W$ any mapping $f:V\rightarrow W$ such that 
+    for any $(a,b)\in K^2$ and $(x,y)\in V^2$,
+    $$ f(ax +by) = \bar{a} f(x) + \bar{b}f(y).$$
+    If in addition, $f$ if a bijection, we say that $f$ is a \textbf{conjugate isomorphism}.
+\end{definitionenv}
+
+\begin{definitionenv}
+    Let $\left(V, \langle \cdot,\cdot\rangle\right)$ be a Hilbert space.
+    We say that a $K$-linear mapping $f : V\rightarrow V$ is \textbf{isometric} (or \textbf{isometry}) if 
+    $$ \| f(x)\| = \|x\|, \ \forall x\in V.$$
+    Note that isometry is automatically bounded and injective.
+\end{definitionenv}
+
+\begin{theoremenv}[Riesz Representation Theorem]
+    Let $\left(V, \langle \cdot,\cdot\rangle\right)$ be a Hilbert space.
+    For any $f: V\rightarrow K$ that is linear and bounded, there exists a \textit{unique} $x\in V$ such that
+    $$ f = l_x \coloneq \langle x,\cdot\rangle.$$
+    The mapping 
+    $$\begin{array}{rcl}
+        V & \rightarrow & \mathcal{L}(V,K)\\
+        x & \mapsto & l_x
+    \end{array}$$
+    is a conjugate isomorphism, that is also an isometry, when we consider $\mathcal{L}(V,K)$ with the standard operator norm.
+\end{theoremenv}
+
+\begin{proofenv}
+    By proposition \ref{prop:3.1.8}, if the mapping $V\rightarrow \mathcal{L}(V,K)$, $x\mapsto l_x$ is well-defined, injective and for any $x\in V$, $\| l_x\| = \| x\|_{V}$.
+    Let $(x,y)\in V^2$, $(a,b)\in K^2$,
+    $$ \forall z \in V, l_{ax + by} (z) = \langle ax+by, z\rangle = \bar{a} \langle x,z\rangle + \bar{b}\langle y,z\rangle = \bar{a} l_x(z) + \bar{b} l_y(z).$$
+    So the mapping is a conjugate homomorphism.
+    It remains to show that the mapping $x\mapsto l_x$ is surjective.
+
+    \quad $f$ is bounded and linear (hence continuous) so $\ker f\eqcolon W$ is a closed vector subspace of $V$. 
+    If $f$ is the zero mapping, then $x = 0$ is the only element of $V$ such that $l_x = f$.
+    For non-zero $f$, $\overline{W}\neq V$, hence by lemma \ref{lem:3.3.1}, there exists $0\neq y\in W^\perp$ such that $\|y\| =1$.
+    Put $x \coloneq \overline{f(y)}y$.
+    We have $V/W \cong K$.
+    So for any $z\in V$, there exists $\lambda \in K$ such that $z - \lambda y\in W$.
+    $$ l_x(z) = \langle \overline{f(y)} y,z\rangle = f(y) \langle y,z\rangle = f(y) \langle y,\lambda y\rangle = \lambda f(y) = f(\lambda y) = f(z).$$
+\end{proofenv}
+
+\begin{corollaryenv}
+    Let $\left(V, \langle \cdot,\cdot\rangle_V\right)$ and $\left(W, \langle \cdot,\cdot\rangle_W\right)$ be Hilbert spaces
+    and $f: V\rightarrow W$ be a bounded linear mapping.
+    There exists a \textit{unique} bounded linear mapping $f^*: W \rightarrow V$ such that 
+    $$ \forall (x,y)\in W\times V, \langle f^*(x), y\rangle_V = \langle x, f(y) \rangle_W.$$
+    The mapping $f^*$ is called \textbf{adjoint} of $f$.
+    The operator norm of $f^*$ is equal to that of $f$, and one has
+    $$ \left(f^*\right)^* = f.$$
+\end{corollaryenv}
+\begin{proofenv}
+    For any $x\in W$, the mapping $l_x \circ f : V\rightarrow K$ is linear bounded.
+    By Riesz representation theorem (applied to $l_x \circ f$), there exists a unique element of $f$, which we denote by $f^*(x)$, such that
+    $$ l_x\circ f = l_{f^*(x)}.$$
+    For any $(x,x')\in W^2$ and $(a,b)\in K^2$, 
+    $$ \begin{aligned}
+        l_{f^*(ax+bx')} &= l_{ax+bx'}\circ f = \left(\bar{a}l_x + \bar{b} l_{x'}\right)\circ f = \bar{a}\left(l_x \circ f\right) + \bar{b} \left(l_{x'} \circ f\right)\\
+        &= \bar{a} l_{f^*(x)} + \bar{b} l_{f^*(x')} = l_{a f^*(x)+bf^*(x')}.
+    \end{aligned}$$
+    So $f^*: W\rightarrow V$ is unique linear mapping such that 
+    $$ \forall (x,y)\in W\times V,\ \langle f^*(x), y\rangle_V = \langle x, f(y) \rangle_W.$$
+    Let's check that $f^*$ is bounded.
+    $$\forall x\in W,\ \| f^*(x)\|_V =\| l_{f^*(x)}\|  = \| l_x\circ f\| \le \|l_x\| \|f\| = \|x\|_{W} \|f\|.$$
+    Hence $\| f^*\|\le \|f\|$. For any $(x,y)\in W\times V$,
+    $$ \langle y, f^*(x)\rangle_V = \overline{\langle f^*(x), y\rangle_{V}} = \overline{\langle x, f(y)\rangle_W} = \langle f(x), x\rangle_W.$$
+    So $\left(f^*\right)^* = f$, which also leads to 
+    $$ \| f\| = \| \left(f^*\right) ^* \| \le \|f^*\|.$$
+    So, $\|f\| = \|f^*\|$.
+\end{proofenv}
+
+\begin{exampleenv}
+    Let $n$, $p$ be two positive integers, and $\langle \cdot,\cdot\rangle_{n}$, $\langle \cdot, \cdot\rangle_{p}$ be the canonical inner product on $K^n$ and $K^p$ respectively.
+    Let $A:K^n \rightarrow K^p$ be $K$-linear. $A$ can be represented as
+    $$ A \bumpeq  \begin{pmatrix}
+        a_{1,1} & \cdots & a_{1,p}\\
+        \vdots & \ddots & \vdots\\
+        a_{n,1} & \cdots & a_{n,p}
+    \end{pmatrix}.$$
+    $$ A: (y_1, \cdots, y_n)\longmapsto \left(\sum_{j=1}^{n} y_j a_{j,1}, \cdots,\sum_{j=1}^{n}y_j a_{j,p}\right).$$
+    For any $x= (x_1,\cdots,x_p)\in K^p$, the mapping $l_x\circ A$ works the following way:
+    $$ (y_1,\cdots y_n) \mapsto \left(\sum_{i=1}^{p}\bar{x_i} \sum_{j=1}^{n}y_ja_{j,i}\right)$$
+    Right hand side is $\dis \sum_{j=1}^{n}\overline{\left(\sum_{i=1}^{p} x_i \overline{a_{j,i}}\right)}y$. So,
+    $$ A^* \bumpeq \begin{pmatrix}
+        \overline{a_{1,1}} & \cdots & \overline{a_{1,p}}\\
+        \vdots & \ddots & \vdots\\
+        \overline{a_{n,1}} & \cdots & \overline{a_{n,p}}
+    \end{pmatrix}.$$
+\end{exampleenv}
