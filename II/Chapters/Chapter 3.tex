@@ -489,3 +489,164 @@ Let $K = \RR$ or $K =\CC$.
         \overline{a_{n,1}} & \cdots & \overline{a_{n,p}}
     \end{pmatrix}.$$
 \end{exampleenv}
+
+\begin{propositionenv}
+    Let $\left(V, \langle \cdot,\cdot\rangle_{V}\right)$ and $\left(W, \langle \cdot,\cdot\rangle_{W}\right)$ be Hilbert spaces.
+    Then $f\mapsto f^*$ defines a conjugate homomorphism from $\mathcal{L}(V,W)$ to $\mathcal{L}(W,V)$.
+\end{propositionenv}
+\begin{proofenv}
+    Let $(f,g) \in \mathcal{L}(V,W)\times \mathcal{L}(V,W)$, $(a,b) \in K\times K$.
+    For any $(x,y)\in W\times V$, 
+    $$\begin{aligned}
+        \langle x,(af+bg)(y) \rangle_{W} & =  a\langle x,f(y)\rangle_{W} + b\langle x,g(y)\rangle_{W}\\
+        &= a\langle f^*(x),y\rangle_V + b\langle g^*(x),y\rangle_V \\
+        &= \langle \bar{a} f^*(x) + \bar{b} g^*(x), y\rangle_V\\
+        &= \langle (af+bg)^*(x), y\rangle_V.
+    \end{aligned}$$
+    So $(af + bg)^* = \bar{a} f^* + \bar{b} g^*$.
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $(V_1,\langle\cdot,\cdot\rangle_{1})$, $(V_2,\langle\cdot,\cdot\rangle_{2})$, $(V_3,\langle\cdot,\cdot\rangle_{3})$ be Hilbert spaces,
+    $f: V_1\rightarrow V_2$, $g:V_2\rightarrow V_3$ be bounded linear mappings. 
+    Then 
+    $$ (g\circ f)^* = f^*\circ g^*.$$
+\end{propositionenv}
+\begin{proofenv}
+    For $(x,y) \in V_3\times V_1$,
+    $$\begin{aligned}
+        \langle x, (g\circ f)(y)\rangle_{3} &= \langle x,g(f(y))\rangle_{3} = \langle g^*(x), f(y)\rangle_{2}\\
+        &= \langle f^*(g^*(x)), y\rangle_{1} = \langle (f^*\circ g^*)(x), y\rangle_{1}.
+    \end{aligned}$$
+    So, $\left(g\circ f\right)^* = f^*\circ g^*$.
+\end{proofenv}
+
+\begin{definitionenv}
+    Let $\left(V,\langle\cdot,\cdot\rangle\right)$ be a Hilbert space.
+    We say that a bounded endomorphism $f:V\rightarrow V$ is self-adjoint if $f^* = f$:
+    $$ \forall (x,y)\in V\times V, \ \langle x,f(y)\rangle = \langle f(x),y\rangle.$$
+\end{definitionenv}
+
+\begin{definitionenv}
+    Let $n\in \NN_{>0}$.
+    We equipped $K^n$ with the canonical inner product
+    $$ \langle x,y\rangle = \sum_{i=1}^{n} \overline{x}_i y_i.$$
+    Let $A:K^n\rightarrow K^n$ be linear, then $A^* = \overline{A^{\mathsf{T}}}$.
+
+    \quad In the cases when $K =\RR$ and $A$ is self-adjoint (i.e. $A = A^* = A^{\mathsf{T}}$), we say that the matrix of $A$ is a \textbf{symmetric matrix}.
+
+    \quad In the case when $K = \CC$ and $A$ is self-adjoint, (i.e. $A = A^* = \overline{A^{\mathsf{T}}}$), we say that the matrix of $A$ is a \textbf{Hermitian matrix}.
+\end{definitionenv}
+
+\begin{exampleenv}
+    Let $(V,\langle \cdot,\cdot\rangle)$ be a Hilbert space and $W$ be a closed vector subspace of $V$.
+    Then the mapping of orthogonal projection $p_W:V\rightarrow V$ is self-adjoint.
+    
+    \quad Indeed, for any $(x,y)\in V\times V$, one has
+    $$ \langle x, p_W(y)\rangle = \langle p_W(x), p_W(y)\rangle + \langle x - p_W(x), p_W(y)\rangle = \langle p_W(x), p_W(y)\rangle,$$
+    since $x - p_W(x) \in W^\perp$ and $p_W(y)\in W$.
+    Similarly, 
+    $$ \langle p_W(x), y\rangle = \langle p_W(x), p_W(y)\rangle + \langle p_W(x), y - p_W(y)\rangle = \langle p_W(x), p_W(y)\rangle.$$
+\end{exampleenv}
+
+
+
+\section{Reduction of Self-adjoint Mappings}
+
+\begin{definitionenv}
+    Let $F$ be a field, $V$ be a vector space over $F$ and $f:V\rightarrow V$ be an endomorphism.
+    Let $\lambda\in F$.
+    If there exists $x\in V\setminus\{0\}$ such that
+    $$f(x) = \lambda x,$$
+    then we say that $\lambda$ is an \textbf{eigenvalue} of $f$ and that $x$ is an \textbf{eigenvector} of $f$ associated with the eigenvalue $\lambda$.
+    
+    \quad Note that $\lambda \in F$ is an eigenvalue of $f$ if and only if $\lambda \Id_{V} - f$ is not injective.
+    Suppose that $V$ is finitely-dimensional over $F$. 
+    We say that the endomorphism $f: V\rightarrow V$ is \textbf{diagonalizable} if there exists a basis of $V$ composed of eigenvectors of $f$.
+\end{definitionenv}
+
+\begin{remark}
+    Let $F$ be a field, $V$ be a finitely-dimensional vector space over $F$, $f:V\rightarrow V$ be an endomorphism.
+    Let $\left(e_i\right)_{i=1}^{n}$ ($n = \dim_F(V)$) be a basis such that $\forall i\in \{1,\cdots,n\}$, $e_i$ is an eigenvector of $f$.
+    For any $i\in \{1,\cdots,n\}$, let $\lambda_i \in F$ be such that 
+    $$ f(e_i) = \lambda_i e_i.$$
+    Let
+    $$\begin{array}{rrcl}
+        \varphi: & K^n & \rightarrow & V\\
+        & (a_1,\cdots,a_n) & \mapsto & \sum_{i=1}^{n} a_i e_i
+    \end{array}$$
+    be a natural isomorphism $K^n \cong V$, then 
+    $$ \begin{array}{rrcl}
+        \varphi^{-1} \circ f \circ \varphi: & K^n & \rightarrow & K^n\\
+        & (a_1,\cdots,a_n) & \mapsto & (\lambda_1 a_1,\cdots,\lambda_n a_n)
+    \end{array}$$
+    i.e. $\varphi^{-1}\circ f \circ \varphi = \mathrm{diag} (\lambda_1,\cdots,\lambda_n)$.
+\end{remark}
+
+\begin{definitionenv}
+    Let $(V,\|\cdot\|)$ be a Banach space over $K$ ($K = \RR $ or $\CC$), $f:V\rightarrow V$ bounded linear mapping.
+    Note that the \textit{open mapping theorem} shows that if $\lambda \Id_{V}-f$ is a bijection, then $\left(\lambda\Id_{V} - f\right)^{-1}$ is bounded, linear.
+    We denote by $\sigma (f)$ the set of $\lambda \in K$ such that $\lambda\Id_{V} - f$ is invertible.
+    We call $\sigma(f)$ the \textbf{resolvent of $f$}.
+
+    The set 
+    $$ \rho(f) = K\setminus \sigma(f)$$
+    is called the \textbf{spectrum} of $f$.
+    In the case when $V$ is finite dimensional, a $K$-linear mapping is an isomorphism if and only if it is injective.
+    Therefore, in this $\dim_{K} V < +\infty$ case, the spectrum of $f$ is equal to the set of eigenvalue of $f$.
+    {\bf This is not true in general!}
+\end{definitionenv}
+
+\begin{theoremenv}
+    Let $\left(V, \langle\cdot,\cdot\rangle\right)$ be a finitely dimensional inner product space and let $f:V\rightarrow V$ be a self-adjoint endomorphism.
+    There exists an orthonormal basis of $V$ composed of eigenvectors of $f$.
+    
+    \quad In particular, $f$ is diagonalizable.
+    Moreover, the eigenvalues of $f$ must be all real. 
+\end{theoremenv}
+\begin{proofenv}
+    If $\lambda$ is an eigenvalue of $f$ and $v\in V$ is an eigenvector of the eigenvalue, then
+    $$ \lambda \langle v,v\rangle = \langle v,\lambda v\rangle = \langle v,f(v)\rangle = \langle f(v), v\rangle = \bar{\lambda} \langle v,v\rangle.$$
+    So $\lambda \in \RR$.
+
+    \quad We reason by induction on $\dim_{K} (V) = n$.
+    When $n = 0$, the statement is trivial.
+    Suppose $n = \dim_{K} V >0$, since $f$ is self-adjoint
+    $$ \langle x,f(x)\rangle = \langle f(x),x \rangle = \overline{\langle x, f(x)\rangle}$$
+    for all $x \in V$.
+    Hence $\langle x,f(x)\rangle \in \RR$ for all $x \in V$.
+    Define 
+    $$ \begin{array}{rrcl}
+        q: & V & \rightarrow & \RR\\
+        & x & \mapsto & \langle x,f(x)\rangle.
+    \end{array}
+    $$
+    Let $B\coloneq \{x \in V \mid \|x\| \le 1\}$, $S\coloneq \{x \in V\mid \|x\| = 1\}$.
+    $S$ is closed bounded in finitely-dimensional vector space $V$, so it is compact.
+    The mapping $q|_S$ attains its maximum $\lambda$.
+    For any $y \in V$, there exists $a\in K$ and $x \in S$ such that $y = a x$.
+    $$ q(y) = \langle ax, f(ax)\rangle = |a|^2 \langle x,f(x)\rangle = |a|^2 q(x) \le |a|^2 \lambda = \lambda\|y\|^2.$$
+    Let $e_1$ be an element of $S$ such that $q(e_1) = \lambda$.
+    Let $y\in S$ and $\theta \in K$ be such that $|\theta|=1$.
+    For any $t \in \RR_{>0}$,
+    $$\begin{aligned}
+        q(\theta e_1 + ty) = \langle \theta e_1 + ty, f(\theta e_1 + ty)\rangle &= q(e_1) + t^2 q(y) + 2t\mathrm{Re}\left(\theta\langle y,f(e_1)\rangle\right)\\
+        &\le \lambda\|\theta e_1 + ty\|^2,
+    \end{aligned}$$
+    $$ \lambda \|\theta e_1 + ty\|^2 = \lambda\left(1+ t^2 +2t \mathrm{Re}(\theta\langle y,e_1\rangle)\right),$$
+    so
+    $$ tq(y) + 2\mathrm{Re} \left(\theta \langle y,f(e_1)\rangle\right)\le \lambda t + 2\lambda \mathrm{Re} \left(\theta\langle y,e_1\rangle\right).$$
+    Taking the limit as $t\rightarrow 0$, we obtain
+    $$ \mathrm{Re} \left(\theta \langle y,f(e_1)\rangle\right) \le \lambda \mathrm{Re} \left(\theta \langle y,e_1\rangle\right).$$
+    Replacing $y$ with $-y$, we get
+    $$ \mathrm{Re} \left(\theta \langle y,f(e_1)\rangle\right)\ge \lambda \mathrm{Re} \left(\theta \langle y,e_1\rangle\right).$$
+    We deduce that $\mathrm{Re}\left(\theta\langle y,f(e_1)\rangle\right) = \lambda \mathrm{Re}\left(\theta \langle y, e_1\rangle\right)$, so $\mathrm{Re}\left(\theta\langle y, f(e_1)-\lambda e_1\rangle\right) = 0.$
+    Since $\theta$ is arbitrary but $|\theta|=1$, we can fix it in a way that
+    $$\mathrm{Re}\left(\theta\langle y, f(e_1) - \lambda e_1\rangle\right) = | \langle y, f(e_1) - \lambda e_1\rangle|.$$
+    Thus $f(e_1) = \lambda e_1$, i.e. $\lambda$ is an eigenvalue of $f$ and $e_1$ is its eigenvector.
+    Let $W = \{e_1\}^{\perp}$, $\dim_{K}(W) = \ker(l_{e_1}) = n - 1$.
+    $$ \langle e_1, f(y) \rangle = \langle f(e_1) ,y\rangle = \langle \lambda e_1 ,y \rangle = \bar{\lambda} \langle e_1, y\rangle = 0.$$
+    The restriction of $f$ to $W$ gives a self-adjoint operator $f|_{W} : W\rightarrow W$.
+    After using the inductive assumption, we obtain an orthonormal basis $\left(e_i\right)_{i=1}^{n}$ of $W$ composed of eigenvectors of $f|_{W}$.
+    Since $e_1\in W^\perp$ and $\|e_1\| =1$, we conclude that $\left(e_i\right)_{i=1}^{n}$ is the desired basis of $V$.
+\end{proofenv}
