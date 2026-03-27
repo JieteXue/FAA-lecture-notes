@@ -592,11 +592,27 @@ Let $K = \RR$ or $K =\CC$.
     The set 
     $$ \rho(f) = K\setminus \sigma(f)$$
     is called the \textbf{spectrum} of $f$.
-    In the case when $V$ is finite dimensional, a $K$-linear mapping is an isomorphism if and only if it is injective.
-    Therefore, in this $\dim_{K} V < +\infty$ case, the spectrum of $f$ is equal to the set of eigenvalue of $f$.
+    
+    \quad In the case when $V$ is finite dimensional, a $K$-linear mapping is an isomorphism if and only if it is injective.
+    Therefore, in this case, the spectrum of $f$ is equal to the set of eigenvalue of $f$.
     {\bf This is not true in general!}
+
+    \quad In the infinite dimensional case, the points of the spectrum can be divided into two classes:
+    \begin{enumerate}[label= \Roman*.]
+        \item $\lambda \in \rho(f)$ such that $\lambda \Id_{V} - f$ is not injective.
+        \item $\lambda \in \rho(f)$ such that $\lambda \Id_{V} - f$ is injective but not surjective.
+    \end{enumerate}
+    The points of type I correspond to the eigenvalues of $f$ and the set of points of type II might be non-empty.
 \end{definitionenv}
 
+\begin{exampleenv}
+    Consider a Hilbert space of countable dimensional over $K$ with an orthonormal basis $\{e_n\}_{n\in\NN}$ and let $f$ be such that $f(e_n) = \frac{1}{n} e_n$ for all $n\in \NN$.
+    The set of eigenvalues of $f$ if exactly $\{\frac{1}{n} \mid n\in \NN\}$ while the spectrum contains also the value $0\in K$.
+    Indeed, $f^{-1}$ sends $e_n$ to $ne_n$ for all $n\in \NN$ and therefore is not bounded.
+    The open mapping theorem implies that $f$ cannot be surjective.
+    This implies that $0\in \rho(f)$ and $0$ is not an eigenvalue of $f$.
+    ($0\in K$ is a point of type II)
+\end{exampleenv}
 \begin{theoremenv}
     Let $\left(V, \langle\cdot,\cdot\rangle\right)$ be a finitely dimensional inner product space and let $f:V\rightarrow V$ be a self-adjoint endomorphism.
     There exists an orthonormal basis of $V$ composed of eigenvectors of $f$.
@@ -650,3 +666,117 @@ Let $K = \RR$ or $K =\CC$.
     After using the inductive assumption, we obtain an orthonormal basis $\left(e_i\right)_{i=1}^{n}$ of $W$ composed of eigenvectors of $f|_{W}$.
     Since $e_1\in W^\perp$ and $\|e_1\| =1$, we conclude that $\left(e_i\right)_{i=1}^{n}$ is the desired basis of $V$.
 \end{proofenv}
+
+\begin{corollaryenv}
+    Let $(V,\langle\cdot,\cdot\rangle)$ be a finite-dimensional inner product space and $f:V\rightarrow V$ be a self-adjoint $K$-linear mapping (bounded since $\dim_{K}(V) < \infty$).
+    The operator norm of $f$ is equal to the maximal eigenvalue of $f$.
+\end{corollaryenv}
+\begin{proofenv}
+    Let $\lambda \in K$ be an eigenvalue and $v$ be its eigenvector that $\|v\| = 1$.
+    By Cauchy-Schwarz,
+    $$ |\lambda| = |\langle v,f(v)\rangle| \le \| v\| \cdot\|f(v)\| \le \|f\|.$$
+    Let $(e_i)_{i=1}^{n}$ be an orthonormal basis of $V$ composed of eigenvectors.
+    Let $x = a_1 e_1 + \cdots + a_n e_n$, with $a_i \in K$ be an arbitrary element of $V$,
+    $$ f(x) = a_1 f(e_1) + \cdots + a_n f(e_n) = a_1 \lambda_1 e_1 + \cdots + a_n \lambda_n e_n.$$
+    So, 
+    $$\begin{aligned}
+        \|f(x)\|^2 = |a_1 \lambda_1|^2 + \cdots + |a_n \lambda_n|^2 &\le \max_{i\in \{1,\cdots,n\}} |\lambda_i|^2 \left(|a_1|^2 + \cdots + |a_n|^2\right)\\
+        &= \max_{i\in \{1,\cdots,n\}} |\lambda_i|^2 \|x\|^2.
+    \end{aligned}$$
+    Thus, $\|f\|^2 \le \max_{i\in \{1,\cdots,n\}} |\lambda_i|^2.$
+\end{proofenv}
+
+\begin{definitionenv}
+    Let $\left(V,\langle\cdot,\cdot\rangle\right)$ be a Hilbert space, and $f:V\rightarrow V$ be a self-adjoint bounded $K$-linear mapping.
+    We say that $f$ is 
+    \begin{enumerate}[label=\roman*]
+        \item positive semi-definite if $\langle f(x),x\rangle \ge 0$ for all $x\in V$.
+        \item negative semi-definite if $\langle f(x),x\rangle \le 0$ for all $x\in V$.
+        \item positive definite if $\langle f(x),x\rangle > 0$ for all $x\in V\setminus \{0\}$.
+        \item negative definite if $\langle f(x),x\rangle < 0$ for all $x\in V\setminus \{0\}$.
+    \end{enumerate}
+\end{definitionenv}
+
+\begin{propositionenv}
+    Let $(V,\langle\cdot,\cdot\rangle)$ be a finite-dimensional inner product space and $f:V\rightarrow V$ be a self-adjoint $K$-linear mapping.
+    \begin{enumerate}
+        \item $f$ is positive semi-definite if and only if all eigenvalues of $f$ are non-negative.
+        \item $f$ is negative semi-definite if and only if all eigenvalues of $f$ are non-positive.
+        \item $f$ is positive definite if and only if all eigenvalues of $f$ are strictly positive.
+        \item $f$ is negative definite if and only if all eigenvalues of $f$ are strictly negative.
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    Let $(e_i)_{i=1}^{n}$ be an orthonormal basis of $V$ composed of eigenvectors of $f$.
+    For $i\in \{1,\cdots,n\}$, let $\lambda_i$ be the eigenvalue associated with $e_i$.
+    If $f$ is positive semi-definite (resp. semi-definite, etc.), then for any $i\in \{1,\cdots,n\}$,
+    $$ \lambda_i = \langle f(e_i), e_i\rangle \ge 0.$$
+    Conversely, for any $x = a_1e_1 + \cdots + a_n e_n \in V\in \{0\}$ one has
+    $$\begin{aligned}
+        \langle f(x),x\rangle &= \langle a_1 e_1 + \cdots + a_n e_n, f(a_1 e_1 + \cdots + a_n e_n)\rangle\\
+        &= \langle a_1 e_1 + \cdots + a_n e_n, a_1 \lambda_1 e_1 + \cdots + a_n \lambda_n e_n\rangle\\
+        &= \lambda_1 |a_1|^2 + \cdots + \lambda_n |a_n|^2.
+    \end{aligned}$$
+    If for any $i \in \{1,\cdots,n\}$, $\lambda_i\ge 0$, then one has that $\langle x, f(x) \rangle\ge 0$ as required.
+\end{proofenv}
+
+
+\section{Linear Isometry}
+
+\begin{propositionenv}
+    Let $(V,\langle\cdot,\cdot\rangle)$ be a Hilbert space.
+    A $K$-linear mapping $f : V\rightarrow V$ is isometric if and only if
+    $$ f^*\circ f = \Id_V,$$
+    or equivalently, 
+    $$ \forall x,y\in V, \ \langle f(x),f(y)\rangle = \langle x,y\rangle.$$
+\end{propositionenv}
+\begin{proofenv}
+    For any $(x,y)\in V\times V$,
+    $$ \langle f(x),f(y)\rangle = \langle f^*(f(x)),y\rangle .$$
+    Suppose that $f^*\circ f = \Id_V$, then for any $(x,y)\in V\times V$,
+    $$ \langle f(x),f(y)\rangle = \langle f^*(f(x)),y\rangle = \langle x,y\rangle.$$
+    In particular, for any $x\in V$, 
+    $$ \| f(x)\|^2 = \langle f(x),f(x)\rangle = \langle x,x\rangle,$$
+    so $f$ is isometric.
+
+    \quad Conversely, suppose that $f$ is isometric.
+    Let $(x,y)\in V\times V$, $\theta \in K$ such that $|\theta| = 1$.
+    One has
+    $$ \|f(x+\theta y)\|^2 = \|f(x)\|^2 + \|f(y)\|^2 + 2 \mathrm{Re} \left(\theta \langle f(x),f(y)\rangle\right),$$
+    $$ \| x+ \theta y\|^2 = \|x\|^2 + \|y \|^2 + 2 \mathrm{Re} \left(\theta \langle x,y\rangle\right),$$
+    so 
+    $$ \mathrm{Re} \left(\theta \langle f^*(f(x)),y \rangle\right) = \mathrm{Re}(\theta\langle x,y\rangle),\ \mathrm{Re} \left(\theta \langle f^*(f(x)) - x,y\rangle\right) = 0.$$
+    Fix $\theta\in K$ in a way that $\theta \langle f^*(f(x)) - x,y\rangle \in \RR$.
+    We deduce that $f^*(f(x)) = x$.
+\end{proofenv}
+
+\begin{remark}
+    Let $(V,\langle\cdot,\cdot\rangle)$ be a Hilbert space,
+    $f: V\rightarrow V$ be a isometric $K$-linear mapping.
+    Then $f$ must be injective (otherwise $f(x) = f(y)$ for some $x\neq y$ and $\| f(x) - f(y)\| = 0 \neq \|x - y\|$).
+    If $\dim V < +\infty$, $f$ is an isomorphism.
+    
+    \quad In general, an isometric $K$-linear mapping is called an authomorphism of the Hilbert space $\left(V, \langle\cdot, \cdot\rangle\right)$.
+    The set of authomorphisms of $\left(V, \langle\cdot, \cdot\rangle\right)$ forms a group under the composition of mappings, denoted as $\mathrm{Aut}\left(V, \langle\cdot, \cdot\rangle\right)$.
+    
+    \quad When $K = \RR$, $O(V,\langle\cdot,\cdot\rangle)\coloneq\mathrm{Aut}_{\RR} \left(V, \langle\cdot, \cdot\rangle\right)$ the orthogonal group of $V$.
+    
+    \quad When $K = \CC$, $U(V,\langle\cdot,\cdot\rangle)\coloneq\mathrm{Aut}_{\CC} \left(V, \langle\cdot, \cdot\rangle\right)$ the unitary group of $V$.
+\end{remark}
+
+\begin{exampleenv}
+    Let $(V,\langle\cdot,\cdot\rangle)$ be a Hilbert space.
+    Let $W \subseteq V$ be a closed $K$-vector subspace.
+    We call \textbf{orthogonal symmetry} with respect to $W$ the following mapping:
+    $$ \begin{array}{rrcl}
+        s_W: & V & \rightarrow & V\\
+        & x & \mapsto & 2p_W(x) - x.
+    \end{array}$$
+    Clearly, $s_W$ is $K$-linear.
+    Moreover, for any $x\in V$,
+    $$ s_W\left(s_W (x)\right) = 2p_W\left(s_W(x)\right) - s_W(x) = x.$$
+    So $s_W$ is an involution ($s_W\circ s_W = \Id_V$).
+    Also, 
+    $$ s_W^* = 2p_W^* - \Id_V^* = 2p_W - \Id_V.$$
+    So $s_W$ is self-adjoint endomorphism of the Hilbert space $\left(V,\langle \cdot,\cdot\rangle\right)$.
+\end{exampleenv}
