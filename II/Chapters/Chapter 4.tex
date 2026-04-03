@@ -68,7 +68,7 @@ Sometimes $V_1 \otimes \cdots \otimes V_n$ is denoted as $V_1 \otimes_{K} \cdots
     There is an isomorphism of $K$-modules
     \begin{equation*}
         \begin{array}{rcl}
-            V_1 \otimes \cdots \otimes V_n & \rightarrow & V_1 \otimes \times \otimes V_{i-1} \otimes \left(V_i \otimes \cdots \otimes V_{i+j}\right) \otimes V_{i+j+1} \otimes \cdots \otimes V_n\\
+            V_1 \otimes \cdots \otimes V_n & \rightarrow & V_1 \otimes \cdots \otimes V_{i-1} \otimes \left(V_i \otimes \cdots \otimes V_{i+j}\right) \otimes V_{i+j+1} \otimes \cdots \otimes V_n\\
             x_1 \otimes \cdots \otimes x_n & \mapsto & x_1 \otimes \cdots \otimes x_{i-1} \otimes (x_i \otimes \cdots \otimes x_{i+j}) \otimes x_{i+j+1} \otimes \cdots \otimes x_n.
         \end{array}
     \end{equation*}
@@ -306,8 +306,6 @@ In this section, $K$ stands for a commutative unitary ring.
         & \sigma & \longmapsto & \displaystyle\prod_{1\le i < j \le n} \frac{\sigma(j) - \sigma(i)}{j - i}.
     \end{array}$$
     Let $\Theta$ be a set of all $A \in \mathscr{P}(\{1,\cdots,n\})$ of cardinality $2$.
-    We can rewrite $\mathrm{sgn}(\sigma)$ as
-    $$ \mathrm{sgn}(\sigma) = \prod_{\{i,j\} \in \Theta} \frac{\sigma(j) - \sigma(i)}{j - i}.$$
     For any $\sigma, \tau \in \mathfrak{S}_n$, we have
     $$\begin{aligned}
         \mathrm{sgn}(\tau \circ \sigma) & = \prod_{\{i,j\} \in \Theta} \frac{\tau(\sigma(j)) - \tau(\sigma(i))}{j - i}\\
@@ -331,7 +329,7 @@ In this section, $K$ stands for a commutative unitary ring.
     The case $n = 1$ is trivial.
     We first treat the case $n = 2$.
     Let $x,y \in V$,
-    $$ 0 = \left(x + y\right)\left(x + y\right) = x\otimes x + x\otimes y + y \otimes x + y \otimes y$$
+    $$ 0 = \left(x + y\right)\wedge\left(x + y\right) = x\wedge x + x\wedge y + y \wedge x + y \wedge y$$
     so $x \wedge y = - y \wedge x$.
 
     \quad For the general case, since any $\sigma \in \mathfrak{S}_n$ can be written as the composition of adjacent transpositions, we may assume that $\sigma$ is of the form $(i\; i+1)$ for some $i \in \{1,\cdots, n-1\}$.
@@ -375,12 +373,12 @@ In this section, $K$ stands for a commutative unitary ring.
     We prove the existence.
     By theorem \ref{thm:4.1.1}, there exists a unique $K$-linear mapping $\tilde{f} : V^{\otimes n} \rightarrow M$ such that for any $(x_1,\cdots,x_n) \in V^n$,
     $$ \tilde{f}\left(x_1 \otimes \cdots \otimes x_n\right) = f\left(x_1,\cdots,x_n\right).$$
-    \begin{center}
-        \begin{tikzcd}
-            V^n \arrow[d, ""] \arrow[dr, "f"]& \text{\small universal property of }\otimes\\
-            V^{\otimes n} \arrow[dashed, r, swap, "\exists! \tilde{f}"]& M
-        \end{tikzcd}
-    \end{center}
+    %\begin{center}
+    %    \begin{tikzcd}
+    %        V^n \arrow[d, ""] \arrow[dr, "f"]& \text{\small universal property of }\otimes\\
+    %        V^{\otimes n} \arrow[dashed, r, swap, "\exists! \tilde{f}"]& M
+    %    \end{tikzcd}
+    %\end{center}
     Therefore $\tilde{f}$ induces by quotient a $K$-linear mapping $\hat{f} : \bigwedge^n (V) \rightarrow M$ such that for any $(x_1,\cdots,x_n) \in V^n$,
     $$ \hat{f}\left(x_1 \wedge \cdots \wedge x_n\right) = \tilde{f}\left(x_1 \otimes \cdots \otimes x_n\right) = f\left(x_1,\cdots,x_n\right).$$
 \end{proofenv}
@@ -402,7 +400,7 @@ In this section, $K$ stands for a commutative unitary ring.
     \end{aligned}$$
     Therefore defines an alternating linear form on $V^n$, and by universal property of tensor product induces also an alternating linear form on $V^{\otimes n}$.
     By passing to the quotient, it induced a $K$-linear form on $\bigwedge^n (V)$ which we denote by $f_1 \wedge \cdots \wedge f_n$. i.e.
-    $$ f_1 \wedge \cdots \wedge : \bigwedge^n (V) \rightarrow K$$
+    $$ f_1 \wedge \cdots \wedge f_n : \bigwedge^n (V) \rightarrow K$$
     is $K$-linear.
     
     \quad Let $V$ be a free $K$-module of finite type with a basis, i.e.
@@ -420,12 +418,111 @@ In this section, $K$ stands for a commutative unitary ring.
     For any $i \in \{1,\cdots,n\}$, let $\left(a_{i,1}, \cdots, a_{i,n}\right)_{i=1}^{n} \in K^n$
     and $x_i = a_{i,1} e_1 + \cdots + a_{i,n} e_n$.
     Then the following equality holds:
-    $$ x_1 \wedge \cdots \wedge x_n = \left(\sum_{\sigma \in \mathfrak{S}_n} \mathrm{sgn}(\sigma) a_{\sigma(1),1} \cdots a_{\sigma(n),n}\right)e_1 \wedge \cdots \wedge e_n.$$
+    $$ x_1 \wedge \cdots \wedge x_n = \left(\sum_{\sigma \in \mathfrak{S}_n} \mathrm{sgn}(\sigma) a_{1,\sigma(1)} \cdots a_{n,\sigma(n)}\right)e_1 \wedge \cdots \wedge e_n.$$
 \end{propositionenv}
 \begin{proofenv}
-    By Multilinearity of wedge product, 
+    By multilinearity of wedge product, 
     $$\begin{aligned}
-        & x_1 \wedge \cdots \wedge x_n = \sum_{j_1,\cdots,j_n \in \{1,\cdots,n\}} a_{j_1,1} \cdots a_{j_n,n} e_{j_1} \wedge \cdots \wedge e_{j_n}\\
-        =& \sum_{\sigma \in \mathfrak{S}_n} a_{\sigma(1),1} \cdots a_{\sigma(n),n} e_{\sigma(1)} \cdots e_{\sigma(n)}.
+        & x_1 \wedge \cdots \wedge x_n = \sum_{j_1,\cdots,j_n \in \{1,\cdots,n\}} a_{1,j_1} \cdots a_{n,j_n} e_{j_1} \wedge \cdots \wedge e_{j_n}\\
+        =& \sum_{\sigma \in \mathfrak{S}_n} a_{1,\sigma(1)} \cdots a_{n,\sigma(n)} e_{\sigma(1)} \cdots e_{\sigma(n)}
     \end{aligned}$$
+    where the second equality comes from the fact that if there are distinct indices $k$ and $l$ such that $j_{k} = j_{l}$, then $e_{j_1} \wedge \cdots \wedge e_{j_k} \wedge \cdots \wedge e_{j_l} \wedge \cdots \wedge e_{j_n} = 0$.
+    Since $e_{\sigma(1)} \wedge \cdots \wedge e_{\sigma(n)} = \mathrm{sgn} (\sigma) e_1 \wedge \cdots \wedge e_n$, we obtain the equality.
 \end{proofenv}
+
+\begin{theoremenv}\label{thm:4.5.2}
+    Let $V$ be a $K$-module and $n\in \NN_{\ge 1}$.
+    Let $\left(e_i\right)_{i=1}^{n}$ be a family of elements in $V$.
+    \begin{enumerate}
+        \item Assume that, for any $\lambda \in K\setminus\{0\}$, one has
+        $$\lambda e_1 \wedge \cdots \wedge e_n \neq 0,$$
+        then $\left(e_i\right)_{i=1}^{n}$ is $K$-linearly dependent.
+        \item Assume that $\left(e_i\right)_{i=1}^{n}$ forms a system of generators of $V$.
+        For any $d \in \NN$, the family
+        $$ \left(\lambda e_{i_1} \wedge \cdots \wedge e_{i_d}\right)_{1\le i_1< \cdots < i_d \le n}$$
+        generates $\bigwedge^d (V)$.
+        In particular, $\bigwedge^d (V) = 0$ if $d>n$.
+        \item If $V$ is a free $K$-module and $\left(e_i\right)_{i=1}^{n}$ is a basis of $V$,
+        then for any $d\in \NN$, $\left(e_{i_1} \wedge \cdots \wedge e_{i_d}\right)_{1\le i_1 < \cdots < i_d \le n}$ forms a basis of $\bigwedge^d (V)$.
+    \end{enumerate}
+\end{theoremenv}
+\begin{proofenv}
+    \quad
+    \begin{enumerate}
+        \item Assume that $\left(e_i\right)_{i=1}^{n}$ is $K$-linearly dependent.
+        Without losing of generality, we may assume that there exists $\lambda \in K \setminus \{0\}$ such that $\lambda e_1$ is a $K$-linear combination of $e_2, \cdots, e_n$.
+        Then one has
+        $$ \lambda e_1 \wedge \cdots \wedge e_n = \left(a_2 e_2 + \cdots a_n e_n\right) \wedge e_2 \wedge \cdots \wedge e_n = 0.$$
+        \item Let $(x_1,\cdots, x_d) \in V^d$.
+        For any $i \in \{1,\cdots,d\}$, one can express $x_i$ as a linear combination of $\left(e_i\right)_{i=1}^n$, i.e.
+        $$ x_i = \sum_{j=1}^n a_{ij} e_j.$$
+        Therefore, $x_1 \wedge \cdots \wedge x_d$ can be expressed as a linear combination of elements of the form $e_{j_1} \wedge \cdots \wedge e_{j_d}$, where $j_1,\cdots,j_d \in \{1,\cdots,n\}$ are pairwise distinct.
+        Hence, we deduce that $x_1 \wedge \cdots \wedge x_d$ can be written as a linear combination of the elements of the form $e_{i_1} \wedge \cdots \wedge e_{i_d}$, $1 \le i_1 < \cdots i_d \le n$.
+        \item By 2. $\bigwedge^d (V)$ is generated by $\left(e_{i_1} \wedge \cdots \wedge e_{i_d}\right)_{1\le i_1 < \cdots < i_d \le n}$.
+        
+        Let $\left(\lambda_{i_1,\cdots , i_d}\right)_{1\le i_1 < \cdots <i_d\le n}$ e a family of elements of $K$ such that
+        $$ \alpha \coloneq \sum_{1 \le i_1 < \cdots <i_d \le n} \lambda_{i_1,\cdots, i_d} e_{i_1} \wedge e_{i_d} = 0.$$
+        Let $\left(e_{i}^\vee\right)_{i=1}^d$ be the dual basis of $\left(e_{i}\right)_{i=1}^d$.
+        For any $i_1,\cdots,i_d \in \{1,\cdots,n\}$, where $1\le i_1 < \cdots < i_d\le n$, one has
+        $$ \left(e_{i_1}^\vee \wedge \cdots \wedge e_{i_d}^\vee\right) \left(\alpha\right) = \lambda_{i_1,\cdots, i_d} = 0.$$
+        Hence $\left(e_{i_1} \wedge \cdots \wedge e_{i_d}\right)_{1\le i_1 < \cdots < i_d \le n}$ is linearly independent.
+    \end{enumerate}
+\end{proofenv}
+
+\begin{corollaryenv}
+    Let $V$ be a free $K$-module of finite rank $n$.
+    Let $d \in \{1,\cdots,n\}$ and 
+    $$ F: \bigwedge^{n-d} (V) \longrightarrow \bigwedge^n (V)$$
+    be a $K$-linear mapping.
+    There exists a \textit{unique} element $\alpha\in \bigwedge^d (V)$ such that $F(\beta) = \alpha \wedge \beta$ for any $\beta \in \bigwedge^{n-d} (V)$.
+\end{corollaryenv}
+\begin{proofenv}
+    Let $\left(e_i\right)_{i=1}^{n}$ be a basis of $V$ and
+    $$ \eta = e_1 \wedge \cdots \wedge e_n$$
+    has $\binom{n}{m}$ elements.
+    For any $m\in \{1,\cdots, n\}$, let $S_m$ be the set of subsets of $m$ elements of $\{1,\cdots,n\}$.
+    For any $I = \{i_1,\cdots, i_m\}\in S_m$, $i_1<\cdots<i_m$, let $B_I = e_{i_1} \wedge \cdots \wedge e_{i_m}$.
+    By theorem \ref{thm:4.5.2},
+    $$ \left(\beta_{\{1,\cdots,n\}\setminus J}\right)_{J \in S_{m}} = \left(\beta_I\right)_{I \in S_m}$$
+    forms a basis of $\bigwedge^m (V)$.
+    For any $\beta \in \wedge^{n-d}$, let $f(\beta)$ be the element of $K$ such that 
+    $$ F(\beta) = f(\beta) \cdot\eta.$$
+    We let 
+    $$ \alpha = \sum_{J \in S_{n-d}} \mathrm{sgn} (J) f(\beta_J) \beta_{\{1,\cdots,n\}\setminus J},$$
+    where $\mathrm{sgn}(J) \in \{\pm 1\}$ is such that $\beta_{\{1,\cdots,n\}\setminus J} \wedge \beta_J = \mathrm{sgn}(J) \cdot \eta$.
+    For any $I \in S_{n-d}$,
+    $$\begin{array}{rl}
+        \alpha \wedge \beta_{I} &= \sum_{J \in S_{n-d}} \mathrm{sgn} (J) f(\beta_J) \beta_{\{1,\cdots,n\}\setminus J} \wedge \beta_{I}\\
+        & = \mathrm{sgn}(I) f(\beta_I) \beta_{\{1,\cdots,n\}\setminus I} \wedge \beta_I \\
+        & = f(\beta_I) n = F(\beta_I).
+    \end{array}$$
+    By linearity, we obtain that $\alpha\wedge \beta = F(\beta)$ for any $\beta \in \bigwedge^{n-d} (V)$.
+    If $\alpha'$ and $\alpha$ are two elements such that 
+    $$ \alpha \wedge \beta = \alpha' \wedge \beta = F(\beta),\; \forall \beta \in \bigwedge^{n-d} (V),$$
+    then
+    $$ \left(\alpha - \alpha'\right) \wedge \beta_{I} = 0,\; \forall I \in S_{n-d}.$$
+    Hence $\alpha - \alpha' = 0$.
+\end{proofenv}
+
+
+\section{Determinant}
+
+We fix a unitary commutative ring $K$.
+
+\begin{propositionenv}
+    Let $V$ be a free $K$-module, $\dim_{K} V = 1$.
+    For any $K$-endomorphism $\varphi: V\rightarrow V$, there exists a unique $\lambda_{\varphi} \in K$ such that
+    $$ \forall x\in V,\; \varphi(x) = \lambda_{\varphi} x.$$
+\end{propositionenv}
+\begin{proofenv}
+    Let $x_0$ be a generator,
+    $$ \varphi(x_0) = \lambda_{\varphi} x_0,\; \lambda_{\varphi} \in K.$$
+    For any $x\in V$, $x = bx_0$, hence 
+    $$ \varphi(x) = \varphi(b x_0) = b \lambda_{\varphi} x_0 = \lambda_{\varphi} x.$$
+\end{proofenv}
+
+\begin{definitionenv}
+    Let $V$ be a free $K$-module of rank $n$.
+    Let $\varphi : V \rightarrow V$ be a $K$-linear endomorphism, we denote by $\mathrm{det} (\varphi)$ the unique element of $K$ such that for any $x_1,\cdots,x_n \in V$,
+    $$ \varphi(x_1) \wedge \cdots \wedge \varphi(x_n) = \mathrm{det} (\varphi) x_1 \wedge \cdots \wedge x_n.$$
+\end{definitionenv}

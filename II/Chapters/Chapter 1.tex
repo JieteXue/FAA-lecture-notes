@@ -836,16 +836,17 @@ It remains to check that $\varphi^{-1}_Y(y)$ works.
     is a bijection, and the family $\varphi = \left(\varphi_M\right)_{M\in \mathbf{Mon}}$ forms a representation of the forgetful functor $F:\mathbf{Mon} \rightarrow\mathbf{Set}$.
 \end{exampleenv}
 \begin{exampleenv}
-    Let $K$ be a commutable unitary ring and $I$ be a set. Let $F:\mathbf{Mon}\rightarrow\mathbf{Set}$ be a functor that is representable by the direct sum $K^{\oplus I}$.
+    Let $K$ be a commutable unitary ring and $I$ be a set. Let $F$ be a functor:
     $$ \begin{array}{rrcl}
         F: & \mathbf{Mod}_K & \rightarrow & \mathbf{Set}\\
         & W & \mapsto & W^I.
     \end{array}
     $$
-
+    Then $F$ is representable by the direct sum $K^{\oplus I}$.
+    
     \quad For any $K$ module $W$, the following mapping
     $$ \begin{array}{rcl}
-        W^I & \rightarrow & \mathbf{Mod}_{K}\left(K^I, W\right)\\
+        W^I & \rightarrow & \mathbf{Mod}_{K}\left(K^{\oplus I}, W\right)\\
         \left(x_i\right)_{i\in I} & \mapsto & \left(\left(a_i\right)_{i\in I} \in K^{\oplus I} \mapsto \sum_{i\in I} a_i x_i\right)
     \end{array}
     $$
