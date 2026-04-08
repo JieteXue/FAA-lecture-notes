@@ -3,7 +3,7 @@
 
 \quad We fix a commutative unitary ring $K$.
 For a natural number $n\in \NN_{\ge 1}$, $V_1,\cdots, V_n$, $W$ collection of $K$-modules,
-we denote by $\mathrm{Hom}_{K} \left(V_1,\cdots,V_n,W\right)$ the set of $n$-linear mappings from $V_1\times\cdots\times V_n$ to $W$.
+we denote by $\mathrm{Hom}_{K}^{(n)} \left(V_1,\cdots,V_n;W\right)$ the set of $n$-linear mappings from $V_1\times\cdots\times V_n$ to $W$.
 
 \begin{theoremenv}\label{thm:4.1.1}
     Let $n$ be a natural number, $V_1,\cdots, V_n$ be $K$-modules.
@@ -412,7 +412,7 @@ In this section, $K$ stands for a commutative unitary ring.
 
 \section{Linear Independence Criterion}
 
-\begin{propositionenv}
+\begin{propositionenv}\label{prop:4.5.1}
     Let $V$ be a $K$-module and $n\in \NN_{\ge 1}$.
     Let $(e_i)_{i=1}^n$ be a family of elements of $V$.
     For any $i \in \{1,\cdots,n\}$, let $\left(a_{i,1}, \cdots, a_{i,n}\right)_{i=1}^{n} \in K^n$
@@ -469,7 +469,7 @@ In this section, $K$ stands for a commutative unitary ring.
     \end{enumerate}
 \end{proofenv}
 
-\begin{corollaryenv}
+\begin{corollaryenv}\label{thm:4.5.3}
     Let $V$ be a free $K$-module of finite rank $n$.
     Let $d \in \{1,\cdots,n\}$ and 
     $$ F: \bigwedge^{n-d} (V) \longrightarrow \bigwedge^n (V)$$
@@ -524,5 +524,204 @@ We fix a unitary commutative ring $K$.
 \begin{definitionenv}
     Let $V$ be a free $K$-module of rank $n$.
     Let $\varphi : V \rightarrow V$ be a $K$-linear endomorphism, we denote by $\mathrm{det} (\varphi)$ the unique element of $K$ such that for any $x_1,\cdots,x_n \in V$,
-    $$ \varphi(x_1) \wedge \cdots \wedge \varphi(x_n) = \mathrm{det} (\varphi) x_1 \wedge \cdots \wedge x_n.$$
+    $$ \varphi(x_1) \wedge \cdots \wedge \varphi(x_n) = \det (\varphi) x_1 \wedge \cdots \wedge x_n.$$
+    $V^n\rightarrow \bigwedge^n (V)$ is an $n$-linear alternating mapping.
+    By the universal property of $\bigwedge^n (V)$,
+    \begin{center}
+\begin{tikzcd}
+	{V^{n}} & {(x_1,\cdots,x_n)} & \\
+	{\bigwedge^{n}(V)} & {\bigwedge^{n}(V)} \\
+	{x_1 \wedge \cdots \wedge x_n} && {\varphi(x_1) \wedge \cdots \varphi(x_n)}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-1, to=2-2]
+	\arrow[maps to, from=1-2, to=3-3]
+	\arrow[dashed, from=2-1, to=2-2]
+	\arrow[maps to, from=3-1, to=3-3]
+\end{tikzcd}
+    \end{center}
 \end{definitionenv}
+
+\begin{propositionenv}\label{thm:LinearMap.det_comp}
+    Let $V$ be a free $K$-module of rank $n$, and $\varphi: V\rightarrow V$, $\psi: V\rightarrow V$ be $K$-linear endomorphisms.
+    Then
+    $$ \det (\psi \circ \varphi) = \det (\psi) \det (\varphi).$$
+    Moreover,
+    $$ \det (\id_V) =1.$$
+\end{propositionenv}
+\begin{proofenv}
+    For any $x_1,\cdots,x_n \in V,$
+    $$\begin{aligned}
+        \det (\psi \circ \varphi) \left(x_1 \wedge \cdots \wedge x_n\right) &= \det (\psi) \left(\varphi(x_1) \wedge \cdots \wedge \varphi(x_n)\right)\\
+        &= \left(\det (\psi) \det (\varphi)\right) x_1 \wedge \cdots \wedge x_n.
+    \end{aligned}$$
+    One has 
+    $$ \id_V(x_1) \wedge \cdots \wedge \id_V(x_n) = x_1 \wedge \cdots \wedge x_n.$$
+    so by definition, $\det (\id_V) = 1$.
+\end{proofenv}
+
+\begin{theoremenv}
+    Let $V$ be a free $K$-module of rank $n$, and $\varphi : V\rightarrow V$ be a $K$-linear endomorphism.
+    Then $\varphi$ is a bijection (i.e. a $K$-linear automorphism) if and only if $\det (\varphi)$ is invertible in $K$.
+\end{theoremenv}
+\begin{proofenv}
+    Suppose that $\varphi$ is invertible, then by \ref{thm:LinearMap.det_comp}, 
+    $$ \det (\varphi) \det (\varphi^{-1}) = \det (\id_V) = 1.$$
+    So $\det (\varphi^{-1}) = \left(\det (\varphi)\right)^{-1}$ in $K$.
+
+    \quad Conversely, assume that $\det (\varphi)$ is invertible in $K$. Let $(e_i)_{i=1}^n$ be a basis of $V$ over $K$.
+    For any $i \in \{1,\cdots,n\}$, $x_i = \varphi(e_i)$.
+    By 1. of \ref{thm:4.5.2}, $\left(x_i\right)_{i=1}^{n}$ is $K$-linearly independent.
+    It suffices to check that $\left(x_i\right)_{i=1}^{n}$ generate $V$.
+
+    \quad Let $\left(e_i^\vee\right)_{i=1}^{n}$ be the dual basis of $\left(e_i\right)_{i=1}^{n}$.
+    Put
+    $$ g = \left(\det (\varphi)\right)^{-1} \left(e_1^\vee \cdots e_{n}^{\vee}\right),$$
+    then $g(x_1, \cdots, x_n) = 1$.
+    We define $f: V^{n+1} \rightarrow V$ as 
+    $$ \left(y_0,\cdots, y_n\right) \longmapsto \sum_{i=0}^{n}(-1)^n g(y_0, \cdots, y_{i-1}, y_{i+1}, \cdots, y_n) y_i.$$
+    It is an alternating $n$-linear mapping.
+    Indeed, if $(y_0,\cdots, y_n)$ is such that $y_i = y_{i+1}$, then 
+    $$\begin{aligned}
+        f(y_0,\cdots,y_n) = & (-1)^{i} f(y_0,\cdots,y_{i-1}, y_{i+1}, \cdots, y_n) y_i\\
+        & + (-1)^{i+1} f(y_0,\cdots,y_{i}, y_{i+2}, \cdots, y_n) y_{i+1} = 0.
+    \end{aligned}$$
+    \begin{center}
+\begin{tikzcd}
+	{V^{n+1}} & \\
+	{0 = \bigwedge^{n+1} (V)} & V
+	\arrow[from=1-1, to=2-1]
+	\arrow["f \ n\text{-linear alternating}", from=1-1, to=2-2]
+	\arrow[dashed, from=2-1, to=2-2]
+\end{tikzcd}
+    \end{center}
+    Let $x\in V$, then
+    $$ x\wedge x_1 \wedge \cdots \wedge x_n = 0.$$
+    Hence $f(x,x_1,\cdots,x_n) = 0$, so 
+    $$ x + \sum_{i=1}^{n} (-1)^{i} g\left(x,x_1,\cdots,x_{i-1},x_{i+1},\cdots,x_n\right)x_i = 0.$$ 
+    So $x$ is a linear combination of $\left(x_i\right)_{i=1}^{n}$.
+    We conclude that $\left(x_i\right)_{i=1}^{n}$ generate $V$.
+\end{proofenv}
+
+\begin{propositionenv}\label{thm:Matrix.det_apply'}
+    Let $n$ be a positive integer and let
+    $$ A = 
+    \begin{pmatrix}
+        a_{1,1} & a_{1,2} & \cdots & a_{1,n}\\
+        a_{2,1} & a_{2,2} & \cdots & a_{2,n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        a_{n,1} & a_{n,2} & \cdots & a_{n,n}
+    \end{pmatrix}
+    $$
+    Then 
+    $$ \det (A) = \sum_{\sigma \in \mathfrak{S}_n} \sgn (\sigma) a_{1,\sigma(1)} a_{2,\sigma(2)} \cdots a_{n,\sigma(n)}.$$
+\end{propositionenv}
+\begin{proofenv}
+    Let $\left(e_i\right)_{i=1}^{n}$ be the canonical basis of $K^n$.
+    For any $ A(e_i) = a_{i,1} e_1 + \cdots + a_{i,n} e_n$, by lemma \ref{prop:4.5.1}, we have
+    $$ A(e_1) \wedge \cdots \wedge A(e_n) = \left(\sum_{\sigma \in \mathfrak{S}_n} \sgn (\sigma) a_{1,\sigma(1)} \cdots a_{n,\sigma(n)}\right)e_1 \wedge \cdots \wedge e_n.$$
+\end{proofenv}
+
+\begin{definitionenv}
+    Let $V$ and $W$ be $K$-modules and $\varphi : V\rightarrow W$ be $K$-linear mapping.
+    We denote by 
+    $$ \varphi^\vee : W^\vee \rightarrow V^\vee$$
+    the $K$-linear mapping that sends $\alpha \in W^\vee$ to $\varphi^\vee(\alpha) \coloneq \alpha \circ \varphi$.
+\end{definitionenv}
+
+\begin{propositionenv}\label{thm:LinearMap.det_dualMap}
+    Let $V$ be a free $K$-module of rank $n$, and $\varphi : V \rightarrow V$ be a $K$-linear endomorphism.
+    Then
+    $$ \det (\varphi^\vee) = \det (\varphi).$$
+\end{propositionenv}
+\begin{proofenv}
+    Let $\left(e_i\right)_{i=1}^{n}$ be a basis of $V$ and $\left(e_i^{\vee}\right)_{i=1}^{n}$ be the dual basis.
+    We want to evaluate 
+    $$ \varphi^\vee (e_1) \wedge \cdots \wedge \varphi^\vee (e_n)$$
+    for some $\alpha_1,\cdots,\alpha_n \in V^\vee$ in terms of $\alpha_1 \wedge \cdots \wedge \alpha_n \in \bigwedge^n (V^\vee)$.
+    Let us take $\alpha_1 = e_1^\vee$, $\alpha_2 = e_2^\vee$, …, $ \alpha_n = e_n^\vee$.
+    $$\begin{aligned}
+        &\left(e_1^\vee \circ \varphi\right) \wedge \cdots \left(e_n^\vee \circ \varphi\right)(e_1 \wedge \cdots \wedge e_n)\\
+        = & \left(e_1^\vee \wedge \cdots \wedge e_n^\vee\right)\left(\varphi(e_1) \wedge \cdots \wedge \varphi(e_n)\right)\\
+        = & \det (\varphi) \cdot 1.
+    \end{aligned}$$
+    So,
+    $$\left(e_1^\vee \circ \varphi\right) \wedge \cdots \left(e_n^\vee \circ \varphi\right) = \det (\varphi) \left(e_1^\vee \wedge \cdots \wedge e_n^\vee\right).$$
+    We deduce that 
+    $$ \det (\varphi^\vee) = \det (\varphi).$$
+\end{proofenv}
+
+\begin{corollaryenv}\label{thm:Matrix.det_transpose}
+    Let $n$ be a positive integer and let $A \in M_n(K)$ be a $n$-times-$n$ matrix.
+    One has
+    $$ \det (A^{\mathsf{T}}) = \det (A).$$
+\end{corollaryenv}
+
+
+\section{Adjugate}
+
+In this section, we fix free $K$-module of rank $n$ $E$.
+
+\begin{theoremenv}\label{thm:4.7.1}
+    For any $\varphi \in \End_K (E)$, there exists $\varphi^a \in \End_K (E)$ such that for any $x_1,\cdots,x_n \in E,$ one has
+    $$ x_1 \wedge \varphi(x_2) \wedge \cdots \wedge \varphi(x_n) = \varphi^a (x_1) \wedge x_2 \wedge \cdots \wedge x_n.$$
+    Moreover, 
+    $$ \varphi^a \circ \varphi = \det (\varphi) \id_E.$$
+\end{theoremenv}
+\begin{proofenv}
+    For any $x_1 \in E$ the mapping
+    $$ \begin{array}{rcl}
+        \bigwedge^{n-1} (E) & \longrightarrow & \bigwedge^n (E)\\
+        x_2 \wedge \cdots \wedge x_n & \longmapsto & x_1 \wedge \varphi(x_2) \wedge \cdots \wedge \varphi(x_n)
+    \end{array}$$
+    is $K$-linear.
+    \begin{center}
+    \begin{tikzcd}
+	{\bigwedge^{n-1} (E)} & \\
+	{E^{n-1}} & {\bigwedge^{n}(E)} \\
+	{(x_2,\cdots,x_n)} & {x_1 \wedge \varphi(x_2)\wedge \cdots \wedge \varphi(n)}
+	\arrow[from=1-1, to=2-2]
+	\arrow[from=2-1, to=1-1]
+	\arrow[from=2-1, to=2-2]
+	\arrow[maps to, from=3-1, to=3-2]
+    \end{tikzcd}
+    \end{center}
+    Therefore, by \ref{thm:4.5.3}, there exists a unique element of $E$ that we will denote $\varphi^a(x_1)$, such that 
+    $$ \varphi^a(x_1) \wedge x_2 \wedge \cdots \wedge x_n = x_1 \wedge \varphi(x_2) \wedge \cdots \wedge \varphi(x_n).$$
+    The uniqueness of $\varphi^a(x_1)$ shows that the mapping
+    $$ \begin{array}{rrcl}
+        \varphi^a : & E & \longrightarrow & E\\
+        & x_1 & \longmapsto & \varphi^a(x_1)
+        \end{array}$$
+    is $K$-linear.
+    $$ \varphi^a(\varphi(x_1)) \wedge x_2 \wedge \cdots \wedge x_n = \varphi(x_1) \wedge \varphi(x_2) \wedge \cdots \wedge \varphi(x_n) = \det (\varphi) x_1 \wedge x_2 \wedge \cdots \wedge x_n.$$
+    Hence, $\varphi^a \circ \varphi = \det (\varphi) \id_E$.
+\end{proofenv}
+
+\begin{definitionenv}
+    Let $n$ be a positive integer and $A$ be a $n$-times-$n$ matrix over $K$.
+    For $i,j \in \{1,\cdots,n\}$, let $\hat{A}_{i,j}$ be a $(n-1)$-times-$(n-1)$ matrix obtained from $A$ by deleting the $i$-th row and the $j$-th column and let
+    $$ A^a_{i,j} = (-1)^{i+j}\det (\hat{A}_{i,j}).$$
+    The matrix
+    $$\begin{pmatrix}
+        A^a_{1,1} & \cdots & A^a_{1,n}\\
+        \vdots & \ddots & \vdots\\
+        A^a_{n,1} & \cdots & A^a_{n,n}
+    \end{pmatrix}$$
+    is called the \textbf{adjugate} of $A$, denoted as $A^a$.
+
+    \quad Note that, if we consider $A$ as an endomorphism of $K$, then $A^a$ identifies with the matrix of the endomorphism constructed in the theorem \ref{thm:4.7.1}
+\end{definitionenv}
+
+\begin{corollaryenv}
+    Let $n$ be a positive integer and
+    $$A = \begin{pmatrix}
+        a_{1,1} & \cdots & a_{1,n}\\
+        \vdots & \ddots & \vdots\\
+        a_{n,1} & \cdots & a_{n,n}
+    \end{pmatrix}$$
+    be an element of $M_n(K)$.
+    Then the following equality holds:
+    $$ AA^a = \det (A) I_n.$$
+    In particular, for any $i\in \{1,\cdots,n\}$,
+    $$ \det (A) = \sum_{i=1}^{j} (-1)^{i+j} a_{i,j} A^*_{i,j}.$$
+\end{corollaryenv}

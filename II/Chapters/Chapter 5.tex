@@ -1,0 +1,36 @@
+\chapter{Haar Measure}
+
+\section{Reminder of General Topology}
+
+\begin{definitionenv}[Open Mapping]\label{def:IsOpenMap}
+    Let $X$ and $Y$ be topological spaces and $f: X\rightarrow Y$ be a mapping.
+    We say that $f$ is an open mapping if for any open $U \subseteq X$, $f(U)$ is open in $Y$.
+\end{definitionenv}
+
+\begin{definitionenv}[Quotient Topology]
+    Let $(X,\mathscr{T})$ be a topological space and $\pi : X\rightarrow Y$ be a surjective mapping.
+    We call quotient topology of $\mathscr{T}$ on $Y$ (with respect to $\pi$) the family $V\subseteq Y$ such that 
+    $\pi^{-1}(V) \in \mathscr{T}$.
+
+    \quad Note that $\pi$ is continuous if we equipped $Y$ with the quotient topology.
+\end{definitionenv}
+
+\begin{propositionenv}
+    Let $X,Y$ be topological spaces, $\pi : X\rightarrow Y$ be a surjective mapping.
+    We equipped $Y$ with the quotient topology and assume that $\pi$ is open.
+    \begin{enumerate}
+        \item A subset $U$ of $Y$ is open if and only if $\pi^{-1}(U)$ is open in $X$.
+        \item A subset $F$ of $Y$ is closed if and only if $\pi^{-1}(F)$ is closed in $X$.
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    \quad 
+    \begin{enumerate}
+        \item $\pi$ is continuous, so if $U$ is open in $Y$, then $\pi^{-1}(U)$ is open in $X$.
+        Conversely, if $\pi^{-1}(U)$ is open in $X$, then $\pi\left(\pi^{-1}(U)\right) = U$ is open.
+        \item If $F$ is closed in $Y$, then $Y\setminus F$ is open, hence
+        $X\setminus \pi^{-1}(F)=\pi^{-1}(Y\setminus F)$
+        is open.
+        Conversely, if $X\setminus \pi^{-1}(F)$ is open, then $\pi\left(\pi^{-1}\left(Y\setminus F\right)\right) = Y\setminus F$ is open.
+    \end{enumerate}
+\end{proofenv}
