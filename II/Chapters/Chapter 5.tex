@@ -7,7 +7,7 @@
     We say that $f$ is an open mapping if for any open $U \subseteq X$, $f(U)$ is open in $Y$.
 \end{definitionenv}
 
-\begin{definitionenv}[Quotient Topology]
+\begin{definitionenv}[Quotient Topology] % Mathlib uses coinduced topology to define this.
     Let $(X,\mathscr{T})$ be a topological space and $\pi : X\rightarrow Y$ be a surjective mapping.
     We call quotient topology of $\mathscr{T}$ on $Y$ (with respect to $\pi$) the family $V\subseteq Y$ such that 
     $\pi^{-1}(V) \in \mathscr{T}$.
@@ -33,4 +33,206 @@
         is open.
         Conversely, if $X\setminus \pi^{-1}(F)$ is open, then $\pi\left(\pi^{-1}\left(Y\setminus F\right)\right) = Y\setminus F$ is open.
     \end{enumerate}
+\end{proofenv}
+\begin{propositionenv}\label{prop:5.1.4}
+    Let $I$ be a set, $\left(X_i\right)_{i\in I}$, $\left(Y_i\right)_{i\in I}$ be families of topological spaces.
+    For any $i\in I$, let $f_i: X_i \rightarrow Y_i$ be a mapping.
+    Let
+    $$ X = \prod_{i\in I} X_i, \ Y = \prod_{i\in I} Y_i$$
+    (Considered with initial topology) and let
+    $$\begin{array}{rrcl}
+        f : & X & \longrightarrow & Y\\
+        & \left(x_i\right)_{i\in I} & \longmapsto & \left(f_i(x_i)\right)_{i\in I}.
+    \end{array}$$
+
+    \begin{enumerate}
+        \item If $f_i$ is continuous for any $i\in I$, then $f$ is continuous.
+        \item If $f_i$ is open for any $i\in I$ and is surjective for all but finitely many $i\in I$, then $f$ is open.
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    \quad
+    \begin{enumerate}
+        \item For any $i\in I$, let $\pi_i : X\rightarrow X_i$, $p_i : Y \rightarrow Y_i$ be projections (all continuous).
+            \begin{center}
+                \begin{tikzcd}
+                	X & Y \\
+                	{X_i} & {Y_i}
+                	\arrow["f", from=1-1, to=1-2]
+                	\arrow["{\pi_i}"', from=1-1, to=2-1]
+                	\arrow["{p_i}", from=1-2, to=2-2]
+                	\arrow["{f_i}", from=2-1, to=2-2]
+                \end{tikzcd}
+                $$p_i \circ f = f_i \circ \pi_i$$
+            \end{center}
+            Since both $\pi_i$, $f_i$ are continuous so is $f_i \circ \pi_i$.
+            Therefore $p_i \circ f$ is also continuous.
+        \item Let $J_0$ be the set of $i\in I$ such that $f_i$ is not surjective.
+            A topological basis of $X$ can be given by sets of the from
+            $$ \bigcap_{j \in J} \pi_{j}^{-1} \left(U_j\right),$$
+            where $J$ is a finite subset of $I$ containing $J_0$.
+            Note that
+            $$ f\left(\bigcap_{j \in J} \pi^{-1}_{j} (U_j)\right) = \bigcap_{j \in J} p^{-1}_{j}\left(f_j(U_j)\right).$$
+            Since $f_j$ is open for any $j$, so must be $f$.
+            (Checked on the basis of topology.)
+    \end{enumerate}
+\end{proofenv}
+
+\begin{propositionenv}\label{thm:closure_pi_set}
+    Let $I$ be a set and $(X_i)_{i\in I}$ be a family of topological spaces.
+    Let $X$ be the product $(X_i)_{i\in I}$ with initial topology.
+    For any $i\in I$, let $A_i \subseteq X_i$ and $C_i = \bar{A}_i$ (in $X_i$).
+    Put $A = \prod_{i\in I}A_i$ and $C = \prod_{i\in I}C_i$,
+    then
+    $$ \bar{A} = C \text{ in } X.$$
+\end{propositionenv}
+\begin{proofenv}
+    First, we prove that $C$ is closed in $X$.
+    For any $i\in I$, let $\pi_i : X \rightarrow X_i$ be the projection to the $i$-th coordinate.
+    We have
+    $$ X\setminus C = \bigcup_{i \in I} \pi_i^{-1}\left(X_i \setminus C_i\right).$$
+    For the remaining part, take $x = (x_i)_{i \in I}$ to be an element of $C$.
+    We claim that for any open $U \ni x$, $U \cap A \neq \varnothing$
+    \begin{center}
+        
+
+% Pattern Info
+ 
+\tikzset{
+pattern size/.store in=\mcSize, 
+pattern size = 5pt,
+pattern thickness/.store in=\mcThickness, 
+pattern thickness = 0.3pt,
+pattern radius/.store in=\mcRadius, 
+pattern radius = 1pt}
+\makeatletter
+\pgfutil@ifundefined{pgf@pattern@name@_44loeb5b3}{
+\pgfdeclarepatternformonly[\mcThickness,\mcSize]{_44loeb5b3}
+{\pgfqpoint{0pt}{0pt}}
+{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{
+\pgfsetcolor{\tikz@pattern@color}
+\pgfsetlinewidth{\mcThickness}
+\pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+\pgfpathlineto{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+\pgfusepath{stroke}
+}}
+\makeatother
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Regular Polygon [id:dp38747178348966016] 
+\draw  [line width=2.25]  (312.77,150.33) .. controls (301.5,150.33) and (290.23,150.12) .. (278.96,150.33) .. controls (271.27,150.47) and (257.48,159.96) .. (251.91,164.63) .. controls (249.41,166.73) and (245.86,167.55) .. (243.8,170.08) .. controls (241.21,173.24) and (239.2,176.83) .. (237.03,180.3) .. controls (233.2,186.42) and (229.44,210.16) .. (237.71,215.71) .. controls (256.61,228.41) and (275.93,223.93) .. (297.22,226.61) .. controls (316.7,229.07) and (334.22,234.2) .. (354.02,232.74) .. controls (370.44,231.53) and (384.51,215.23) .. (386.48,199.37) .. controls (387.22,193.45) and (388.9,188.09) .. (385.13,183.02) .. controls (377.39,172.62) and (363.57,173.37) .. (352.67,170.08) .. controls (344,167.46) and (341.35,164.81) .. (336.44,159.86) .. controls (334.23,157.64) and (322.2,149.76) .. (312.77,150.33) -- cycle ;
+%Shape: Circle [id:dp10118816507723016] 
+\draw  [line width=2.25]  (270,147) .. controls (270,133.19) and (281.19,122) .. (295,122) .. controls (308.81,122) and (320,133.19) .. (320,147) .. controls (320,160.81) and (308.81,172) .. (295,172) .. controls (281.19,172) and (270,160.81) .. (270,147) -- cycle ;
+%Shape: Free Drawing [id:dp7937280453890982] 
+\draw  [line width=3] [line join = round][line cap = round] (296.74,148.73) .. controls (296.74,149.24) and (296.74,149.76) .. (296.74,150.27) ;
+%Shape: Path Data [id:dp8272736758139742] 
+\draw  [pattern=_44loeb5b3,pattern size=6pt,pattern thickness=0.75pt,pattern radius=0pt, pattern color={rgb, 255:red, 0; green, 0; blue, 0}][line width=2.25]  (312.77,150.33) .. controls (314.98,150.19) and (317.33,150.52) .. (319.66,151.13) .. controls (317.69,162.97) and (307.4,172) .. (295,172) .. controls (283.14,172) and (273.2,163.74) .. (270.64,152.65) .. controls (273.71,151.28) and (276.62,150.37) .. (278.96,150.33) .. controls (290.23,150.12) and (301.5,150.33) .. (312.77,150.33) -- cycle ;
+
+% Text Node
+\draw (288,185.4) node [anchor=north west][inner sep=0.75pt]    {$A$};
+% Text Node
+\draw (284,132.4) node [anchor=north west][inner sep=0.75pt]    {$x$};
+
+
+\end{tikzpicture}
+    \end{center}
+    Without losing of generality, we can assume that $U = \prod_{i\in I}U_i$ such that for all $i\in I$ that $U_i$ open in $X_i$ and $U_i = X_i$ for all but finitely many $i \in I$
+    ( $X = \prod_{i\in I}X_i $)
+    Since $C_i = \bar{A}_i$, so $x_i \in U_i \cap A_i \neq \varnothing$ for any $i\in I$ hence
+    $$ (x_i)_{i\in I} \in \prod_{i\in I} U_i \cap \prod_{i \in I}A_i = A.$$
+    So $C$ is the closure of $A$.
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $X$ be a topological space and $\sim$ be an equivalence relation on $X$.
+    Let $Y$ be the quotient of $X$ by equivalence relation considered with the quotient topology and let $\Gamma$ be the graph of $\sim$.
+    \begin{enumerate}
+        \item If $Y$ is Hausdorff, then $\Gamma$ is closed in $X \times X$.
+         \item The converse is true if we assume that $\pi : X\rightarrow Y$ is open.
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    Let
+    $$ \Delta_Y \coloneq \{(y,y)\mid y \in Y\} \subseteq Y \times Y$$
+    be the diagonal of $Y\times Y$.
+    Consider
+    $$\begin{array}{rrcl}
+        \pi \times \pi : & X \times X & \longrightarrow & Y \times Y\\
+        & \left(x_1,x_2\right) & \longmapsto & \left(\pi(x_1),\pi(x_2)\right).
+    \end{array}$$
+    By definition, $\Gamma = \left(\pi \times \pi\right)^{-1} \left(\Delta_Y\right)$, so if $Y$ is Hausdorff, then $\Gamma$ is closed, since $\pi \times \pi$ is continuous by 1. of \ref{prop:5.1.4}.
+
+    \quad Assume that $\pi$ is open.
+    By 2. of \ref{prop:5.1.4}, $\pi \times \pi$ is open.
+    If $\Gamma$ is closed, then
+    $$ X\times X \setminus \Gamma = \left(\pi \times \pi\right)^{-1} \left(Y \times Y \setminus \Delta_Y\right)$$
+    is open.
+    The image of this set by $\pi \times \pi$ identifies with $Y \times Y \setminus \Delta_Y$, so is also open.
+    Hence $\Delta_Y$ is closed, i.e. $Y$ is Hausdorff.
+\end{proofenv}
+
+\begin{definitionenv}
+    We say that a topological spaces $(X,\mathscr{T})$ is \textbf{disconnected} is there exists $U,V \subseteq X$ open and non-empty such that $U \cap V = \varnothing$ and $X = U \cup V$.
+    If $X$ is not disconnected, then we say that it is \textbf{connected}.
+
+    \quad We say that a subset $A \subseteq X$ is connected if $(A,\mathscr{T}|_A)$ is connected.
+    
+    \quad We say that $(X,\mathscr{T})$ is \textbf{path connected} if for any $x,y\in X$, there exists a continuous mapping $\gamma : [0,1]\rightarrow X$ such that $\gamma(0) = x$ and $\gamma(1) = y$.
+\end{definitionenv}
+\begin{propositionenv}\label{thm:connectedSpace_iff_clopen}
+    Let $(X,\mathscr{T})$ be the topological space.
+    $X$ is connected is and only if there does not exist a subset of $X$ different from both $X$ and $\varnothing$ that is simultaneously open and closed.
+\end{propositionenv}
+\begin{proofenv}
+    Assume that there exists $U \subsetneq X$ such that $U \neq \varnothing$ and $U$ is simultaneously open and closed.
+    Put $V = X\setminus U$, then $V \cap U = \varnothing$ and $V\cup U =X$, thus $X$ is disconnected, contradiction!
+\end{proofenv}
+
+\begin{exampleenv}
+    $\sin\left(\frac{1}{x}\right) \cup \{(0,y): -1\le y\le 1\}$
+ is connected but not path connected.
+\end{exampleenv}
+
+\begin{propositionenv}\label{thm:IsPathConnected.isConnected}
+    Let $(X,\mathscr{T})$ be a topological space.
+    If $X$ is path connected, then $X$ is connected.
+\end{propositionenv}
+\begin{proofenv}
+    We write $X$ as the union of two disjoint non-empty subsets ($X = U\cup V,\ U\cap V =\varnothing,\ U,V \neq \varnothing$) that $X$ is disconnected but path connected.
+    Pick $x\in U, y \in V$ and $\gamma:[0,1]\rightarrow X$ such that $\gamma(0) = x$ and $\gamma(1) = y$.
+    Then $\gamma^{-1}(U)$, $\gamma^{-1}(V)$ are disjoint open subsets of $[0,1]$ containing $0$ and $1$ respectively and $[0,1] = \gamma^{-1}(U)\cup \gamma^{-1}(V)$.
+    Let
+    $$ a = \sup \{t \in [0,1] \mid \interval[open right]{0}{t} \subseteq \gamma^{-1}(U)\}.$$
+    Since $\gamma^{-1}(U)$ is closed $a \in \gamma^{-1}(U)$.
+    Since $\gamma^{-1}(U)$ is open, there exists $\varepsilon > 0$ such that $\interval[open]{a-\varepsilon}{a+\varepsilon} \subseteq \gamma^{-1}(U)$, contradiction!
+\end{proofenv}
+
+\begin{remark}
+    Note that we proved that all intervals are connected.
+\end{remark}
+
+\begin{definitionenv}
+    Let $(X,\mathscr{T})$ be a topological spaces.
+    We call \textbf{connected component} of $X$ any non-empty maximal element of the set of all connected subsets of $X$ (equipped with the order of inclusion of sets).
+    An empty topological space is connected but has no connected component.
+\end{definitionenv}
+
+\begin{lemmaenv}\label{thm:IsConnected.biUnion_of_reflTransGen}
+    Let $(X,\mathscr{T})$ be a topological space, $\left(A_i\right)_{i\in I}$ family of non-empty connected subsets of $X$.
+    If there exists $i_0 \in I$ such that for all $i \in I$, $A_{i} \cap A_{i_0} \neq \varnothing$, then $\bigcup_{i\in I}A_i$ is connected.
+\end{lemmaenv}
+\begin{proofenv}
+    Suppose $U,V \subseteq X$, $U \cup V = X$, $U \cap V \neq \varnothing$,
+    $$ \bigcup_{i\in I} A_i \subseteq U \cup V, \bigcup_{i\in I}A_i \cap \left(U \cap V\right) = \varnothing.$$
+    $A_{i_0}$ is connected so $A_{i_0} \subseteq U$ or $A_{i_0} \subseteq V$.
+    Without losing of generality, assume that $A_{i_0} \subseteq U$.
+    For any $i \in I$, $\varnothing \neq A_i\cap A_{i_0} \subseteq A_{i_0} \subseteq U$.
+    So for any $i \in I$, $A_i\cap U \neq \varnothing$, $A_i$ is connected $A_i \subseteq U$.
+    Thus 
+    $$ \bigcup_{i\in I}A_i \subseteq U.$$
 \end{proofenv}
