@@ -236,3 +236,160 @@ pattern radius = 1pt}
     Thus 
     $$ \bigcup_{i\in I}A_i \subseteq U.$$
 \end{proofenv}
+
+\begin{propositionenv}
+    Let $(X,\mathscr{T})$ be a topological space.
+    Then the following binary relation $\sim$ is an equivalence relation:
+    \begin{center}
+        $x \sim y \ \Leftrightarrow$ there exists a connected subset $A$ of $X$ such that $\{x,y\} \subseteq A$. 
+    \end{center}
+    Moreover, the equivalence classes of this relation are exactly the connected components of $(X,\mathscr{T})$.
+    
+    \quad In particular, any $x \in X$ belongs to a \textit{unique} connected component (called the \textbf{connected component} of $X$).
+\end{propositionenv}
+\begin{proofenv}
+    $\sim$ is already reflexive and symmetric.
+    We prove that $\sim$ is transitive.
+    Let $x,y, z$ be elements of $X$ such that $\{x,y\}\subseteq A$ and $\{y,z\} \subseteq B$.
+    One has $A \cap B \neq \varnothing$ case $y \in A \cap B$.
+    So by lemma \ref{thm:IsConnected.biUnion_of_reflTransGen}, $A \cup B$ is connected and since ${x,z} \subseteq A \cup B$, one has $x \sim z$.
+
+    \quad Let $C$ be a connected component of $X$ and $x \in X$.
+    By definition, $x\sim y$ for any $y \in C$.
+    If $z \in X$ is such that $x \sim Z$, then there exists connected $A \subseteq X$ such that $\{x,z\} \subseteq A$ and $A \cup C$ is connected.
+    Since by definition, $C$ is maximal, we conclude that $A \subseteq C$ and $z \in C$, so $C$ is equal to the equivalence class of $x$.
+
+    \quad Conversely, let $x \in X$ and $C$ be the equivalence class.
+    By definition, any connected subset of $X$ containing $x$ must be contained in $C$.
+    
+    \quad It remains to check that $C$ is connected.
+    
+    \quad For any $y \in c$, there exists a connected set $A_y \supseteq \{x,y\}$.
+    By lemma \ref{thm:IsConnected.biUnion_of_reflTransGen}, $\displaystyle \bigcup_{y \in C} A_y$ is connected and contains $C$.
+    We conclude that
+    $$C = \bigcup_{y \in C} A_y.$$
+    Hence $C$ is connected.
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $(X,\mathscr{T})$ be a topological space.
+    If $A \subseteq X$ is a connected subset of $X$, then $\bar{A}$ is also connected.
+    In particular, any connected component of $X$ is closed.
+\end{propositionenv}
+\begin{proofenv}
+    Suppose, by contradiction, that $U,V \subseteq X$ are open such that
+    $$ (U \cap V) \cap \bar{A} = \varnothing,\ \bar{A} \subseteq U \cup V,\ U \cap \bar{A} \neq \varnothing,\ V \cap \bar{A} \neq \varnothing.$$
+    But in this situation, one would also have $U \cap A \neq \varnothing$, $V \cap A \neq \varnothing$, $(U \cap V) \cap A =\varnothing$, $A \subseteq U \cup V$ which would contradict the assumption that $A$ is connected.
+\end{proofenv}
+
+
+\section{Topological Groups}
+
+\begin{definitionenv}
+    Let $(G,*)$ be a group with a topology $\mathscr{T}$.
+    If the mapping
+    $$\begin{array}{rrcl}
+        \psi : & G\times G & \longrightarrow & G\\
+        & (x,y) & \longmapsto & x*\iota(y)
+    \end{array}$$
+    is continuous, then we say that $(G,*,\mathscr{T})$ is a \textbf{topological group}.
+\end{definitionenv}
+
+\begin{definitionenv}
+    Let $(G,*)$ be a group and $X$ be a set.
+    Recall that a mapping $\varphi: G \times X \rightarrow X$ is called a left action (resp. right action) if the following conditions are satisfied
+    \begin{enumerate}
+        \item For any $x \in X$, $\varphi(e,x) = x$ ($e$ is the neutral element of $G$).
+        \item For any $(a,b) \in G\times G$ and any $x \in X$,
+            $$ \varphi(a*b, x) = \varphi(a,\varphi(b,x))\ (\text{resp. } \varphi(a*b, x) = \varphi(b,\varphi(a,x))).$$
+    \end{enumerate}
+    For any $a \in G$, we denote by $L_a : X \rightarrow X$ (resp. $R_a : X \rightarrow X$) the mapping sends any $x \in X$ to $\varphi(a,x)$.
+
+    \quad If $(G,*,\mathscr{T})$ is a topological space, then we say that a left action (resp. right action) is continuous if $\varphi : G \times X \rightarrow X$ is continuous as a mapping when we consider $G \times X$ with the product topology.
+\end{definitionenv}
+
+\begin{propositionenv}\label{prop:5.2.3}
+    Let $(G,*,\mathscr{T})$ be a topological group and $X$ be a topological space.
+    Let $\varphi: G \times X \rightarrow X$ be a continuous left action (resp. right action) on $X$.
+    Then for any $a \in G$, the mapping $L_a$ (resp. $R_a$) is a homeomorphism.
+\end{propositionenv}
+\begin{proofenv}
+    We prove the left action case (right action case is similar).
+    The mapping $L_a : X\rightarrow X$, $x \mapsto \varphi(a,x)$ can be written as the components
+    $$ X \overset{i_a}{\longrightarrow} G \times X \overset{\varphi}{\longrightarrow} X$$
+    where $i_a : X \rightarrow G\times X$ sends $x$ to $(a,x)$.
+    Note that $i_a$ composed with the projections $G\times X \rightarrow G$ and $G \times X \rightarrow X$ give us a constant mapping and the identity on $X$ which are both continuous.
+    Since projections are always continuous and open, we deduce that $i_a$ is continuous and hence also $L_a = i_a \circ \varphi$ is continuous.
+
+    \quad By definition, 
+    $$ L_a \circ L_{\iota(a)} = L_{\iota(a)} \circ L_{a} = \id_{X},$$
+    we deduce that $L_a$ is a homeomorphism, cause $L_{\iota(a)}$ is continuous by the first half of the proof.
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $(G,*,\mathscr{T})$ be a topological group.
+    \begin{enumerate}
+        \item The inverse mapping $\iota : G\rightarrow G$ is a homeomorphism.
+        \item $G \times G \rightarrow G$, $(a,b) \mapsto a*b$ is continuous and in particular, it defines a left action on $G$ in itself.
+        \item $G \times G \rightarrow G$, $(a,b) \mapsto b*a$ is continuous and in particular, it defines a right action on $G$ in itself.
+        \item For any $g \in G$,
+            $$ L_g : G \rightarrow G, \ x \mapsto g*x,$$
+            $$ R_g : G \rightarrow G, \ x \mapsto x*g,$$
+            are homeomorphisms on $G$.
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    Let $e \in G$ be the neutral element,
+    and $p_1 : G \times G \rightarrow G$ and $p_2 : G \times G \rightarrow G$ be the two projections,
+    namely $$ p_1(a,b) = a,\ p_2(a,b) = b.$$
+    We note that $p_1$ and $p_2$ are both continuous and open.
+    \begin{enumerate}
+        \item The mapping $\lambda : G \rightarrow G \times G$, $x \mapsto (e,x)$ is continuous since its composite with each of the projections $p_1$ and $p_2$ is continuous.
+            Therefore, the mapping $\iota : G \rightarrow G$, which is the composite 
+            $$\begin{array}{ccccl}
+                G & \overset{\lambda}{\longrightarrow} & G \times G & \overset{\varphi}{\longrightarrow} & G\\
+                x & \longmapsto & (e,x) & \longmapsto & e* \iota(x)
+            \end{array}$$
+            is continuous.
+            Since $\iota \circ \iota = \id_{G}$, we deduce that $\iota$ is a homeomorphism of $G$.
+        \item Let $\tau : G \times G \rightarrow G \times G$, $(x,y) \mapsto (x, \iota(y))$ one has that $p_1 \circ \tau = p_1$, $p_2 \circ \tau = \iota \circ p_2$,
+            and therefore $\tau$ is continuous.
+            The mapping
+            $$ \begin{array}{rrcl}
+                G \times G \longrightarrow G\\
+                (x,y) & \longmapsto & x*y
+            \end{array}$$
+            equals $\varphi \circ \tau$ so $(x,y) \mapsto x*y$ is continuous.
+        \item $G \times G \rightarrow G \times G$, $(x,y) \mapsto (y,x)$ is continuous,
+            since its composition with both $p_1$ and $p_2$ are continuous.
+            The mapping $G \times G \rightarrow G$, $(x,y) \mapsto y*x$ is the composite of $(x,y) \mapsto (y,x)$ and $(x,y)\mapsto x*y$.
+            Hence it si continuous.
+        \item Follows from the proposition \ref{prop:5.2.3}.
+    \end{enumerate}
+\end{proofenv}
+
+\begin{remark}
+    Let $(G,*)$ be a group with topology $\mathscr{T}$.
+    We can prove that $(G,*,\mathscr{T})$ is a topological group if and only if 
+    $$\begin{array}{rrclcrrcl}
+        \iota : & G & \longrightarrow & G & \quad & * : & G \times G & \longrightarrow & G \\
+        & x & \longmapsto & \iota(x) & \quad & & (x,y) & \longmapsto & x*y
+    \end{array}$$
+    are both continuous.
+\end{remark}
+
+\begin{exampleenv}
+    Let $(K, \left|\ \cdot\ \right|)$ be a valued field.
+    The additive group $(K,+)$ is the multiplicative group $(K^\times,\cdot)$ are both topological groups.
+\end{exampleenv}
+
+\begin{exampleenv}
+    Let $(K, \left|\ \cdot\ \right|)$ be a valued field, and $(V,\|\cdot\|)$ be a normed vector space over $K$.
+    The additive group $(V,+)$ forms a topological group.
+    Moreover, the mapping
+    $$ \begin{array}{rrcl}
+        K^\times \times V & \longrightarrow & V\\
+        (a,x) & \longmapsto & ax
+    \end{array}$$
+    is a continuous left action.
+\end{exampleenv}
