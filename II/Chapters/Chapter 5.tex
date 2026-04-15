@@ -148,12 +148,12 @@ pattern radius = 1pt}
     So $C$ is the closure of $A$.
 \end{proofenv}
 
-\begin{propositionenv}
+\begin{propositionenv}\label{prop:5.1.6}
     Let $X$ be a topological space and $\sim$ be an equivalence relation on $X$.
     Let $Y$ be the quotient of $X$ by equivalence relation considered with the quotient topology and let $\Gamma$ be the graph of $\sim$.
     \begin{enumerate}
         \item If $Y$ is Hausdorff, then $\Gamma$ is closed in $X \times X$.
-         \item The converse is true if we assume that $\pi : X\rightarrow Y$ is open.
+        \item The converse is true if we assume that $\pi : X\rightarrow Y$ is open.
     \end{enumerate}
 \end{propositionenv}
 \begin{proofenv}
@@ -393,3 +393,319 @@ pattern radius = 1pt}
     \end{array}$$
     is a continuous left action.
 \end{exampleenv}
+
+\begin{exampleenv}
+    Let $(K, \left|\ \cdot \ \right|)$ be a complete valued field,
+    and $(V,\|\cdot\|)$ be a Banach space over $K$,
+    $\mathcal{L}(V,V)$ vector space of bounded $K$-linear endomorphisms.
+    $\mathcal{L}(V,V)$ is equipped with the operator norm.
+    The bilinear mapping
+    $$ \begin{array}{rcl}
+        \mathcal{L}(V,V) \times \mathcal{L}(V,V) & \longrightarrow & \mathcal{L}(V,V)\\
+        (\varphi,\psi) & \longmapsto & \varphi \circ \psi
+    \end{array}$$
+    is bounded and hence continuous.
+    Let $GL(V)$ be subset of $\mathcal{L}(V,V)$ of bounded $K$-linear isomorphisms.
+
+    \quad Note that by Banach's open mapping theorem, for any $f \in GL(V)$, then $f^{-1} \in GL(V)$.
+    Hence $GL(V)$ forms a group under composition of mappings.
+    It also has been shown that the mapping of inversion $\iota : GL(V) \rightarrow GL(V)$ is of class $C^\infty$.
+    So it is continuous.
+    Therefore $GL(V)$ is a topological group.
+    The mapping
+    $$ \begin{array}{rcl}
+        GL(V) \times V & \longrightarrow & V\\
+        (f,x) & \longmapsto & f(x)
+    \end{array}$$
+    is a continuous left action.
+    In fact the mapping
+    $$ \begin{array}{rcl}
+       \mathcal{L}(V, V) \times V & \longrightarrow & V\\
+        (f,x) & \longmapsto & f (x)
+    \end{array}$$
+    is a bounded linear mapping (so continuous).
+\end{exampleenv}
+
+\begin{propositionenv}
+    Let $(G,*,\mathscr{T})$ be a topological group,
+    $X$ be a topological space,
+    $\varphi : G \times X \rightarrow X$ be a continuous left action.
+    Let $U \subseteq G$ be a subset, $V \subseteq X$ be open,
+    then
+    $$\{\varphi(a, x) : (a, x) \in U \times V\}$$
+    is open in $X$.
+\end{propositionenv}
+\begin{proofenv}
+    One has 
+    $$ \{\varphi(a, x) : (a, x) \in U \times V\} = \bigcup_{a \in U} L_a(V).$$
+    $L_a (V)$ is open since $L_a$ is a homeomorphism.
+\end{proofenv}
+
+\begin{propositionenv}\label{prop:5.2.10}
+    Let $(G,*,\mathscr{T})$ be a topological group,
+    $e \in G$ be the neutral element,
+    $e \in U \subseteq G$ open.
+    \begin{enumerate}
+        \item There exists an open $V \subseteq G$ such that $e \in V$, $\iota (V) = V$, and
+            $$V * V = \{x * y \mid (x,y) \in V \times V\} \subseteq U.$$
+        \item For any element $a \in U$, there exists $e \in V \subseteq U$ open such that 
+            $$ a * V =\{a * x \mid x \in V \} \subseteq U,\ V * a = \{x * a \mid x \in V\} \subseteq U.$$
+        \item For any $b \in U$, there exists $e \in V \subseteq U$ open such that
+            $$ b * V * \iota(b) = \{b * x * \iota(b) \mid  x \in V\} \subseteq U.$$
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    \quad 
+    \begin{enumerate}
+        \item $\varphi : G \times G \rightarrow G$, $(x,y) \mapsto x* \iota(y)$ is continuous and it sends $(e,e)$ to $e$.
+            Hence $\varphi^{-1}(U) \ni (e,e)$ is open.
+            There exists $V_1,V_2 \subseteq G$ open neighborhoods of $e$ such that
+            $$ V_1 \times V_2 \subseteq \varphi^{-1}(U).$$
+            We put $V = (V_1\cap V_2) \cap \iota\left(V_1 \cap V_2\right)$.
+            It is an open neighborhood of $e$ such that $\iota(V) = V$ and $V \times V \subseteq \varphi^{-1}(U)$ so $V * V = V * \iota(V) \subseteq U$.
+        \item We take 
+            $$ V = L_{\iota(a)} (U) \cap R_{\iota(a)} (U) \cap U$$
+            open neighborhood of $e$.
+            Moreover,
+            $$ a * V = L_{a} (V) \subseteq U,\quad V * a = R_{a} (V) \subseteq U.$$
+        \item Put 
+            $$ V = \left(\iota(b) * U * b\right) \cap U = R_{b} \left(L_{\iota(a)} (U)\right) \cap U.$$
+            It is an open neighborhood of $e$ contained in $U$ ($\iota(b) * e * b = e$).
+            Moreover,
+            $$ b * V * \iota(b) \subseteq U.$$
+    \end{enumerate}
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $(G,*,\mathscr{T})$ be a topological group,
+    $e \in G$ be the neutral element.
+    The topological group $(G,*,\mathscr{T})$ is Hausdorff if and only if the intersection of all open neighborhoods of $e$ is equal to $\{e\}$.
+\end{propositionenv}
+\begin{proofenv}
+    Suppose that $(G,\mathscr{T})$ is Hausdorff.
+    Let $x \in G$, $x \neq e$.
+    There exists $e \in U_x$ open and $x \notin U_x$.
+    Hence,
+    $$ \bigcap_{\substack{x \in G\\ x \neq e}} U_x = \{e\}.$$
+
+    \quad Assume that the intersection of all open neighborhoods of $e$ is equal to $\{e\}$.
+    Let $x, y\in G$ such that $x \neq y$, then $x * \iota(y) \neq e$.
+    There exists an open $U \ni e$ such that $x * \iota(y) \notin U$.
+    By \ref{prop:5.2.10}, there exists $V$, such that $V * \iota(V) \subseteq U$.
+    We claim that $L_{x} (V) \cap L_{y}(U) = \varphi$.
+    Indeed, if $(a,b) \in V$ such that $x * a = y * b$, then
+    $$a * \iota(b) = \iota(x) * y \in U,$$
+    contradiction.
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $(G,*,\mathscr{T})$ be a topological group,
+    $H$ be a subgroup of $G$.
+    \begin{enumerate}
+        \item $\bar{H}$ is also a subgroup of $G$.
+        \item If $H$ is normal, then $\bar{H}$ is also normal.
+        \item If $H$ is open, then $H$ is also closed.
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    \quad
+    \begin{enumerate}
+        \item 
+            $$\begin{array}{rrcl}
+                \varphi : & G \times G & \longrightarrow & G \\
+                & (x,y) & \longmapsto & x * \iota(y)
+            \end{array}$$
+            is a continuous mapping, so $\varphi^{-1}(\bar{H})$ is closed in $G \times G$.
+            Also, 
+            $$ \varphi^{-1}(\bar{H}) \supseteq \varphi^{-1}(H) \supseteq H \times H.$$
+            By proposition \ref{thm:closure_pi_set}, $\varphi^{-1}(H) \supseteq \bar{H} \times$.
+            So $\bar{H}$ is also a subgroup of $G$.
+        \item Suppose $H$ is normal, namely, for any $g \in G$,
+            $$H \subseteq g * H * \iota(g).$$
+            Note that this condition is equivalent to
+            $$\forall g \in G,\ g * H * \iota(g) = H.$$
+            Let now $\psi_g : G \rightarrow G$, $x \mapsto g * x* \iota(g)$.
+            Note that $\psi_{g} = R_{\iota(g)} \circ L_g$, so $\psi_{g}$ is continuous.
+            Since $H$ is normal,
+            $$ H \subseteq \psi^{-1}_{g} (H) \subseteq \psi^{-1}_{g} (\bar{H}).$$
+            So $\bar{H} \subseteq \psi^{-1}_{g} (\bar{H})$, so $\bar{H}$ is normal.
+        \item If $H$ is open, then $g * H$ is open for any $g \in G$ and
+            $$ H = G \setminus \bigcup_{\substack{g \in G\\g \notin H}} g * H.$$
+            So $H$ is closed.
+    \end{enumerate}
+\end{proofenv}
+
+\begin{definitionenv}
+    Let $G$ be a group, $X$ be a set, $\varphi: G \times X \rightarrow X$ be a left action of $G$ on $X$ (resp. right action).
+    \begin{enumerate}
+        \item If for any $g \in G$, $e \neq g$, there exists $x \in X$ such that $\varphi(g,x) \neq x$,
+            then we say that $\varphi$ is \textbf{faithful}.
+        \item If for any $(x,y) \in X$, there exists $g \in G$ such that $\varphi(g,x) = y$,
+            then we say that $\varphi$ is \textbf{transitive},
+            and that $X$ is a \textbf{homogenous space} of $G$.
+        \item For any $x \in X$, we denote by
+            $$ \stab (x) = \{g \in G \mid \varphi(g,x) = x\}.$$
+            This is a subgroup of $G$ called the \textbf{stabilizer} of $x$ with respect to $\varphi$.
+    \end{enumerate}
+\end{definitionenv}
+
+\begin{exampleenv}
+    Let $(G,*,\mathscr{T})$ be a topological group,
+    $H$ be a subgroup of $G$,
+    $G/H$ the set of left cosets of $G$ with respect to $H$.
+    Let $\pi : G \rightarrow G/H$ be a projection.
+    We equipped $G/H$ with the quotient topology,
+    i.e. $V \subseteq G/H$ is open if and only if $\pi^{-1} (V)$ is open in $G$.
+
+    \quad Note that $\pi : G \rightarrow G/H$ is open.
+    In fact if $U \subseteq G$ open, then
+    $$ \pi^{-1} \left(\pi(U)\right) = \bigcup_{h \in H} U * h$$
+    is an open subset of $G$.
+    The mapping
+    $$\begin{array}{rrcl}
+        \psi : & G \times (G/H) & \longrightarrow & G/H\\
+        & (g, x * H) & \longmapsto & (g * x) * H
+    \end{array}$$
+    defines a left action of $G$ on $G/H$.
+    It turns out that this action is continuous.
+    Indeed, if $V \subseteq G/H$ is open, then
+    $$\begin{aligned}
+        \psi^{-1} (V) = & \{(g, x * H) \in G \times G/H \mid (g * x) * H \in V\}\\
+        = & \{(g, x * H) \in G \times G/H \mid g * x \in \pi^{-1} (V)\}.
+    \end{aligned}$$
+    Let
+    $$\begin{array}{rrcl}
+        m : & G \times G & \longrightarrow & G\\
+        & (x,y) & \longmapsto & x * y
+    \end{array}$$
+    It is continuous.
+    Hence $m^{-1} (\pi^{-1} (V))$ is open in $G \times G$.
+
+    \quad Note that $\psi^{-1} (V)$ is the image of $m^{-1}(\pi^{-1} (V))$ by
+    $$\begin{array}{rcl}
+        G \times G & \longrightarrow & G/H\\
+        (x,y) & \longmapsto & x * y * H
+    \end{array}$$
+    is open.
+    Thus $\psi^{-1} (V)$ is an open subset of $G \times G/H$.
+    By definition, $\psi$ is transitive, hence $G/H$ is a homogenous space of $G$.
+\end{exampleenv}
+
+\begin{exampleenv}
+    Let $(G,*,\mathscr{T})$ be a topological group,
+    $H$ be a subgroup of $G$.
+    $$\begin{array}{rrcl}
+        \varphi : & G \times G & \longrightarrow & G\\
+        & (x,y) & \longmapsto & x * \iota(y)
+    \end{array}$$
+    is continuous.
+    We equipped the group $G/H$ with the quotient topology.
+    Let
+    $$\begin{array}{rrcl}
+        \psi : & (G/H) \times (G/H) & \longrightarrow & G/H\\
+        & (x * H, y * H) & \longmapsto & (x * \iota(y)) * H.
+    \end{array}$$
+    We claim that $\psi$ is continuous.
+    Let $\pi : G \rightarrow G/H$ be the projection (continuous and open).
+    If $V \subseteq G/H$ is open, then $\psi^{-1}$ is open, then $\psi^{-1}(V)$ is the image of $\varphi^{-1}(\pi^{-1}(V))$ by the open mapping.
+    $$\begin{array}{rcl}
+        G \times G & \longrightarrow & (G/H, G/H)\\
+        (x, y) & \longmapsto & (x * H, y * H).
+    \end{array}$$
+    Hence it is open in $(G/H) \times (G/H)$.
+\end{exampleenv}
+
+\begin{exampleenv}
+    Let $(V, \langle\ ,\ \rangle)$ be the finite dimensional inner product space over $\RR$,
+    $$ S =\{x \in V \mid \langle x, x \rangle = 1\}$$
+    be the unit sphere of $(V,\langle\ ,\ \rangle)$.
+    Let $O(V,\langle\ ,\ \rangle)$ be the orthogonal group of $(V,\langle\ ,\ \rangle)$ ($\RR$-linear isomorphism that one $\RR$-linear isometries).
+    Then $O(V,\langle\ ,\ \rangle)$ acts continuously on $S$.
+    We choose two orthogonal bases $\left(e_i\right)_{i=1}^n$, $\left(e_i'\right)_{i = 1}^{n}$ of $(V,\langle\ ,\ \rangle)$ such that $x = e_1$ and $y = e_1'$.
+    Then the mapping
+    $$\begin{array}{rrcl}
+        f : & V & \longrightarrow & V\\
+        & \lambda_1 e_1 + \cdots + \lambda_n e_n & \longmapsto & \lambda_1 e_1' + \cdots + \lambda_n e_n'
+    \end{array}$$
+    is a linear isometry that takes $x$ to $y$.
+    So $S$ is a homogenous of the group $O(V,\langle\ ,\ \rangle)$.
+\end{exampleenv}
+
+\begin{propositionenv}
+    Let $(G,*,\mathscr{T})$ be a topological group,
+    $X$ be a topological space,
+    $\varphi : G \times X \rightarrow X$ a continuous left action and $\varphi$ transitive.
+    Let $x_0 \in X$, and $H =\stab (x_0)$.
+    Then the mapping
+    $$\begin{array}{rrcl}
+        f : & G/H & \longrightarrow & X\\
+        & a * H & \longmapsto & \varphi (a,x_0)
+    \end{array}$$
+    is bijective and continuous.
+\end{propositionenv}
+\begin{proofenv}
+    Let $\pi : G \rightarrow G/H$ be the projection, $g: G\rightarrow X$, $a \mapsto \varphi (a,x_0)$.
+    Since $\varphi$ and the mapping
+    $$\begin{array}{rcl}
+        G & \longrightarrow & G \times X\\
+        a & \longmapsto & \varphi (a,x_0)
+    \end{array}$$
+    is continuous, we get that $g$ is continuous.
+    Moreover,
+    $$ g = f \circ \pi.$$
+    So for any open set $U \subseteq X$, we get that
+    $$ g^{-1} (U) = \pi^{-1} \left(f^{-1} (U)\right)$$
+    is open.
+    Hence $f^{-1}(U)$ must be open too (in $G/H$).
+    It remains to check that $f$ is a bijection.
+    Since $g$ is a surjective mapping (by transitivity of $\varphi$), $f$ is injective.
+    If $a,b \in G$, are such that $\varphi (a,x_0) = \varphi (b,x_0)$, then $\varphi (\iota(a) * b, x_0) = x_0$.
+    Namely, $\iota(a) * b \in H$, thus $a * H = b * H$.
+    So $f$ is also injective.
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $(G,*,\mathscr{T})$ be a topological group,
+    $X$ be a topological space,
+    $\varphi : G \times X \rightarrow X$ a continuous left action.
+    If $X$ is Hausdorff, then for any $x_0 \in X$, $\stab(x_0)$ is a closed subgroup of $G$.
+\end{propositionenv}
+\begin{proofenv}
+    $$\begin{array}{rrcl}
+        f : & G & \longrightarrow & X\\
+        & a & \longmapsto & \varphi (a,x_0)
+    \end{array}$$
+    is continuous.
+    We have 
+    $$ f^{-1} (\{x_0\}) = \stab(x_0).$$
+    ($\{x_0\}$ is closed since $X$ is Hausdorff.)
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $(G,*,\mathscr{T})$ be a topological group,
+    $H$ be a subgroup of $G$,
+    $\pi : G \rightarrow G/H$ be the projection.
+    Then $G/H$ with the quotient topology is Hausdorff if and only if $H$ is closed.
+\end{propositionenv}
+\begin{proofenv}
+    Let $e \in G$ be the neutral element.
+    We suppose $G/H$ is Hausdorff,
+    then $\{e * H\}$ is closed in $G/H$.
+    Hence $H = \pi^{-1} (e * H)$ is closed.
+    
+    \quad Conversely, suppose that $H$ is closed.
+    Let $\Gamma$ be the graph of the following equivalence relation:
+    $$ a \sim b \Leftrightarrow \iota(a) * b \in H.$$
+    Let $(a,b) \in G \times G$ such that $\iota(a) * b \notin H$.
+    The mapping
+    $$\begin{array}{rrcl}
+        f : & G \times G & \longrightarrow & G\\
+        & (x,y) & \longmapsto & \iota(x) * y
+    \end{array}$$
+    is continuous.
+    There exists $U_a$, $U_b$ open neighborhoods of $a,b$ respectively such that
+    $$ f (U_a \times U_b) \subseteq G/H.$$
+    Thus
+    $$ (a,b) \in U_a \times U_b \subseteq (G \times G)/\Gamma.$$
+    By proposition \ref{prop:5.1.6}, we obtain that $G/H$ is Hausdorff.
+\end{proofenv}
