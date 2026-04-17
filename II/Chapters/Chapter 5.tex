@@ -271,7 +271,7 @@ pattern radius = 1pt}
     Hence $C$ is connected.
 \end{proofenv}
 
-\begin{propositionenv}
+\begin{propositionenv}\label{prop:5.1.15}
     Let $(X,\mathscr{T})$ be a topological space.
     If $A \subseteq X$ is a connected subset of $X$, then $\bar{A}$ is also connected.
     In particular, any connected component of $X$ is closed.
@@ -356,14 +356,14 @@ pattern radius = 1pt}
             and therefore $\tau$ is continuous.
             The mapping
             $$ \begin{array}{rrcl}
-                G \times G \longrightarrow G\\
+                G \times G & \longrightarrow & G\\
                 (x,y) & \longmapsto & x*y
             \end{array}$$
             equals $\varphi \circ \tau$ so $(x,y) \mapsto x*y$ is continuous.
         \item $G \times G \rightarrow G \times G$, $(x,y) \mapsto (y,x)$ is continuous,
             since its composition with both $p_1$ and $p_2$ are continuous.
             The mapping $G \times G \rightarrow G$, $(x,y) \mapsto y*x$ is the composite of $(x,y) \mapsto (y,x)$ and $(x,y)\mapsto x*y$.
-            Hence it si continuous.
+            Hence it is continuous.
         \item Follows from the proposition \ref{prop:5.2.3}.
     \end{enumerate}
 \end{proofenv}
@@ -380,7 +380,7 @@ pattern radius = 1pt}
 
 \begin{exampleenv}
     Let $(K, \left|\ \cdot\ \right|)$ be a valued field.
-    The additive group $(K,+)$ is the multiplicative group $(K^\times,\cdot)$ are both topological groups.
+    The additive group $(K,+)$ and the multiplicative group $(K^\times,\cdot)$ are both topological groups.
 \end{exampleenv}
 
 \begin{exampleenv}
@@ -426,7 +426,7 @@ pattern radius = 1pt}
     is a bounded linear mapping (so continuous).
 \end{exampleenv}
 
-\begin{propositionenv}
+\begin{propositionenv}\label{prop:5.2.9}
     Let $(G,*,\mathscr{T})$ be a topological group,
     $X$ be a topological space,
     $\varphi : G \times X \rightarrow X$ be a continuous left action.
@@ -492,13 +492,13 @@ pattern radius = 1pt}
     Let $x, y\in G$ such that $x \neq y$, then $x * \iota(y) \neq e$.
     There exists an open $U \ni e$ such that $x * \iota(y) \notin U$.
     By \ref{prop:5.2.10}, there exists $V$, such that $V * \iota(V) \subseteq U$.
-    We claim that $L_{x} (V) \cap L_{y}(U) = \varphi$.
+    We claim that $L_{x} (V) \cap L_{y}(U) = \varnothing$.
     Indeed, if $(a,b) \in V$ such that $x * a = y * b$, then
     $$a * \iota(b) = \iota(x) * y \in U,$$
     contradiction.
 \end{proofenv}
 
-\begin{propositionenv}
+\begin{propositionenv}\label{prop:5.2.12}
     Let $(G,*,\mathscr{T})$ be a topological group,
     $H$ be a subgroup of $G$.
     \begin{enumerate}
@@ -518,7 +518,7 @@ pattern radius = 1pt}
             is a continuous mapping, so $\varphi^{-1}(\bar{H})$ is closed in $G \times G$.
             Also, 
             $$ \varphi^{-1}(\bar{H}) \supseteq \varphi^{-1}(H) \supseteq H \times H.$$
-            By proposition \ref{thm:closure_pi_set}, $\varphi^{-1}(H) \supseteq \bar{H} \times$.
+            By proposition \ref{thm:closure_pi_set}, $\varphi^{-1}(\bar{H}) \supseteq \bar{H} \times \bar{H}$.
             So $\bar{H}$ is also a subgroup of $G$.
         \item Suppose $H$ is normal, namely, for any $g \in G$,
             $$H \subseteq g * H * \iota(g).$$
@@ -648,7 +648,7 @@ pattern radius = 1pt}
     Since $\varphi$ and the mapping
     $$\begin{array}{rcl}
         G & \longrightarrow & G \times X\\
-        a & \longmapsto & \varphi (a,x_0)
+        a & \longmapsto & (a,x_0)
     \end{array}$$
     is continuous, we get that $g$ is continuous.
     Moreover,
@@ -709,3 +709,163 @@ pattern radius = 1pt}
     $$ (a,b) \in U_a \times U_b \subseteq (G \times G)/\Gamma.$$
     By proposition \ref{prop:5.1.6}, we obtain that $G/H$ is Hausdorff.
 \end{proofenv}
+
+\begin{definitionenv}
+    Let $(G,*,\mathscr{T})$, $(G',*',\mathscr{T}')$ be topological groups.
+    If a homomorphism of groups $f : G \rightarrow G'$ is continuous,
+    then we say that $f$ is a \textbf{homomorphism of topological groups}.
+    If $f$ is an isomorphism of groups that is also a homeomorphism,
+    then we say that $f$ is an \textbf{isomorphism of topological groups}.
+\end{definitionenv}
+
+\begin{propositionenv}
+    Let $(G,*,\mathscr{T})$, $(G',*,\mathscr{T}')$ be topological groups,
+    and let $f : G \rightarrow G'$ be a homomorphism of topological groups.
+    Assume that $f$ is surjective and open.
+    Let $N$ be the kernel of $f$,
+    and $\bar{f} : G/N \rightarrow G$ be the isomorphism of groups sending $x$ to $f(x)$.
+    Then $\bar{f}$ is an isomorphism of topological groups.
+    \begin{center}
+        \begin{tikzcd}
+        	G & \\
+        	{G/\ker(f)} & {G'}
+        	\arrow["\pi"', from=1-1, to=2-1]
+        	\arrow["f", from=1-1, to=2-2]
+        	\arrow["{\bar{f}}"', dashed, from=2-1, to=2-2]
+        \end{tikzcd}
+    \end{center}
+\end{propositionenv}
+\begin{proofenv}
+    Let $\pi : G \rightarrow G/N$ be te projection.
+    We know that $\bar{f}$ is an isomorphism of groups.
+    It remains to check that $\bar{f}$ is a homeomorphism.
+
+    \quad For any open $V \subseteq G/N$, one has $\bar{f} (V) = f(\pi^{-1}(V))$ is open in $G'$.
+    This means that $\bar{f}$ is an open mapping.
+    If $V'$ is open in $G'$,
+    one has
+    $$ \pi\left(f^{-1} (V')\right) = f^{-1} (V')$$
+    open in $G$.
+    Hence $\bar{f}^{-1}(V')$ is open in $G/N$,
+    so $\bar{f}$ is continuous.
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $(G,*,\mathscr{T})$ be a topological group, where $G$ is connected.
+    Let $e$ be the neutral element of $G$, $U \ni e$ open in $G$.
+    Then $G$ is generated by $U$.
+    Namely, any element of $G$ can be written as the composition of a family of elements of $U$.
+\end{propositionenv}
+\begin{proofenv}
+    By replacing $U$ by $U \cap \iota(U)$, we may assume that $U = \iota(U)$.
+    For any positive integer $n$, let $U_n = \underset{n\text{-times}}{\underbrace{U*\cdots*U}}$.
+    By \ref{prop:5.2.9} we obtain (By induction on $n$) that $U_n$ is an open subset of $G$.
+    Let 
+    $$H = \bigcup_{n\in \NN_{\ge 1}} U_n$$
+    be a sub-monoid of $G$.
+    Since $U = \iota(U)$, $H$ is also a subgroup of $G$.
+    Hence $H$ is an open subgroup of $G$, which is also closed by \ref{prop:5.2.12}.
+    Since $G$ is connected, $H = G$.
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $(G,*,\mathscr{T})$ be a topological group,
+    $H$ be a subgroup of $G$.
+    If $H$ and $G/H$ are both connected, so is $G$.
+\end{propositionenv}
+\begin{proofenv}
+    Suppose, by contradiction, that $U_1$ and $U_2$ are open such that $U_1\cap U_2 = \varnothing$, $U_1 \cup U_2 = G$.
+    Let $\pi : G \rightarrow G/H$ be the projection.
+    $\pi$ is open.
+    $$G/H = \pi(U_1) \cup \pi(U_2),$$
+    but since $G/H$ is connected, $\pi(U_1) \cap \pi(U_2) \neq \varnothing.$
+    Let $a_1$ and $a_2$ be in $U_1$ and $U_2$ respectively such that $\pi(a_1) = \pi(a_2)$.
+    Let $H' = a_1 * H = a_2 * H$.
+    $H$ is connected, so is $H'$.
+    But $H' \cap U_1 \neq \varnothing$, $H' \cap U_2 \neq \varnothing$, $H' \cap U_1 \cup H' \cap U_2 = H'$, contradiction.
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $(G,*,\mathscr{T})$ be a topological group,
+    and $H$ connected component of the neutral element $e \in G$.
+    Then $H$ is a closed and normal subgroup of $G$,
+    and for any $x \in G$, $x * H$ is the connected component of $x$.
+\end{propositionenv}
+\begin{proofenv}
+    By \ref{prop:5.1.15}, $H$ is closed.
+    We check that $H$ is a subgroup of $G$.
+    Let $a \in H$, $\iota(a) * H$ is connected since $L_{\iota(a)}$ is a homeomorphism.
+    Since $e \in \iota(a) * H$, so $H = \iota(a) * H$, $H$ is indeed a subgroup.
+    
+    \quad We want to check that $H$ is normal.
+    For any $g \in G$, $g * H * \iota(g)$ is a connected subset of $G$ containing $e$.
+    So $g * H * \iota(g) \subseteq H$, i.e. $H$ is normal.
+    For any $x \in G$, the set $x * H$ is a connected subset of $G$ containing $x$.
+    Conversely, if $A$ is connected and $x \in A$, then $\iota(x) * A$ is connected containing $e$,
+    so $\iota(x) * A \subseteq H$ and so
+    $$ A = x * \iota (x) * A \subseteq x * H.$$
+\end{proofenv}
+
+\begin{propositionenv}\label{prop:5.2.25}
+    Let $f : \RR \rightarrow \RR$ be a continuous homomorphism of the additive group of the real numbers, then $f$ is of the form
+    $$ f (x) = x f(1).$$
+\end{propositionenv}
+\begin{proofenv}
+    By the universal property of $(\ZZ, +)$, one has:
+    $$ \forall n \in \ZZ,\ f(n) = n f(1).$$
+    For any $m \in \ZZ_{>0}$, $n f(1) = f(n) = f(nm/m) = m f(n/m)$.
+    So
+    $$ f(n/m) = n/m f(1).$$
+    Since $f$ is continuous and $\QQ$ is dense in $\RR$, we prove the result.
+\end{proofenv}
+
+\begin{corollaryenv}
+    Let $g : \RR^\times \rightarrow \RR_{\ge 0}$ be continuous, homomorphism of multiplicative groups.
+    There exists $t \in \RR$ such that
+    $$g(y) = |y|^t,\ \forall y \in \RR.$$
+\end{corollaryenv}
+\begin{proofenv}
+    Let $f : \RR \rightarrow \RR$, $x \mapsto \ln\left(g(e^x)\right)$.
+    $$ f(x_1 + x_2) = \ln(g(e^{x_1 + x_2})) = \ln (g(e^{x_1})g(e^{x_2})) = f(x_1) + f(x_2).$$
+    So $f$ is continuous homomorphism, by \ref{prop:5.2.25}
+    $$f(x) = x f(1) = x \ln g(e),$$
+    so for any $y \in \RR_{\ge 0}$, $g(y) = g(e^{\ln y}) = e^{\ln g(e) \ln y}.$
+    $g(1) = g(-1) g(-1) = 1$, $g(-1) > 0$ so $g(-1) = -1$.
+    So for any $y \in \RR^\times$, $g(y) = |y|^{\ln g(e)}$.
+\end{proofenv}
+
+
+\section{Locally Compact Hausdorff Spaces}
+
+\begin{definitionenv}
+    Let $(X,\mathscr{T})$ be a topological space.
+    We say that $(X,\mathscr{T})$ is \textbf{locally compact} if for any $x \in X$,
+    there exists a compact neighborhood $C_x$.
+\end{definitionenv}
+
+\begin{exampleenv}
+    The real line $\RR$ (with standard topology induced $|\cdot|$).
+\end{exampleenv}
+
+\begin{definitionenv}
+    Let $(X,\mathscr{T})$ be a topological space,
+    $f : X \rightarrow \RR$ be a mapping.
+    We call the \textbf{support} of $f$ the set
+    $$\supp(f) \coloneq \overline{\{x \in X \mid f(x) \neq 0\}}.$$
+    If $\supp(f)$ is a compact subset of $X$, then we say that $f$ is \textbf{compactly supported} (or of compact support).
+    We denote by $C_c(X)$ the set of all mappings $f : X \rightarrow \RR$ of compact support.
+    It is a vector space over $\RR$.
+\end{definitionenv}
+
+\begin{propositionenv}
+    Let $(X,\mathscr{T})$ be a locally compact Hausdorff space.
+    \begin{enumerate}
+        \item Let $x \in X$, $F \subseteq X$ closed, $x \notin F$.
+            There exists a compact neighborhood $C$ of $x$ such that $F \cap C = \varnothing$.
+        \item Let $x \in X$, $V_x$ open neighborhood of $x$.
+            There exists an open neighborhood $W_x$ of $x$ such that $\bar{W}_x \subseteq V_x$ and $\bar{W}_x$ is compact.
+        \item Let $Y \subseteq X$ be compact, $V \subseteq X$ open such that $Y \subseteq V$.
+            Then there exists an open $W$ such that $\bar{W}$ is compact
+            $Y \subseteq W \subseteq \bar{W} \subseteq V.$
+    \end{enumerate}
+\end{propositionenv}
