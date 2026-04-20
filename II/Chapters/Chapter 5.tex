@@ -203,12 +203,13 @@ pattern radius = 1pt}
     If $X$ is path connected, then $X$ is connected.
 \end{propositionenv}
 \begin{proofenv}
-    We write $X$ as the union of two disjoint non-empty subsets ($X = U\cup V,\ U\cap V =\varnothing,\ U,V \neq \varnothing$) that $X$ is disconnected but path connected.
+    We prove by contradiction.
+    We write $X$ as the union of two disjoint non-empty open subsets ($X = U\cup V,\ U\cap V =\varnothing,\ U,V \neq \varnothing$) that $X$ is disconnected but path connected.
     Pick $x\in U, y \in V$ and $\gamma:[0,1]\rightarrow X$ such that $\gamma(0) = x$ and $\gamma(1) = y$.
     Then $\gamma^{-1}(U)$, $\gamma^{-1}(V)$ are disjoint open subsets of $[0,1]$ containing $0$ and $1$ respectively and $[0,1] = \gamma^{-1}(U)\cup \gamma^{-1}(V)$.
     Let
     $$ a = \sup \{t \in [0,1] \mid \interval[open right]{0}{t} \subseteq \gamma^{-1}(U)\}.$$
-    Since $\gamma^{-1}(U)$ is closed $a \in \gamma^{-1}(U)$.
+    Since $\gamma^{-1}(U)$ is closed, $a \in \gamma^{-1}(U)$.
     Since $\gamma^{-1}(U)$ is open, there exists $\varepsilon > 0$ such that $\interval[open]{a-\varepsilon}{a+\varepsilon} \subseteq \gamma^{-1}(U)$, contradiction!
 \end{proofenv}
 
@@ -342,7 +343,7 @@ pattern radius = 1pt}
     Let $e \in G$ be the neutral element,
     and $p_1 : G \times G \rightarrow G$ and $p_2 : G \times G \rightarrow G$ be the two projections,
     namely $$ p_1(a,b) = a,\ p_2(a,b) = b.$$
-    We note that $p_1$ and $p_2$ are both continuous and open.
+    We notice that $p_1$ and $p_2$ are both continuous and open.
     \begin{enumerate}
         \item The mapping $\lambda : G \rightarrow G \times G$, $x \mapsto (e,x)$ is continuous since its composite with each of the projections $p_1$ and $p_2$ is continuous.
             Therefore, the mapping $\iota : G \rightarrow G$, which is the composite 
@@ -853,13 +854,13 @@ pattern radius = 1pt}
     We call the \textbf{support} of $f$ the set
     $$\supp(f) \coloneq \overline{\{x \in X \mid f(x) \neq 0\}}.$$
     If $\supp(f)$ is a compact subset of $X$, then we say that $f$ is \textbf{compactly supported} (or of compact support).
-    We denote by $C_c(X)$ the set of all mappings $f : X \rightarrow \RR$ of compact support.
+    We denote by $C_c(X)$ the set of all continuous mappings $f : X \rightarrow \RR$ of compact support.
     It is a vector space over $\RR$.
 \end{definitionenv}
 
-\begin{propositionenv}
+\begin{propositionenv}\label{prop:5.3.4}
     Let $(X,\mathscr{T})$ be a locally compact Hausdorff space.
-    \begin{enumerate}
+    \begin{enumerate}[label=(\arabic*)]
         \item Let $x \in X$, $F \subseteq X$ closed, $x \notin F$.
             There exists a compact neighborhood $C$ of $x$ such that $F \cap C = \varnothing$.
         \item Let $x \in X$, $V_x$ open neighborhood of $x$.
@@ -869,3 +870,191 @@ pattern radius = 1pt}
             $Y \subseteq W \subseteq \bar{W} \subseteq V.$
     \end{enumerate}
 \end{propositionenv}
+\begin{proofenv}
+    \quad
+    \begin{enumerate}[label=(\arabic*)]
+        \item Let $N \ni x$ be a compact neighborhood of $x$.
+            Then $N \cap F$ is compact.
+            Since $X$ is Hausdorff,
+            there exists open $U$ and $V$ such that $x \in U$, $N \cap F \subseteq V$, and $U \cap V = \varnothing$.
+            Notice that $\bar{U} \subseteq N$, $\bar{U}$ is a closed subset of a compact set.
+            So $\bar{U}$ is also compact.
+            \begin{figure}[H]
+                \begin{center}
+
+
+                    % Pattern Info
+
+                    \tikzset{
+                    pattern size/.store in=\mcSize, 
+                    pattern size = 5pt,
+                    pattern thickness/.store in=\mcThickness, 
+                    pattern thickness = 0.3pt,
+                    pattern radius/.store in=\mcRadius, 
+                    pattern radius = 1pt}
+                    \makeatletter
+                    \pgfutil@ifundefined{pgf@pattern@name@_4c78189ts}{
+                    \pgfdeclarepatternformonly[\mcThickness,\mcSize]{_4c78189ts}
+                    {\pgfqpoint{0pt}{0pt}}
+                    {\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+                    {\pgfpoint{\mcSize}{\mcSize}}
+                    {
+                    \pgfsetcolor{\tikz@pattern@color}
+                    \pgfsetlinewidth{\mcThickness}
+                    \pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+                    \pgfpathlineto{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+                    \pgfusepath{stroke}
+                    }}
+                    \makeatother
+                    \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+                    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+                    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+                    
+                    %Shape: Regular Polygon [id:dp5439473125317085] 
+                    \draw  [line width=2.25]  (250.77,128.33) .. controls (239.5,128.33) and (228.23,128.12) .. (216.96,128.33) .. controls (209.27,128.47) and (195.48,137.96) .. (189.91,142.63) .. controls (187.41,144.73) and (183.86,145.55) .. (181.8,148.08) .. controls (179.21,151.24) and (177.2,154.83) .. (175.03,158.3) .. controls (171.2,164.42) and (167.44,188.16) .. (175.71,193.71) .. controls (194.61,206.41) and (213.93,201.93) .. (235.22,204.61) .. controls (254.7,207.07) and (272.22,212.2) .. (292.02,210.74) .. controls (308.44,209.53) and (322.51,193.23) .. (324.48,177.37) .. controls (325.22,171.45) and (326.9,166.09) .. (323.13,161.02) .. controls (315.39,150.62) and (301.57,151.37) .. (290.67,148.08) .. controls (282,145.46) and (279.35,142.81) .. (274.44,137.86) .. controls (272.23,135.64) and (260.2,127.76) .. (250.77,128.33) -- cycle ;
+                    %Shape: Regular Polygon [id:dp7360409660603735] 
+                    \draw  [line width=2.25]  (372.77,124.33) .. controls (361.5,124.33) and (350.23,124.12) .. (338.96,124.33) .. controls (331.27,124.47) and (317.48,133.96) .. (311.91,138.63) .. controls (309.41,140.73) and (305.86,141.55) .. (303.8,144.08) .. controls (301.21,147.24) and (299.2,150.83) .. (297.03,154.3) .. controls (293.2,160.42) and (289.44,184.16) .. (297.71,189.71) .. controls (316.61,202.41) and (335.93,197.93) .. (357.22,200.61) .. controls (376.7,203.07) and (394.22,208.2) .. (414.02,206.74) .. controls (430.44,205.53) and (444.51,189.23) .. (446.48,173.37) .. controls (447.22,167.45) and (448.9,162.09) .. (445.13,157.02) .. controls (437.39,146.62) and (423.57,147.37) .. (412.67,144.08) .. controls (404,141.46) and (401.35,138.81) .. (396.44,133.86) .. controls (394.23,131.64) and (382.2,123.76) .. (372.77,124.33) -- cycle ;
+                    %Shape: Regular Polygon [id:dp28888133472491795] 
+                    \draw  [line width=2.25]  (223.66,155.27) .. controls (218.18,155.27) and (212.7,155.19) .. (207.22,155.27) .. controls (203.48,155.33) and (196.78,159.32) .. (194.07,161.28) .. controls (192.86,162.16) and (191.13,162.51) .. (190.13,163.57) .. controls (188.87,164.9) and (187.89,166.41) .. (186.84,167.86) .. controls (184.97,170.43) and (183.14,180.41) .. (187.17,182.74) .. controls (196.36,188.07) and (205.75,186.19) .. (216.1,187.32) .. controls (225.57,188.35) and (234.09,190.51) .. (243.72,189.89) .. controls (251.7,189.38) and (258.55,182.54) .. (259.51,175.87) .. controls (259.86,173.39) and (260.68,171.13) .. (258.85,169.01) .. controls (255.08,164.64) and (248.37,164.95) .. (243.06,163.57) .. controls (238.85,162.47) and (237.56,161.36) .. (235.17,159.28) .. controls (234.1,158.34) and (228.25,155.03) .. (223.66,155.27) -- cycle ;
+                    %Shape: Polygon Curved [id:ds5480576438816945] 
+                    \draw  [line width=2.25] [line join = round][line cap = round] (317.23,138.71) .. controls (310.4,138.71) and (303.57,138.53) .. (296.75,138.71) .. controls (292.09,138.84) and (283.73,147.37) .. (280.36,151.56) .. controls (278.85,153.45) and (276.7,154.19) .. (275.45,156.46) .. controls (273.88,159.3) and (272.66,162.53) .. (271.35,165.64) .. controls (268.5,204) and (302.8,202.27) .. (307.81,207.26) .. controls (319.61,209.46) and (322.94,206.92) .. (334.94,205.61) .. controls (344.88,204.52) and (363.5,172) .. (341.4,156.46) .. controls (336.15,154.11) and (334.54,151.73) .. (331.57,147.28) .. controls (330.23,145.28) and (322.94,138.2) .. (317.23,138.71) -- cycle ;
+                    %Shape: Free Drawing [id:dp5753203482155477] 
+                    \draw  [line width=3] [line join = round][line cap = round] (239.09,176) .. controls (239.09,176.33) and (239.09,176.67) .. (239.09,177) ;
+                    %Shape: Path Data [id:dp2275311698121395] 
+                    \draw  [pattern=_4c78189ts,pattern size=6pt,pattern thickness=0.75pt,pattern radius=0pt, pattern color={rgb, 255:red, 0; green, 0; blue, 0}][line width=2.25]  (323.13,161.02) .. controls (326.9,166.09) and (325.22,171.45) .. (324.48,177.37) .. controls (323.61,184.38) and (320.37,191.49) .. (315.61,197.33) .. controls (309.57,195.97) and (303.62,193.68) .. (297.71,189.71) .. controls (289.44,184.16) and (293.2,160.42) .. (297.03,154.3) .. controls (297.91,152.91) and (298.75,151.49) .. (299.62,150.1) .. controls (308.35,151.74) and (317.4,153.33) .. (323.13,161.02) -- cycle ;
+                    
+                    % Text Node
+                    \draw (192.13,166.97) node [anchor=north west][inner sep=0.75pt]    {$U$};
+                    % Text Node
+                    \draw (398,108.4) node [anchor=north west][inner sep=0.75pt]    {$F=\bar{F}$};
+                    % Text Node
+                    \draw (336.94,209.01) node [anchor=north west][inner sep=0.75pt]    {$V$};
+                    % Text Node
+                    \draw (225.07,164.68) node [anchor=north west][inner sep=0.75pt]    {$x$};
+                    % Text Node
+                    \draw (205.13,105.97) node [anchor=north west][inner sep=0.75pt]    {$N$};
+                    
+                    
+                    \end{tikzpicture}
+                \end{center}
+            \end{figure}
+            Moreover, $\bar{U} \cap F \subseteq N \cap F \subseteq V$, so $\bar{U} \cap F \subseteq \bar{U} \cap V = \varnothing$.
+            We take $\bar{U}$ as the desired compact neighborhood of $x$.
+        \item Let $F = X \setminus V_x$ closed.
+            By (1), there exists a compact neighborhood $C$ of $x$ such that $C \cap F = \varnothing$.
+            We take $W_x = C^\circ$ (the interior of $C$).
+        \item For any $y \in Y$, let $W_y$ be an open neighborhood of $y$ such that $\bar{W}_y$ is compact.
+            Since $Y$ is compact, there exists a finite set $\{y_1,\cdots,y_n\}$ such that
+            $$Y \subseteq W \coloneq \bigcup_{i=1}^n W_{y_i}.$$
+            Notice that
+            $$\bar{W} = \bigcup_{i=1}^n \bar{W}_{y_i},$$
+            hence $\bar{W}$ is compact and $Y \subseteq W \subseteq \bar{W} \subseteq V.$
+    \end{enumerate}
+\end{proofenv}
+
+\begin{lemmaenv}[Urysohn's lemma]
+    Let $(X,\mathscr{T})$ be a locally compact Hausdorff space,
+    $K \subseteq X$ be compact, $U \subseteq X$ be open such that $K \subseteq U$.
+    Then there exists a continuous mapping $f : X \rightarrow [0,1]$ continuous such that
+    \begin{enumerate}
+        \item For any $x \in K$, $f(x) = 1$.
+        \item $f$ is compact support and $\supp(f) \subseteq U$.
+    \end{enumerate}
+\end{lemmaenv}
+\begin{proofenv}
+    By proposition \ref{prop:5.3.4}, there exists open $W$ such that $\bar{W}$ is compact and
+    $$K\subseteq W \subseteq \bar{W} \subseteq U.$$
+    We will construct a family $\left(U_r\right)_{r\in \QQ\cap[0,1]}$ of open subsets of $X$ such that
+    \begin{enumerate}
+        \item $K \subseteq U_1$.
+        \item For any $r \in \QQ\cap[0,1]$, $\bar{U}_{r} \subseteq W$.
+        \item For any $r,s \in \QQ \cap [0,1]$ with $r < s$, one has $U_r \subseteq \bar{U}_{s}$.
+    \end{enumerate}
+    For this purpose, we write $\QQ\cap[0,1]$ as a sequence $(r_n)_{n\in\NN}$ such that $r_0 = 1$.
+    By proposition \ref{prop:5.3.4} (3), there exists an open $U_{r_0} \subseteq X$ such that
+    $$K \subseteq U_{r_0} \subseteq \bar{U}_{r_0} \subseteq W.$$ 
+    Suppose that $U_{r_0}, U_{r_1}, \ldots, U_{r_{n}}$ are constructed.
+    We sort the elements $\{r_0,\cdots,r_n\}$ into a strictly decreasing sequence
+    $$1 = s_0 > s_1 > \cdots > s_n.$$
+    Here comes to a new element $r_{n+1}$.
+    We insert $r_{n+1}$ into the sorted sequence, find out index $i \in \{0,\cdots,n\}$ such that $s_i > r_{n+1} > s_{i+1}$.
+    We pick an open $U_{r_{n+1}}$ such that $\bar{U}_{r_{n+1}}$ is compact and
+    $$\bar{U}_{s_i} \subseteq U_{r_{n+1}} \subseteq \bar{U}_{r_{n+1}} \subseteq U_{s_{i+1}}.$$
+    If $s_n > r_{n+1}$, then let
+    $$\bar{U}_{s_n} \subseteq U_{r_{n+1}} \subseteq \bar{U}_{r_{n+1}} \subseteq W.$$
+    By induction, we construct the family $\left(U_r\right)_{r\in \QQ\cap[0,1]}$ satisfying the desired properties.
+
+    \quad For $x \in X$, we let
+    $$f(x) = \sup\{r \in \QQ\cap[0,1] \mid x \in U_r\}$$
+    with the convention that $\sup \varnothing = 0$.
+    Note
+    $$\{x \in X \mid f(x) \neq 0\} = W.$$
+    Hence $\supp(f) \subseteq W$ is compact.
+    Also $\supp(f) \subseteq \bar{W} \subseteq U$ and since $K \subseteq U_1$, $f|_K = 1$.
+    
+    \quad It remains to check that $f$ is continuous.
+    Let $t \in [0,1]$.
+    By definition,
+    $$\{x \in X \mid f(x) > t\} = \{x \in X \mid \exists r \in \QQ \cap \interval[open left] {t}{1}, x \in U_r\} = \bigcup_{r \in \QQ\cap \interval[open left] {t}{1}} U_r.$$
+    Moreover, for any $t \in \interval[open left]{0}{1}$,
+    $$\{x \in X \mid f(x) \ge t\} = \bigcap_{r \in \QQ\cap\interval[open]{0}{t}} \bar{U}_r.$$
+    Indeed, if $f(x) \ge t$, then for any $r \in \QQ \cap \interval[open]{0}{t}$, there exists $s \in \QQ$ with $r < s < t$ such that $x \in U_s \subseteq \bar{U}_r$. 
+    Conversely, if $x \in \bigcap_{r \in \QQ\cap\interval[open]{0}{t}} \bar{U}_r$, then for any $s < t$ we have $x \in \bar{U}_s$, which implies $f(x) \ge s$ for all $s < t$, hence $f(x) \ge t$.
+
+    \quad Note that the set $\{x \in X \mid f(x) > t\}$ is equal to $\bigcup_{r \in \QQ\cap\interval[open]{t}{1}} U_r$, which is open. 
+    Thus $f$ is continuous.
+
+
+    \quad Let $I = \interval[open]{a}{b}$ be an open interval,
+    where $a,b \in \RR$ with $a < b$.
+    If $a \ge 0$ and $b > 1$,
+    then 
+    $$f^{-1}(I) = \{x \in X \mid f(x) > a\}.$$
+    If $a < 0$ and $b \le 1$, then
+    $$f^{-1}(I) = \{x \in X \mid f(x) < b\}.$$
+    If $\{a,b\} \subseteq [0,1]$, then
+    $$f^{-1}(I) = \{x \in X \mid f(x) > a\} \cap \{x \in X \mid f(x) < b\}.$$
+    In all cases, $f^{-1}(I)$ is an open set of $X$.
+    Since any open set in $X$ can be written as a union of intervals.
+    We deduce that $f$ is continuous.
+\end{proofenv}
+
+\begin{corollaryenv}
+    Let $(X,\mathscr{T})$ be a locally compact Hausdorff space.
+    Then the topology $\mathscr{T}$ identifies with the coarsest topology that makes all the mappings in $C_c(X)$ continuous.
+\end{corollaryenv}
+\begin{proofenv}
+    By definition, any mapping in $C_c(X)$ is continuous with respect to $\mathscr{T}$ on $X$.
+    Let $\mathscr{T}'$ be a topology on $X$ such that any $f \in C_c(X)$ is continuous with respect to $\mathscr{T}'$.
+    Let $U \neq \varnothing$ belong to $\mathscr{T}$.
+    We want to prove that $U$ must belong to $\mathscr{T}'$.
+    
+    \quad For any $x \in X$, we pick a compact neighborhood $K_x$ of $x$ such that $K_x \subseteq U$.
+    By Urysohn's lemma, there exists $f_x \in C_c(X)$ such that $\supp(f_x) \subseteq U$ and that
+    $$K_x \subseteq V_x \coloneq \{y \in X \mid  f_x(y) > 0\}.$$
+    So,
+    $$U = \bigcup_{x \in U} K_x \subseteq \bigcup_{x \in U}V_x \subseteq U.$$
+    
+    \quad Thus, $U$ belongs to $\mathscr{T}'$.
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $(X,\mathscr{T})$ be a locally compact Hausdorff space which has a countable basis of $\mathscr{T}$.
+    We claim there exist a sequence $\left(U_n\right)_{n \in \NN}$ of open subset of $X$ such that
+    \begin{enumerate}
+        \item For any $n \in \NN$, $\bar{U}_n$ is compact and contained in $U_{n+1}$.
+        \item $\displaystyle \bigcup_{n \in \NN} U_n = X$
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    Let $\mathscr{B}$ be a countable basis of $\mathscr{T}$ and $\mathscr{B}_c = \{V \in \mathscr{B} \mid \bar{V} \text{ compact}\}$ is also countable.
+    We want to chow that $\mathscr{B}_c$ also forms a basis of $\mathscr{T}$.
+    For any $x \in U$, there exists an open $W_x \ni x$ such that $\bar{W}_x$ is compact and $W_x \subseteq \bar{W}_x \subseteq U$ (by \ref{prop:5.3.4}).
+    Since $\mathscr{B}$ is a basis of $\mathscr{T}$, there exists $V_x \in \mathscr{B}$ such that $x \in V_x \subseteq W_x$.
+    Note that $\bar{V}_x \subseteq \bar{W}_x$  and hence is compact.
+    We obtain that $V_x \in \mathscr{B}_c$.
+    Hence $\mathscr{B}_c$ forms a countable basis of $\mathscr{T}$.
+    Write
+    $$\mathscr{B}_c = \{V_n \mid n \in \NN\}.$$
+\end{proofenv}
