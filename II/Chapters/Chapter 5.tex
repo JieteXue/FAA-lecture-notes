@@ -632,7 +632,7 @@ pattern radius = 1pt}
     So $S$ is a homogenous of the group $O(V,\langle\ ,\ \rangle)$.
 \end{exampleenv}
 
-\begin{propositionenv}
+\begin{propositionenv}\label{prop:5.2.17}
     Let $(G,*,\mathscr{T})$ be a topological group,
     $X$ be a topological space,
     $\varphi : G \times X \rightarrow X$ a continuous left action and $\varphi$ transitive.
@@ -1039,7 +1039,7 @@ pattern radius = 1pt}
     \quad Thus, $U$ belongs to $\mathscr{T}'$.
 \end{proofenv}
 
-\begin{propositionenv}
+\begin{propositionenv}\label{prop:5.3.7}
     Let $(X,\mathscr{T})$ be a locally compact Hausdorff space which has a countable basis of $\mathscr{T}$.
     We claim there exist a sequence $\left(U_n\right)_{n \in \NN}$ of open subset of $X$ such that
     \begin{enumerate}
@@ -1049,7 +1049,7 @@ pattern radius = 1pt}
 \end{propositionenv}
 \begin{proofenv}
     Let $\mathscr{B}$ be a countable basis of $\mathscr{T}$ and $\mathscr{B}_c = \{V \in \mathscr{B} \mid \bar{V} \text{ compact}\}$ is also countable.
-    We want to chow that $\mathscr{B}_c$ also forms a basis of $\mathscr{T}$.
+    We want to show that $\mathscr{B}_c$ also forms a basis of $\mathscr{T}$.
     For any $x \in U$, there exists an open $W_x \ni x$ such that $\bar{W}_x$ is compact and $W_x \subseteq \bar{W}_x \subseteq U$ (by \ref{prop:5.3.4}).
     Since $\mathscr{B}$ is a basis of $\mathscr{T}$, there exists $V_x \in \mathscr{B}$ such that $x \in V_x \subseteq W_x$.
     Note that $\bar{V}_x \subseteq \bar{W}_x$  and hence is compact.
@@ -1057,4 +1057,147 @@ pattern radius = 1pt}
     Hence $\mathscr{B}_c$ forms a countable basis of $\mathscr{T}$.
     Write
     $$\mathscr{B}_c = \{V_n \mid n \in \NN\}.$$
+    We construct $\left(U_n\right)_{n\in \NN}$ in a recursive way.
+    First, $U_0 = V_0$.
+    Suppose that $U_0,\cdots,U_n$ are such that $\bar{U}_{i}$ is compact, $V_i \subseteq U_i$, and
+    $$\forall i \in \{0,\cdots,n-1\},\ \bar{U}_{i} \subseteq U_{i+1}.$$
+    We want to construct $U_{n+1}$.
+    Note that $\bar{U}_{n} \cup \bar{V}_{n+1}$ is compact,
+    and by proposition \ref{prop:5.3.4} (3), there exists an open $U_{n+1}$ such that $\bar{U}_{n+1}$ is compact and 
+    $$\bar{U}_{n} \cup \bar{V}_{n+1} \subseteq U_{n+1}.$$
+    Note that
+    $$X = \bigcup_{n \in \NN} V_{n} = \bigcup_{n \in \NN} U_{n} \subseteq X.$$
+\end{proofenv}
+
+\begin{lemmaenv}\label{lem:5.3.8}
+    Let $X$ be a topological space with a countable topological basis.
+    Any open cover $\{U_i\}_{i\in I}$ of $X$ has a countable subcover.
+\end{lemmaenv}
+\begin{proofenv}
+    Let $(V_n)_{n\in \NN}$ be a family of open sets that forms a topological basis of $X$.
+    Let $\{U_i\}_{i\in I}$ be any of open cover of $X$.
+    For any $x \in X$, we choose $i(x) \in I$ such that $x \in U_{i(x)}$ and let $n(x) \in \NN$ be such that $x \in V_{n(x)}$.
+    Let
+    $$A = \{n(x) \mid x \in X\} \subseteq \NN,\quad X = \bigcup_{m \in A} V_{m}.$$
+    For any $m \in A$, we pick some $x_m \in X$ such that $n(x_m) = m$.
+    $$X = \bigcup_{m \in A} V_{m} \subseteq \bigcup_{m \in A} U_{i(x_m)}.$$
+\end{proofenv}
+
+\begin{propositionenv}\label{prop:5.3.9}
+    Let $X$ be a non-empty locally compact Hausdorff space.
+    Let $(F_n)_{n\in \NN}$ be a family of closed subsets of $X$.
+    If 
+    $$X = \bigcup_{n \in \NN} F_n,$$
+    then there exists $N \in \NN$ such that $F_{N}^{\circ}$ is not empty.
+\end{propositionenv}
+\begin{proofenv}
+    Suppose, by contradiction that $F^{\circ}_{n} = \varnothing$ for any $n \in \NN$.
+    
+    \quad Let $U_0$ be open, such that $\bar{U}_0$ is compact.
+    Suppose that non-empty open subsets $U_0,\cdots,U_n$ have been chosen in a way that $\bar{U}_{i}$ is compact and contained in $U_{i-1}\setminus F_{i}$ (open).
+    
+    \quad We construct $U_{n+1}$ such that $\bar{U}_{n+1} \subseteq U_{n}\setminus F_{n+1}$.
+    $(\bar{U}_{n})_{n \in \NN}$ is a decreasing sequence of compact subsets and hence $\displaystyle \bigcap_{n \in \NN} \bar{U}_{n} \neq \varnothing$.
+    
+    \quad This contradicts
+    $$\varnothing \neq X = \bigcup_{n \in \NN} F_n.$$
+    (Because $x \in \bigcap_{n \in \NN} U_n \Rightarrow x \notin F_{n}$.)
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $(G,*,\mathscr{T})$ be a topological group,
+    $X$ be a topological space and $\varphi : G \times X \rightarrow X$ continuous left action which is \textit{transitive}.
+    Assume that both $G$ and $X$ are locally compact with countable topological basis.
+    Let $x_0 \in X$ and let $H = \stab(x_0)$.
+    
+    \quad Then the mapping
+    $$\begin{array}{rrcl}
+        f : & G/H & \rightarrow & X\\
+        & a * H & \longmapsto & \varphi (a,x_0)
+    \end{array}$$
+    is a homeomorphism.
+\end{propositionenv}
+\begin{proofenv}
+    By proposition \ref{prop:5.2.17}, $f$ is continuous bijection,
+    so we only have to prove that $f$ is open.
+
+    \quad Let $V \neq \varnothing$ be an open subset of $G$.
+    Let $x \in f (V)$ and let $s \in G$ such that $f(s) = x$.
+    By proposition \ref{prop:5.2.10} (1), there exists an open $U_{0} \ni e$,
+    $$s * \iota(U_{0}) * U_{0} \subseteq V.$$
+    Let $U \ni e$ be such that $\bar{U}$ is connect and $\bar{U} \subseteq U_0$.
+    Since $G$ has a countable topological basis, then by lemma \ref{lem:5.3.8}, an open cover $(a * U)_{a \in G}$ has an countable subcover $(a_n * U)_{n \in \NN}$.
+    Note that
+    $$G = \bigcup_{n \in \NN} (a_n * U) = \bigcup_{n \in \NN} a_{n} * \bar{U}.$$
+    We have that
+    $$X = \bigcup_{n \in \NN} L_{a_{n}} \left(f(\bar{U})\right).$$
+    Since $\bar{U}$ is compact, so is $L_{a_{n}} \left(f(\bar{U})\right)$.
+    By proposition \ref{prop:5.3.9}, there exists $n \in \NN$ such that $L_{a_{n}}\left(f(U)\right)$ has a non-empty interior.
+    We conclude that
+    $$ W \coloneq f(\bar{U})^\circ \text{ is non-empty.}$$
+    Let $y \in W$ and $b \in \bar{U}$ such that $f(b) = y$.
+    Then
+    $$\begin{aligned}
+        & x = f(s) = L_{s * \iota(b)} = L_{s * \iota(b)}(y)\\
+        \in & L_{s * \iota(b)}(W) \subseteq f(s * \iota(\bar{U}) * \bar{U}) \subseteq f(s * \iota(U_0) * U_0) \subseteq f(V).
+    \end{aligned}$$
+    This shows that $L_{s * \iota(b)}(W)$ is an open neighborhood of $x$ in $f(V)$.
+    We conclude that $f(V)$ is open in $X$.
+\end{proofenv}
+
+
+\section{Radon Measure}
+
+
+\begin{definitionenv}
+    Let $(X,\mathscr{T})$ be a locally compact Hausdorff space such that has a countable topological basis.
+    We call \textbf{positive linear functional} on $X$ any linear mapping $I : C_c (X) \rightarrow \RR$,
+    such that for any $f \in C_c(X)$,
+    if $\forall x \in X$, $f(x) \ge 0$, then $I(f) \ge 0$.
+\end{definitionenv}
+
+\begin{theoremenv}
+    Let $(X,\mathscr{T})$ be a locally compact Hausdorff space such that has a countable topological basis and $I : C_c(X) \rightarrow \RR$ be a positive linear functional.
+    
+    \quad Then $I$ is an integral operator and determines a unique $\sigma$-finite Borel measure $\mu_{I}$ on $X$ such that
+    $$\forall f \in C_c(X), \ \int_{X} f(x) \mu_{I} (\dd x) = I(f).$$
+    The measure $\mu_{I}$ is called the \textbf{Radon measure} associated with $I$ on the Borel $\sigma$-algebra of $X$.
+\end{theoremenv}
+\begin{proofenv}
+    Let $f, g \in C_{c}(X)$,
+    then $\inf\{f,g\}$ is still continuous and
+    $$\supp(\inf\{f,g\}) \subseteq \supp(f) \cup \supp(g).$$
+    Hence, 
+    $$\inf\{f,g\} \in C_c(X).$$
+    i.e. $C_c(X)$ is a Riesz space.
+    
+    \quad Let $(f_n)_{n \in \NN}$ be a decreasing sequence in $C_c(X)$ that converges pointwise to the constant zero mapping.
+    (We want to show that $\displaystyle \lim_{n \rightarrow \infty}I(f_n) = 0$ to show that $I$ is an integral operator.)
+    Let $K$ be the support of $f_0$ ($\supp (f_n) \subseteq K$ for any $n$),
+    $K$ is compact,
+    so by the Urysohn's lemma,
+    one can pick $f : X \rightarrow [0,1]$ such that $f \in C_c(X)$ and $f(x) = 1$ for any $x \in K$.
+    Then for any $n \in \NN$,
+    $$\forall x \in X, f_n(x) \le \|f_{n}\|_{L^\infty} f(x),$$
+    where $\displaystyle \|f_{n}\|_{L^\infty} = \sup_{x \in X} |f_n(x)|$.
+    Since $I$ is a positive linear functional,
+    $$I(f_n) \le \|f_{n}\|_{L^\infty} I(f(x)).$$
+    We want to check that
+    $$\lim_{n \rightarrow \infty}I(f_n) = 0.$$
+    Since the sequence $\left(\|f_{n}\|_{L^\infty}\right)_{n \in \NN}$ is decreasing and bounded from below (by $0$),
+    it converges to some $c \in \RR$.
+
+    \quad Assume by contradiction that $c > 0$.
+    Then there exists $\varepsilon > 0$ such that $\|f_{n}\|_{L^\infty} > \varepsilon$ for all $n \in \NN$.
+    Let
+    $$K_{n} \coloneq \{x \in X \mid f_{n} (x) \ge \varepsilon\}$$
+    The sequence $\left(K_{n}\right)_{n \in \NN}$ is a decreasing sequence of non-empty compact sets of $X$.
+    Thus
+    $$\bigcap_{n \in \NN} K_{n} \neq \varnothing.$$
+    This contradicts, the assumption that $(f_n)_{n\in \NN}$ converges to the constant $0$ function pointwise.
+    To conclude, we want to use Carath\'eodory's (extension) theorem.
+    (It gives us the existence of $\mu_I$.)
+
+    \quad By proposition \ref{prop:5.3.7}, we have $(U_n)_{n \in \NN}$ family of open sets $\bar{U}_{i} \subseteq U_{i+1}$, $\bar{U}_{i}$ compact,
+    and $\displaystyle X = \bigcup_{n \in \NN} U_{n}$.
 \end{proofenv}

@@ -55,18 +55,18 @@ If $\mathcal{F}$ is a non-degenerate filter such that, for any non-degenerate fi
 \end{remark}
 \begin{propositionenv}
     Let $X$ be a set. Then
-    $$\mathcal{F}=\{U\in \mathscr{P}(X)\mid X\backslash U \text{ is finite}\}$$
+    $$\mathcal{F}=\{U\in \mathscr{P}(X)\mid X\setminus U \text{ is finite}\}$$
     is a filter on $X$. We call it the \textbf{Fréchet filter} of $X$.
 \end{propositionenv}
 \begin{proofenv}
     \quad
     \newline
-    If $(U,V)\in \mathcal{F}^2, X\backslash (U\cap V)=(X\backslash U)\cup (X\backslash V)$, is finite.
+    If $(U,V)\in \mathcal{F}^2, X\setminus (U\cap V)=(X\setminus U)\cup (X\setminus V)$, is finite.
     \newline
-    If $U\in \mathcal{F}, W\in \mathscr{P}(X), U\subseteq W$, then $(X\backslash W)\subseteq (X\backslash U)$ is finite.
+    If $U\in \mathcal{F}, W\in \mathscr{P}(X), U\subseteq W$, then $(X\setminus W)\subseteq (X\setminus U)$ is finite.
 \end{proofenv}
 \begin{exampleenv}
-    Let $I\subseteq \NN$ be an infinite set. Let $J\subseteq \NN$ be infinite, then $\{I_{\ge j}\mid j\in J \}$ is a filter basis that generates the Fréchet filter of $I$. $\{I_{\ge j}\mid j\in J\}$ is a totally ordered subset of $\mathscr{P}(I)$, so it is a filter basis. For any $j\in J, I\backslash I_{\ge j}=I_{<j}$ is finite. Let $U\in $ Fréchet filter of $I$, $I\backslash U$ is finite. There exists $j\in J$ such that $\forall i\in I\backslash U,i<j$. So $I\backslash U\subseteq I_{<j}, U\supseteq I\backslash I_{j<}=I_{\ge j}$ .
+    Let $I\subseteq \NN$ be an infinite set. Let $J\subseteq \NN$ be infinite, then $\{I_{\ge j}\mid j\in J \}$ is a filter basis that generates the Fréchet filter of $I$. $\{I_{\ge j}\mid j\in J\}$ is a totally ordered subset of $\mathscr{P}(I)$, so it is a filter basis. For any $j\in J, I\setminus I_{\ge j}=I_{<j}$ is finite. Let $U\in $ Fréchet filter of $I$, $I\setminus U$ is finite. There exists $j\in J$ such that $\forall i\in I\setminus U,i<j$. So $I\setminus U\subseteq I_{<j}, U\supseteq I\setminus I_{j<}=I_{\ge j}$ .
 \end{exampleenv}
 \begin{exampleenv}
     Let $X$ be a set. We call \textbf{pseudometric} on $X$ any mapping
@@ -306,7 +306,7 @@ $$\liminf_{n\in I,n\rightarrow+\infty}a_n=\sup_{j\in J}\inf_{n\in I_{\ge j}}a_n.
     \quad
     (2) $(\RR_{>0},\cdot,\le)$.
     \quad
-    (3) $(\NN\backslash\{0\},\cdot,\mid)$.
+    (3) $(\NN\setminus\{0\},\cdot,\mid)$.
 \end{exampleenv}
 \begin{remark}
     \quad
@@ -381,7 +381,7 @@ $$\liminf_{n\in I,n\rightarrow+\infty}a_n=\sup_{j\in J}\inf_{n\in I_{\ge j}}a_n.
     Let $(S,*,\le)$ be a partially ordered semigroup. Suppose that $(S,\le )$ has no greatest element and has no least element. Let $\bot$ and $\top$ be formal elements and let 
     $$\bar{S}=S\cup\{\bot,\top\}.$$
     We extend $\le $ to $\bar{S}$ by letting $\bot<x<\top,\forall x\in S$. We extend $*$ to a mapping
-    $$\left(\bar{S}\times\bar{S}\right)\backslash \{(\bot,\top),(\top,\bot)\}\longrightarrow \bar{S},$$
+    $$\left(\bar{S}\times\bar{S}\right)\setminus \{(\bot,\top),(\top,\bot)\}\longrightarrow \bar{S},$$
     such that 
     $$\forall x\in S\cup\{\top\},x*\top=\top*x=\top.$$
     $$\forall x\in S\cup\{\bot\},x*\bot=\bot*x=\bot.$$
@@ -496,7 +496,7 @@ $$\liminf_{n\in I,n\rightarrow+\infty}a_n=\sup_{j\in J}\inf_{n\in I_{\ge j}}a_n.
 \begin{proofenv}
     For any $(a,b)\in A\times B$, if $a*b$ id defined, then 
     $$a*b\le \sup(A)*\sup(B).$$
-    So $\sup(A)*\sup(B)$ is an upper bound of $A*B$. If $\bot\in \{\sup(A),\sup(B)\}$, then $A*B$ has $\bot$ as an upper bound. So $\sup(A*B)=\bot=\sup(A)*\sup(B)$. We suppose that $\bot\notin \{\sup(A)*\sup(B)\}$. Thus $A\backslash\{\bot\}\not=\varnothing$, $B\backslash\{\bot\}\not=\varnothing$. Suppose that $\sup(A)=\top$. Take $b\in B\backslash\{\bot\}$.
+    So $\sup(A)*\sup(B)$ is an upper bound of $A*B$. If $\bot\in \{\sup(A),\sup(B)\}$, then $A*B$ has $\bot$ as an upper bound. So $\sup(A*B)=\bot=\sup(A)*\sup(B)$. We suppose that $\bot\notin \{\sup(A)*\sup(B)\}$. Thus $A\setminus\{\bot\}\not=\varnothing$, $B\setminus\{\bot\}\not=\varnothing$. Suppose that $\sup(A)=\top$. Take $b\in B\setminus\{\bot\}$.
     \[\sup(A*B)\ge\sup(A)*\{b\}=\sup(A)*b=\top.\]
     So $\sup(A*B)=\top=\sup(A)*\sup(B)$. Similarly, if $\sup(B)=\top$, then 
     $$\sup(A*B)=\top=\sup(A)*\sup(B).$$
@@ -590,7 +590,7 @@ $$\limsup_{\mathcal{F}}f*g\ge \limsup_{\mathcal{F}}f*\liminf_{\mathcal{F}}g.$$
 \end{propositionenv}
 \begin{proofenv}
     Let $$\mathcal{B}_1=\{A\in \mathcal{F}\mid f^s(A)\ge g^s(A)\},$$
-    $$\mathcal{B}_2=\mathcal{F}\backslash\mathcal{B}_1=\{A\in\mathcal{F}\mid f^s(A)<g^s(A)\}.$$
+    $$\mathcal{B}_2=\mathcal{F}\setminus\mathcal{B}_1=\{A\in\mathcal{F}\mid f^s(A)<g^s(A)\}.$$
     Case 1. $\forall U\in \mathcal{F},\exists A\in \mathcal{B}_1, A\subseteq U$.
     $$\limsup_\mathcal{F}(f\vee g)=\inf_{\mathcal{F}}(f\vee g)^s(U)=\inf_{A\in \mathcal{B}_1}(f\vee g)^s(A)=\inf _{A\in \mathcal{B}_1}f^s(A)=\limsup_{\mathcal{F}}f.$$
     Case 2. $\exists W\in \mathcal{F}, \forall A\in \mathcal{B}_1,A\nsubseteq  W$. If $\mathcal{B}_1=\varnothing, \mathcal{B}_2=\mathcal{F}.\quad (U\in \mathcal{F},U\in\mathcal{B}_2)$ If $A\in \mathcal{B}_1, \forall U\in \mathcal{F}, U\subseteq W, U\cap A\notin \mathcal{B}_1 $, so $U\cap A\in \mathcal{B}_2$ and $U\cap A\subseteq U$. ($U$ contains an elements in $\mathcal{B}_2$.)

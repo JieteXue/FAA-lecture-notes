@@ -275,7 +275,7 @@ $\dagger$This chapter was first written in pre-course,  then added some sections
     \newline
     (i) if $\{a, b\}\in I$,  then $I=[a, b]$.
     \newline
-    (ii) if $a\in I,  b\notin I, I\subseteq\interval[open right]{a}{b}=[a, b]\backslash\{b\}$. Let $x\in \interval[open right]{a}{b}$,  since $x<b$,  $x$ is not an upper bound of $I$. Hence $\exists y\in I,  x<y$. Note that $[a, y]\subseteq I$,  hence $x\in I$,  therefore $\interval[open right]{a}{b}\subseteq I$. Similarly ,  is $b\in I, a\notin I$,  then $\interval[open left]{a}{b}=I$.
+    (ii) if $a\in I,  b\notin I, I\subseteq\interval[open right]{a}{b}=[a, b]\setminus\{b\}$. Let $x\in \interval[open right]{a}{b}$,  since $x<b$,  $x$ is not an upper bound of $I$. Hence $\exists y\in I,  x<y$. Note that $[a, y]\subseteq I$,  hence $x\in I$,  therefore $\interval[open right]{a}{b}\subseteq I$. Similarly ,  is $b\in I, a\notin I$,  then $\interval[open left]{a}{b}=I$.
     \newline
     (iii) if $\{a, b\}\cap I=\varnothing$,  then $I\subseteq\interval[open]{a}{b}$. $\forall x\in \interval[open]{a}{b}, \exists s, t\in I, s<x<t$. Hence $x\in [s, t]\subseteq I$. Therefore $\interval[open]{a}{b}=I$.
 
@@ -409,9 +409,9 @@ Here Huayi gave a notation which have been given in Notation\ref{notation4.5.1},
 % Text Node
 \draw (438, 123.4) node [anchor=north west][inner sep=0.75pt]    {$f( C)$};
 % Text Node
-\draw (75, 124.4) node [anchor=north west][inner sep=0.75pt]    {$X\backslash C$};
+\draw (75, 124.4) node [anchor=north west][inner sep=0.75pt]    {$X\setminus C$};
 % Text Node
-\draw (350, 168.4) node [anchor=north west][inner sep=0.75pt]    {$Y\backslash f( C)$};
+\draw (350, 168.4) node [anchor=north west][inner sep=0.75pt]    {$Y\setminus f( C)$};
 % Text Node
 \draw (197, 236.4) node [anchor=north west][inner sep=0.75pt]    {$g$};
 
@@ -426,9 +426,9 @@ Here Huayi gave a notation which have been given in Notation\ref{notation4.5.1},
     Let $X$ and $Y$ be sets. Assume that there exists injective mappings $f:X\rightarrow Y$ and $g:Y\rightarrow X$. Then $X$ and $Y$ are equipotent.
 \end{theoremenv}
 \begin{proofenv}
-    Consider $\Phi:\mathscr{P}(X)\rightarrow\mathscr{P}(X), A\mapsto X\backslash g(Y\backslash f(A))$. If $(A, B)\in \mathscr{P}(X)^2$ such that $A\subseteq B$,  then $f(A)\subseteq f(B), Y\backslash f(A)\supseteq  Y\backslash f(B), g(Y\backslash f(A))\supseteq g(Y\backslash f(A)) , \Phi(A)\subseteq\Phi(B)$. So $\Phi$ is increasing. By Knaster-Tarski theorem,  $\exists C\in \mathscr{P}(X), C=\Phi(C)$. Then $h:X\rightarrow Y, h(x):=\left\{\begin{matrix}
+    Consider $\Phi:\mathscr{P}(X)\rightarrow\mathscr{P}(X), A\mapsto X\setminus g(Y\setminus f(A))$. If $(A, B)\in \mathscr{P}(X)^2$ such that $A\subseteq B$,  then $f(A)\subseteq f(B), Y\setminus f(A)\supseteq  Y\setminus f(B), g(Y\setminus f(A))\supseteq g(Y\setminus f(A)) , \Phi(A)\subseteq\Phi(B)$. So $\Phi$ is increasing. By Knaster-Tarski theorem,  $\exists C\in \mathscr{P}(X), C=\Phi(C)$. Then $h:X\rightarrow Y, h(x):=\left\{\begin{matrix}
  f(x), x\in C\\
-g^{-1}(x), x\in X\backslash C
+g^{-1}(x), x\in X\setminus C
 \end{matrix}\right.$
 is a bijection.
 \end{proofenv}
@@ -491,16 +491,16 @@ $$A=\bigcup_{x\in A}\hat{x}=\sup_{(\mathscr{P}(X), \subseteq)}\{\hat{x}\mid x\in
     Let $(X, \le)$ be a totally ordered set,  $I, J$ be initial segments of $X$. Either $I\subseteq J$ or $J\subseteq I$.
 \end{propositionenv}
 \begin{proofenv}
-    Assume that $I\backslash J\not=\varnothing$, take $x\in I\backslash J$, for any $y\in J$,  if $y\not\le x $, then $x<y$ and hence $x\in X_{<y}\subseteq J$, contradiction. Therefore $y\le x$. Then $y=x\in I$ or $y\in X_{<x}\subseteq I$.
+    Assume that $I\setminus J\not=\varnothing$, take $x\in I\setminus J$, for any $y\in J$,  if $y\not\le x $, then $x<y$ and hence $x\in X_{<y}\subseteq J$, contradiction. Therefore $y\le x$. Then $y=x\in I$ or $y\in X_{<x}\subseteq I$.
 \end{proofenv}
 \begin{propositionenv}
     Let $(X, \le)$ be a well-ordered set. $I$ be an initial segment of $X$,  such that $I\not=X$. There is a unique $a\in X$ such that $I=X_{<a}$.
 \end{propositionenv}
 \begin{proofenv}
-    $X\backslash I\not=\varnothing$ Let $a=\min (X\backslash I)$. By definition, $I\subseteq X_{<a}$. In fact,  $\forall y\in I$ if $y\not< a $,  then $a\le y$.
+    $X\setminus I\not=\varnothing$ Let $a=\min (X\setminus I)$. By definition, $I\subseteq X_{<a}$. In fact,  $\forall y\in I$ if $y\not< a $,  then $a\le y$.
     Since $I$ is an initial segment $a\in I$,  contradiction.
     \newline
-    Conversely,  if $x\in X_{<a}$,  then $x\notin X\backslash I$. Since otherwise $a\le x$. Therefore $x\in I$. Uniqueness, $\forall a\in X, a=\min(X\backslash X_{<a})=\min(X_\leq a)$. Hence $X_{<a}=X_{<b}\Rightarrow a=b$.
+    Conversely,  if $x\in X_{<a}$,  then $x\notin X\setminus I$. Since otherwise $a\le x$. Therefore $x\in I$. Uniqueness, $\forall a\in X, a=\min(X\setminus X_{<a})=\min(X_\leq a)$. Hence $X_{<a}=X_{<b}\Rightarrow a=b$.
 \end{proofenv}
 \begin{propositionenv}
     Let $(X, \le)$ be a partially ordered set,  $\Lambda$ be a non-empty set,  and $(I_\lambda)_{\lambda\in \Lambda}$ be a family of initial segments of $X$. Then 
@@ -574,7 +574,7 @@ $$A=\bigcup_{x\in A}\hat{x}=\sup_{(\mathscr{P}(X), \subseteq)}\{\hat{x}\mid x\in
     \newline
     (1) If $X$ and $Y$ are finite,  then $X\cup Y$ is finite.(resp. countable)
     \newline
-    (2) If $X$ is infinite and $Y$ is finite,  then $X\backslash Y$ is infinite.(resp. uncountable)
+    (2) If $X$ is infinite and $Y$ is finite,  then $X\setminus Y$ is infinite.(resp. uncountable)
 \end{propositionenv}
 \begin{proofenv}
     \quad
@@ -582,7 +582,7 @@ $$A=\bigcup_{x\in A}\hat{x}=\sup_{(\mathscr{P}(X), \subseteq)}\{\hat{x}\mid x\in
     (1) Let $f:X\rightarrow \NN$ and $g:Y\rightarrow \NN$ be injective mappings. We construct $h:X\cup Y\rightarrow \NN$ such that 
     $$h(x)=\left\{\begin{matrix}
      2f(x)\,  &x\in X\\
-    2g(x)+1\, &x\in Y\backslash X
+    2g(x)+1\, &x\in Y\setminus X
     \end{matrix}\right.$$
     $h$ is then injective,  and $h$ is bounded if $f$ and $g$ are bounded.
     \newline
@@ -590,13 +590,13 @@ $$A=\bigcup_{x\in A}\hat{x}=\sup_{(\mathscr{P}(X), \subseteq)}\{\hat{x}\mid x\in
     \newline
     either $(x, y)\in X^2$ and $h(x)=2f(x)=h(y)=2f(y)$ if and only if $x=y$.
     \newline
-    or $(x, y)\in (Y\backslash X)^2$ and $h(x)=h(y)\Rightarrow x=y$.
+    or $(x, y)\in (Y\setminus X)^2$ and $h(x)=h(y)\Rightarrow x=y$.
     \newline
-    or $x\in X, y\in Y\backslash X.h(x)\not=h(y)$ (So $h(x)=h(y)\Rightarrow x=y$).
+    or $x\in X, y\in Y\setminus X.h(x)\not=h(y)$ (So $h(x)=h(y)\Rightarrow x=y$).
     \newline
-    or $y\in X, x\in Y\backslash X , h(x)\not=h(y)$.
+    or $y\in X, x\in Y\setminus X , h(x)\not=h(y)$.
     \newline
-    (2)  Assume that $X\backslash Y$ is finite,  then $X=(X\backslash Y)\cup Y$ is also finite.
+    (2)  Assume that $X\setminus Y$ is finite,  then $X=(X\setminus Y)\cup Y$ is also finite.
 \end{proofenv}
 \begin{notationenv}
     If $f:X\rightarrow X$  is a mapping. Then $f^0$ denotes $\mathrm{Id}_X$. For $n\in\NN_{\ge 1}$, $f^n$ denotes $\underset{n}{\underbrace{f\circ f\circ \dots \circ f}}$. 
@@ -660,7 +660,7 @@ $$A=\bigcup_{x\in A}\hat{x}=\sup_{(\mathscr{P}(X), \subseteq)}\{\hat{x}\mid x\in
     (2) If $I$ is NOT bounded from above,  there exists an increasing bijection from $\NN$ to $I$. (We say that the cardinality of $I$ is $\aleph_0$) 
 \end{propositionenv}
 \begin{proofenv}
-    We construct in a recursive way a family of elements in $I$. Let $x_0=\min(I)$. If $x_0, \dots , x_n$ are chosen (with $x_0<\dots<x_n$) we pick $x_{n+1}=\min(I\backslash\{x_0, \dots, x_n\})$. We slop at $N$ if $\{x_0, \dots, x_N\}=I$. Thus we obtain the increasing bijection needed by the proposition.
+    We construct in a recursive way a family of elements in $I$. Let $x_0=\min(I)$. If $x_0, \dots , x_n$ are chosen (with $x_0<\dots<x_n$) we pick $x_{n+1}=\min(I\setminus\{x_0, \dots, x_n\})$. We slop at $N$ if $\{x_0, \dots, x_N\}=I$. Thus we obtain the increasing bijection needed by the proposition.
     \newline
     ``Uniqueness" for (2): If $f:\NN\rightarrow I, g:\NN\rightarrow I$ are increasing bijections,  then $f^{-1}\circ g:\NN\rightarrow\NN$ and $g^{-1}\circ f:\NN\rightarrow\NN$ are increasing bijections. So $f^{-1}\circ g=\mathrm{Id}_{\NN}$. Hence $f=g$.
     \newline
@@ -684,7 +684,7 @@ $$A=\bigcup_{x\in A}\hat{x}=\sup_{(\mathscr{P}(X), \subseteq)}\{\hat{x}\mid x\in
 \begin{proofenv}
     \quad
     \newline
-    (1)$\Rightarrow$(2) We construct a sequence $(x_n)_{n\in \NN}$ in $X$ as follows. $X\not=\varnothing$. We pick arbitrary $x_0\in X$. Suppose that distinct elements $x_0, \dots,  x_n$ of $X$ are chosen. The set $X\backslash\{x_0, \dots, x_n\}\not=\varnothing$ since otherwise $X=\{x_0, \dots, x_n\}$ is finite. We pick $x_{n+1}\in X\backslash\{x_0, \dots, x_n\}, \,  x_0, \dots, x_{n+1}$ are distinct. The mapping $\NN\rightarrow X,  n\mapsto x_n$ is injective.
+    (1)$\Rightarrow$(2) We construct a sequence $(x_n)_{n\in \NN}$ in $X$ as follows. $X\not=\varnothing$. We pick arbitrary $x_0\in X$. Suppose that distinct elements $x_0, \dots,  x_n$ of $X$ are chosen. The set $X\setminus\{x_0, \dots, x_n\}\not=\varnothing$ since otherwise $X=\{x_0, \dots, x_n\}$ is finite. We pick $x_{n+1}\in X\setminus\{x_0, \dots, x_n\}, \,  x_0, \dots, x_{n+1}$ are distinct. The mapping $\NN\rightarrow X,  n\mapsto x_n$ is injective.
     \newline
     (2)$\Rightarrow$(3) Let $f:\NN\rightarrow X$ be injective. We define $g:X\rightarrow X$.
     $$g(x):=
@@ -694,7 +694,7 @@ x&, &x\notin f(\NN).
 \end{matrix}\right. $$
 $g(X)\not=X$ since $f(0)\notin g(X)$ If $x\notin f(\NN), g(x)=x\notin f(\NN)$,  so $g(x)\not=f(0)$. If $x=f(n),  g(x)=f(n+1)\not=f(0)$ since $f$ is injective.
 \newline
-(3)$\Rightarrow$(2) Let $g:X\rightarrow X$ be injective with $g(X)\not=X$. We pick $x_0\in X\backslash g(X)$. We define a sequence $(x_n)_{n\in\NN}$ by letting $x_{n+1}:=g(x_n)$. Since $g$ is injective,  $x_n\in g^n(X)\backslash g^{n+1}(X)$.
+(3)$\Rightarrow$(2) Let $g:X\rightarrow X$ be injective with $g(X)\not=X$. We pick $x_0\in X\setminus g(X)$. We define a sequence $(x_n)_{n\in\NN}$ by letting $x_{n+1}:=g(x_n)$. Since $g$ is injective,  $x_n\in g^n(X)\setminus g^{n+1}(X)$.
 Otherwise $\exists y\in X$,  such that $x_n=g^{n}(x_0)=g^{n+1}(y)$. Hence $x_0=g(y)\in g(x)$ contradiction. Then $x_0, x_1, \dots, $ are distinct,  which defines an injective mapping $\NN\rightarrow X, n\mapsto x_n$.
 \newline
 (2)$\Rightarrow$(1) If $X$ is finite,  $\exists g:X\rightarrow\NN$ injective with $g(x)$ bounded. Then $\NN\rightarrow X\overset{g}{\rightarrow}\NN$ is injective with $h(\NN)$ bounded from above.

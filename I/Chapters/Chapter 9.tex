@@ -102,7 +102,7 @@ $(\mathscr{L}(E,F),\pl \cdot\pl) $ is a normed vector space over $K$.
     $$\pl\eta\pl=\sup_{x\in E,0<\pl x\pl_E\le r}\frac{\pl\eta(x)\pl_F}{\pl x\pl_E}=\sup_{\substack{x\in E\\0<\pl x\pl_E< r}}\frac{\pl\eta(x)\pl_F}{\pl x\pl_E}.$$
 \end{lemmaenv}
 \begin{proofenv}[of Lemma]
-    $\pl\eta\pl\ge \sup_{x\in E,0<\pl x\pl_E< r}\frac{\pl\eta(x)\pl_F}{\pl x\pl_E}$. $\forall y\in E\backslash\{0\}$, $\pl a^N y\pl_{E}=\left|a\right|^N\pl y\pl_E<r$.
+    $\pl\eta\pl\ge \sup_{x\in E,0<\pl x\pl_E< r}\frac{\pl\eta(x)\pl_F}{\pl x\pl_E}$. $\forall y\in E\setminus\{0\}$, $\pl a^N y\pl_{E}=\left|a\right|^N\pl y\pl_E<r$.
     $$\frac{\pl \eta(a^N y)\pl_F}{\pl a^N y\pl_E}=\frac{\left|a\right|^N\cdot\pl \eta(y)\pl_F}{\left|a\right|^N\cdot\pl y\pl_E}=\frac{\pl \eta(y)\pl_F}{\pl y\pl_E}\le \sup_{\substack{x\in E\\0<\pl x\pl_E< r}}\frac{\pl\eta(x)\pl_F}{\pl x\pl_E}.$$
 \end{proofenv}
 \begin{proofenv}[of Proposition]
@@ -214,7 +214,7 @@ $(\mathscr{L}(E,F),\pl \cdot\pl) $ is a normed vector space over $K$.
     Let $(K,\left|\ \cdot\ \right|)$ be a complete valued field. 
     \newline
     Let $(E_1,\pl\cdot\pl_{E_1}),\ldots,(E_n,\pl\cdot\pl_{E_n}),(F,\pl\cdot\pl_F)$ be normed vector spaces over $K$. For any $\varphi\in \mathrm{Hom}_{K}^{(n)}(E_1\times\ldots\times E_n,F)$, we define
-    $$\pl \varphi\pl \coloneq \sup_{\substack{x_i\in E_i\backslash\{0\}\\i\in\{1,\ldots,n\}}}\frac{\pl \varphi(x_1,\ldots,x_n)\pl_F}{\pl x_1\pl_{E_1}\cdots \pl x_n\pl_{E_n}}.$$
+    $$\pl \varphi\pl \coloneq \sup_{\substack{x_i\in E_i\setminus\{0\}\\i\in\{1,\ldots,n\}}}\frac{\pl \varphi(x_1,\ldots,x_n)\pl_F}{\pl x_1\pl_{E_1}\cdots \pl x_n\pl_{E_n}}.$$
     We denote by $\mathscr{L}(E_1\times\dots\times E_n,F)$ the set
     $$\{\varphi\in \mathrm{Hom}_{K}^{(n)}(E_1\times\dots\times E_n,F)\mid \pl \varphi\pl<+\infty\}.$$
     $\mathscr{L}^{(n)}(E_1\times\ldots\times E_n,F)$ is a normed vector space of $\mathrm{Hom}_{K}^{(n)}(E_1\times\ldots\times E_n,F)$, and the norm is $\pl\cdot\pl$. 
@@ -294,8 +294,8 @@ $(\mathscr{L}(E,F),\pl \cdot\pl) $ is a normed vector space over $K$.
     Since 
     $$\pl\varphi(x_1,\ldots,x_n)\pl_F\le \left(\pl\varphi\pl\cdot\pl x_1\pl\ldots\pl x_i\pl\right)\pl x_{i+1}\pl\ldots\pl x_n\pl.$$
     \begin{align*}
-        \pl f(\varphi)\pl&=\sup_{x_j\in E_j\backslash\{0\},j=1,\ldots,i}\frac{\pl \varphi(x_1,\ldots,x_i,\cdot)\pl}{\pl x_1\pl_{E_1}\cdots \pl x_n\pl_{E_i}}\\
-        &=\sup_{x_j\in E_j\backslash\{0\},j=1,\ldots,i}\sup_{x_k\in E_k\backslash\{0\},k=i+1,\ldots,n}\frac{\pl \varphi(x_1,\ldots,x_n)\pl_F}{\pl x_1\pl_{E_1}\cdots \pl x_n\pl_{E_n}}\\
+        \pl f(\varphi)\pl&=\sup_{x_j\in E_j\setminus\{0\},j=1,\ldots,i}\frac{\pl \varphi(x_1,\ldots,x_i,\cdot)\pl}{\pl x_1\pl_{E_1}\cdots \pl x_n\pl_{E_i}}\\
+        &=\sup_{x_j\in E_j\setminus\{0\},j=1,\ldots,i}\sup_{x_k\in E_k\setminus\{0\},k=i+1,\ldots,n}\frac{\pl \varphi(x_1,\ldots,x_n)\pl_F}{\pl x_1\pl_{E_1}\cdots \pl x_n\pl_{E_n}}\\
         &=\pl \varphi\pl.
     \end{align*}
     Hence $f$ is injective. ($\ker(f)=\{0\}$)
@@ -676,7 +676,7 @@ We fix a complete non-trivially valued field \defm{9.6.1}{$(K,\left|\ \cdot\ \ri
     Let $X$ be a set, we denote by $\mathfrak{S}_X$ the element of all bijection from $X$ to $X$. $(\mathfrak{S}_X,\circ)$ forms a group.
     The identity mapping $\mathrm{Id}_X$ is the neutral element of $(\mathfrak{S}_X,\circ)$. $(\mathfrak{S}_X,\circ)$ is called the symmetric group of $X$. The elements of $(\mathfrak{S}_X,\circ)$ are called permutations of $X$.
 
-    \quad Let $n\in \NN_{\ge 2}$, $x_1,\ldots,x_n$ be distinct elements of $X$. We denote by $(x_1\ x_2\cdots x_n)$ the element of $\mathfrak{S}_X$ that sends $x_i$ to $x_{i+1}$, $(i\in \{1,\ldots,n-1\})$, $x_n$ to $x_1$, $y\in X\backslash\{x_1,\ldots,x_n\}$ to $y$ itself. This element is called an $n$-cycle.
+    \quad Let $n\in \NN_{\ge 2}$, $x_1,\ldots,x_n$ be distinct elements of $X$. We denote by $(x_1\ x_2\cdots x_n)$ the element of $\mathfrak{S}_X$ that sends $x_i$ to $x_{i+1}$, $(i\in \{1,\ldots,n-1\})$, $x_n$ to $x_1$, $y\in X\setminus\{x_1,\ldots,x_n\}$ to $y$ itself. This element is called an $n$-cycle.
     A $2$-cycle is also called a transposition.
 \end{definitionenv}
 \begin{remark}
@@ -930,7 +930,7 @@ So $\sum_{n\in \NN}x_n$ diverges.
     Let $\dis \Omega=\bigcap_{n\in\NN}\Omega_n$, then $\Omega$ is dense in $X$.
 \end{theoremenv}
 \begin{proofenv}
-    Suppose that $\Omega$ is not dense. Let $x_0\in X\backslash \overline{\Omega}$, exists $\varepsilon>0$ such that $B(x_0,\varepsilon)\subseteq X\backslash \overline{\Omega}$.
+    Suppose that $\Omega$ is not dense. Let $x_0\in X\setminus \overline{\Omega}$, exists $\varepsilon>0$ such that $B(x_0,\varepsilon)\subseteq X\setminus \overline{\Omega}$.
 
     Let $r_0=\varepsilon$. We construct in a recursive way sequence $(x_n)_{n\in \NN}\in X^\NN$ and $(r_n)_{n\in \NN}\in \RR_{\ge 0}^n$ as follows.
 
@@ -944,9 +944,9 @@ So $\sum_{n\in \NN}x_n$ diverges.
     Let $(X,\dd)$ be a non-empty complete metric space and $(Y_n)_{n\in \NN}$ be a family of closed subsets of $X$ such that $X=\bigcup_{n\in \NN}Y_n$. Then exists $n\in \NN$ such that $Y^\circ\neq\varnothing$.
 \end{corollaryenv}
 \begin{proofenv}
-    Let $\Omega_n=X\backslash Y_n$. Suppose that $\forall n\in \NN$, $Y_n^\circ=\varnothing$.
-    Then $\overline{\Omega}_n=X\backslash Y_n^\circ=X$. Thus $\Omega\coloneq \bigcap_{n\in \NN}\Omega_n$ is dense in $X$. Namely, $X=\Omega$. So
-    $$\varnothing=X\backslash \overline{\Omega}=\left(X\backslash \Omega\right)^\circ=\left(X\backslash \bigcap_{n\in \NN}\Omega_n\right)^\circ=\left(\bigcup_{n\in \NN}Y_n\right)^\circ=X^\circ=X.$$
+    Let $\Omega_n=X\setminus Y_n$. Suppose that $\forall n\in \NN$, $Y_n^\circ=\varnothing$.
+    Then $\overline{\Omega}_n=X\setminus Y_n^\circ=X$. Thus $\Omega\coloneq \bigcap_{n\in \NN}\Omega_n$ is dense in $X$. Namely, $X=\Omega$. So
+    $$\varnothing=X\setminus \overline{\Omega}=\left(X\setminus \Omega\right)^\circ=\left(X\setminus \bigcap_{n\in \NN}\Omega_n\right)^\circ=\left(\bigcup_{n\in \NN}Y_n\right)^\circ=X^\circ=X.$$
     Contradiction.
 \end{proofenv}
 

@@ -240,7 +240,7 @@ $$ \forall \omega\in \Omega,\ \sup\{f_1,\cdots,f_n\}(\omega)=\max\{f_1(\omega),\
     \begin{enumerate}
         \item If $(f,g)\in S^{\downarrow}\times S^{\downarrow}$ or $(f,g)\in S^{\uparrow}\times S^{\uparrow}$,
         $$ f\le g\Rightarrow I(f)\le  I(g), I(f+g)=I(f)+I(g),$$
-        $$I(\lambda f)=\lambda I(f), \forall \lambda\in \RR\backslash\{0\}.$$
+        $$I(\lambda f)=\lambda I(f), \forall \lambda\in \RR\setminus\{0\}.$$
         \item If $(f_n)_{n\in\NN}\in (S^{\downarrow})^{\NN}$ is a decreasing sequence, then $$ I(\lim_{n\rightarrow +\infty}f_n)=\lim_{n\rightarrow +\infty}I(f_n).$$
     \end{enumerate}
 \end{remark}
@@ -487,7 +487,7 @@ $$ \forall \omega\in \Omega,\ \sup\{f_1,\cdots,f_n\}(\omega)=\max\{f_1(\omega),\
     we say that $\varphi$ is \textbf{semipositive}.
 
     If
-    $$ \forall x\in E\backslash\{0\}, \ \varphi(x,x)>0,$$
+    $$ \forall x\in E\setminus\{0\}, \ \varphi(x,x)>0,$$
     we say that $\varphi$ is \textbf{positive define}.
 \end{definitionenv}
 \begin{exampleenv}
@@ -564,7 +564,7 @@ $$ \forall \omega\in \Omega,\ \sup\{f_1,\cdots,f_n\}(\omega)=\max\{f_1(\omega),\
     (2) $\forall (A,B)\in \mathcal{C}\times \mathcal{C}$, $A\cap B\in \mathcal{C}$.
     \newline
     (3) $\forall (A,B)\in \mathcal{C}\times \mathcal{C}$, there exists a family $C_1,\cdots,C_n$ of pairwise disjoint sets in $\mathcal{C}$ such that 
-    $$B\backslash A=\bigcup_{i=1}^{n}C_i.$$
+    $$B\setminus A=\bigcup_{i=1}^{n}C_i.$$
 \end{definitionenv}
 \begin{exampleenv}
     $\Omega=\RR$, $\mathcal{C}=\{\interval[open left]{a}{b}\mid (a,b)\in \RR^2,a\le b\}$.
@@ -573,32 +573,32 @@ $$ \forall \omega\in \Omega,\ \sup\{f_1,\cdots,f_n\}(\omega)=\max\{f_1(\omega),\
     \newline
     (2) $\interval[open left]{a}{b}\cap \interval[open left]{c}{d}\neq \varnothing\Leftrightarrow c<b\ (a\le c)$. When $c<b$, $\interval[open left]{a}{b}\cap \interval[open left]{c}{d}=\interval[open left]{c}{b}$.
     \newline
-    (3) $B\backslash A=B\backslash\left(A\cap B\right)$. We may assume $A\subseteq B$. If $A=\interval[open left]{a}{b}$, $B=\interval[open left]{c}{d}$, $A\subseteq B$ implies $c\le a$, $b\le d$.
+    (3) $B\setminus A=B\setminus\left(A\cap B\right)$. We may assume $A\subseteq B$. If $A=\interval[open left]{a}{b}$, $B=\interval[open left]{c}{d}$, $A\subseteq B$ implies $c\le a$, $b\le d$.
 \end{exampleenv}
 \begin{propositionenv}
     Let $\Omega$ be a set and $\mathcal{C}$ be a semiring on $\Omega$.
     \newline
-    (1) Let $B\in \mathcal{C}$. Let $A_1,\cdots,A_n$ be sets in $\mathcal{C}$. Then $B\backslash \left(A_1\cup \cdots\cup A_n\right)$ can be written as the union of  a finite family of pairwise disjoint sets in $\mathcal{C}$.
+    (1) Let $B\in \mathcal{C}$. Let $A_1,\cdots,A_n$ be sets in $\mathcal{C}$. Then $B\setminus \left(A_1\cup \cdots\cup A_n\right)$ can be written as the union of  a finite family of pairwise disjoint sets in $\mathcal{C}$.
     \newline
     (2) Let $\Theta$ be a finite subset of $\mathcal{C}$. There exists a finite family $\Phi$ of pairwise disjoint sets in $\mathcal{C}$ such that each element of $\Theta$ can be written as the union of some elements of $\Phi$.
     \newline
     (3) Let $\mathcal{A}$ be the set
     $$ \{A\in \mathscr{P}(\Omega)\mid \exists n\in\NN, \exists (A_1,\cdots,A_n)\in \mathcal{C}^n, A=A_1\cup \cdots\cup A_n\}.$$
     Then any $A\in\mathcal{A}$ can be written as the union of a finite family of pairwise disjoint sets in $\mathcal{C}$.
-    In particular, $\forall (A,A')\in \mathcal{A}^2$, $\{A\cup A',A\cap A', A\backslash A'\}\subseteq \mathcal{A}$.
+    In particular, $\forall (A,A')\in \mathcal{A}^2$, $\{A\cup A',A\cap A', A\setminus A'\}\subseteq \mathcal{A}$.
 \end{propositionenv}
 \begin{proofenv}
     \ \newline
     (1) We reason by induction on $n$. The case where $n=0$ is trivial.
-    Suppose that $\dis B\backslash(A_1,\cup\cdots,\cup A_{n-1})=\bigcup_{i=1}^{n}C_i$, where $C_1,\cdots,C_m$ are pairwise disjoint sets in $\mathcal{C}$. Then 
-    $$B\backslash(A_1,\cup\cdots,\cup A_{n})=\bigcup_{i=1}^{n}C_i\backslash A_n.$$
-    Each $C_i\backslash A_n$ is of the form $\dis \bigcup_{j=1}^{d_i}D_{ij}$ with $D_{i,1},\cdots,D_{i,d_i}$  in $\mathcal{C}$, pairwise disjoint. So
-    $$ B\backslash(A_1,\cup\cdots,\cup A_{n})=\bigcup_{i=1}^{n}\bigcup_{j=1}^{d_i}D_{ij}.$$
+    Suppose that $\dis B\setminus(A_1,\cup\cdots,\cup A_{n-1})=\bigcup_{i=1}^{n}C_i$, where $C_1,\cdots,C_m$ are pairwise disjoint sets in $\mathcal{C}$. Then 
+    $$B\setminus(A_1,\cup\cdots,\cup A_{n})=\bigcup_{i=1}^{n}C_i\setminus A_n.$$
+    Each $C_i\setminus A_n$ is of the form $\dis \bigcup_{j=1}^{d_i}D_{ij}$ with $D_{i,1},\cdots,D_{i,d_i}$  in $\mathcal{C}$, pairwise disjoint. So
+    $$ B\setminus(A_1,\cup\cdots,\cup A_{n})=\bigcup_{i=1}^{n}\bigcup_{j=1}^{d_i}D_{ij}.$$
     \newline
     (2) Suppose that $\Theta=\{B_1,\cdots,B_n\}$. For any $i\in \{1,\cdots,n\}$, one has
-    $$ B_i=\bigcup_{i\in J\subseteq\{1,\cdots,n\}}\left(\bigcap_{j\in J}B_j\right)\backslash\left(\bigcup_{k\in \{1,\cdots,n\}\backslash J} B_k\right).$$
+    $$ B_i=\bigcup_{i\in J\subseteq\{1,\cdots,n\}}\left(\bigcap_{j\in J}B_j\right)\setminus\left(\bigcup_{k\in \{1,\cdots,n\}\setminus J} B_k\right).$$
     For any $J\subseteq\{1,\cdots,n\}$, $J\neq \varnothing$, we let
-    $$ B_j\coloneq \left(\bigcap_{j\in J}B_j\right)\backslash \left(\bigcup_{k\in\{1,\cdots,n\}\backslash J}B_k\right)= \left(\bigcap_{j\in J}B_j\right)\bigcap \left(\bigcap_{k\in \{1,\cdots,n\}\backslash J} \complement_\Omega B_k\right).$$
+    $$ B_j\coloneq \left(\bigcap_{j\in J}B_j\right)\setminus \left(\bigcup_{k\in\{1,\cdots,n\}\setminus J}B_k\right)= \left(\bigcap_{j\in J}B_j\right)\bigcap \left(\bigcap_{k\in \{1,\cdots,n\}\setminus J} \complement_\Omega B_k\right).$$
     $ \left(B_J\right)_{\substack{J\subseteq \{1,\cdots,n\}\\ J\neq \varnothing}}$ are pairwise disjoint. By (1), each $B_J$ is the union of fa finite family of pairwise disjoint elements $C_{J,1},\cdots,C_{J,d_J}$ in $\mathcal{C}$. Let 
     $$\Phi=\{C_{J,l}\mid  l\in \{1,\cdots,d_J\}, J\subseteq \{1,\cdots,n\}, J\neq\varnothing\}.$$
     (3) By (2), there exists a finite subset $\Phi$ of pairwise disjoint elements of $\mathcal{C}$ such that each $A_i$ is the union of some sets in $\Phi$. Then 
@@ -691,7 +691,7 @@ $$ \forall \omega\in \Omega,\ \sup\{f_1,\cdots,f_n\}(\omega)=\max\{f_1(\omega),\
     \newline
     (3) For any decreasing sequence $(A_n)_{n\in\NN}\in \mathcal{A}^{\NN}$ such that $\dis \bigcap_{n\in\NN}A_n=\varnothing$,
     $$ \lim_{n\rightarrow +\infty} \mu(A_n)=0.$$
-    (4) $I:S\longrightarrow \RR$, ($\RR$-linear mapping) that tends $\mathbbm{1}_A$, $A\in \mathcal{C}$ to $\mu(A)$ is an integral operator.
+    (4) $I:S\longrightarrow \RR$, ($\RR$-linear mapping) that sends $\mathbbm{1}_A$, $A\in \mathcal{C}$ to $\mu(A)$ is an integral operator.
 \end{propositionenv}
 \begin{proofenv}
     \ \newline
@@ -706,7 +706,7 @@ $$ \forall \omega\in \Omega,\ \sup\{f_1,\cdots,f_n\}(\omega)=\max\{f_1(\omega),\
         &=\lim_{N\rightarrow +\infty} \sum_{n=0}^{N}\sum_{i=0}^{m}\sum_{j=0}^{d_n}\mu\left(B_i\cap C_{n,j}\right)\\
         &= \lim_{N\rightarrow +\infty} \mu(A_n)=\sum_{n\in\NN}\mu(A_n).
     \end{align*}
-    (2)$\Rightarrow$(3) Let $n\in\NN$, $B_n=A_n\backslash A_{n+1}\in \mathcal{A}$. Then $\mu(A_n)=\mu(B_n)+\mu(A_{n+1})$.
+    (2)$\Rightarrow$(3) Let $n\in\NN$, $B_n=A_n\setminus A_{n+1}\in \mathcal{A}$. Then $\mu(A_n)=\mu(B_n)+\mu(A_{n+1})$.
     $$ \mu(A_0)=\mu(B_0)+\mu(B_1)+\cdots+\mu(B_{N-1})+\mu(A_N),\ \forall N\in \NN.$$
     $A_0$ is a disjoint union of $(B_n)_{n\in\NN}$,
     $$\mu(A_0)=\lim_{N\rightarrow +\infty} \sum_{n=0}^{N-1}\mu(B_n)=\lim_{N\rightarrow +\infty}\left(\mu(A_0)-\mu(A_N)\right).$$
@@ -743,8 +743,8 @@ $$ \forall \omega\in \Omega,\ \sup\{f_1,\cdots,f_n\}(\omega)=\max\{f_1(\omega),\
     $\overline{B}_n\subseteq A_n$ connected and non-empty, $I_\varphi(\mathbbm{1}_{A_n})-I_\varphi(\mathbbm{1}_{B_n})\le \frac{\varepsilon}{2^n}.$ $\forall n\in\NN$, $C_n\coloneq B_0 \cap \cdots \cap B_n\subseteq\overline{B_0}\cap \cdots \cap \overline{B}_n$ ($\varnothing=\bigcap_{n\in\NN} A_n\supseteq \bigcap_{n\in\NN}\overline{B}_n=\varnothing$). 
     So 
     $$ \bigcap_{n=0}^{N}=\overline{B}_n=\varnothing.$$
-    $ B_n\backslash C_n=B_n\backslash \left(B_n\cap C_{n-1}\right)=B_n\backslash C_{n-1}\subseteq A_n\backslash C_{n-1}\subseteq A_{n-1}\backslash C_{n-1}$.
-    $$ I_\varphi(\mathbbm{1}_{A_n\backslash C_n})=I_\varphi\left(\mathbbm{1}_{B_n\backslash C_n}\right)+I_\varphi\left(\mathbbm{1}_{A_n\backslash B_n}\right)\le I_\varphi\left(\mathbbm{1}_{A_{n-1}\backslash C_{n-1}}\right)+\frac{\varepsilon}{2^n}.$$
+    $ B_n\setminus C_n=B_n\setminus \left(B_n\cap C_{n-1}\right)=B_n\setminus C_{n-1}\subseteq A_n\setminus C_{n-1}\subseteq A_{n-1}\setminus C_{n-1}$.
+    $$ I_\varphi(\mathbbm{1}_{A_n\setminus C_n})=I_\varphi\left(\mathbbm{1}_{B_n\setminus C_n}\right)+I_\varphi\left(\mathbbm{1}_{A_n\setminus B_n}\right)\le I_\varphi\left(\mathbbm{1}_{A_{n-1}\setminus C_{n-1}}\right)+\frac{\varepsilon}{2^n}.$$
     $\forall n\in \NN$, $I_\varphi(\mathbbm{1}_{A_n})\le \frac{\varepsilon}{2^n}+\frac{\varepsilon}{2^{n-1}}+\cdots+\frac{\varepsilon}{2}\le \varepsilon.$
     So $\dis \lim_{n\rightarrow +\infty}I_\varphi(\mathbbm{1}_{A_n})=0.$
 \end{proofenv}
@@ -755,10 +755,10 @@ $$ \forall \omega\in \Omega,\ \sup\{f_1,\cdots,f_n\}(\omega)=\max\{f_1(\omega),\
     \newline
     (1) For any $I$ countable, $(A_i)_{i\in I}\in \mathcal{A}^{I}$, $\dis \bigcup_{i\in I}A_i\in \mathcal{A}$.
     \newline
-    (2) $A\in \mathcal{A}$, then $\Omega\backslash A\in \mathcal{A}$.
+    (2) $A\in \mathcal{A}$, then $\Omega\setminus A\in \mathcal{A}$.
     \newline
     Note that (1) implies that $\varnothing\in \mathcal{A}$, in addition of (2), $\Omega\in \mathcal{A}$.
-    $$ \bigcap_{i\in I}A_i=\Omega \backslash \left(\bigcup_{i\in I}\left(\Omega\backslash A_i\right)\right)\in \mathcal{A}.$$
+    $$ \bigcap_{i\in I}A_i=\Omega \setminus \left(\bigcup_{i\in I}\left(\Omega\setminus A_i\right)\right)\in \mathcal{A}.$$
     If $\mathcal{A}$ is a $\sigma$-algebra on set $\Omega$, then we call $(\Omega,\mathcal{A})$ a \textbf{measurable space}.
 \end{definitionenv}
 \begin{propositionenv}
@@ -767,8 +767,8 @@ $$ \forall \omega\in \Omega,\ \sup\{f_1,\cdots,f_n\}(\omega)=\max\{f_1(\omega),\
 \begin{proofenv}
     Let $(A_i)_{i\in I}\in \mathcal{A}^I$. $\forall j\in J$, $(A_i)_{i\in I}\in \mathcal{A}_j^I$, so $\bigcup_{i\in I} A_i\in \mathcal{A}_j$ and hence
     $$ \bigcup_{i\in I} A_i\in \bigcap_{j\in J}\mathcal{A}_j=\mathcal{A}.$$
-    $A\in \mathcal{A}$, so $\forall j\in J$, $A\in \mathcal{A}_j$, so $\Omega\backslash A\in A_j$ and hence
-    $$ \Omega\backslash A\in \bigcap_{j\in J} \mathcal{A}_j =\mathcal{A}.$$
+    $A\in \mathcal{A}$, so $\forall j\in J$, $A\in \mathcal{A}_j$, so $\Omega\setminus A\in A_j$ and hence
+    $$ \Omega\setminus A\in \bigcap_{j\in J} \mathcal{A}_j =\mathcal{A}.$$
 \end{proofenv}
 \begin{exampleenv}
     Let \(\Omega\) be a set. Then \(\mathscr{P}(\Omega)\) is a \(\sigma\)-algebra on \(\Omega\). Moreover, if \(\mathcal{C}\) is a subset of \(\mathscr{P}(\Omega)\), we denote by \(\sigma(\mathcal{C})\) the intersection of all \(\sigma\)-algebras containing \(\mathcal{C}\). It is a \(\sigma\)-algebra on \(\Omega\), which is the smallest \(\sigma\)-algebra containing \(\mathcal{C}\). We call it the \(\sigma\)-algebra generated by \(\mathcal{C}\).
@@ -841,8 +841,8 @@ Therefore, all intervals that are open in $\interval[open left]{-\infty}{+\infty
     \quad Let $I$ be a countable set, $(A_i)_{i\in I}\in \mathcal{A}'^{I}$,
     $$ f^{-1}\left(\bigcup_{i\in I}A_i\right)=\bigcup_{i\in I}f^{-1}(A_i)\in \mathcal{A}.$$
     So, $\dis \bigcup_{i\in I}A_i\in \mathcal{A}'$. For $A\in \mathcal{A}'$,
-    $$ f^{-1}\left(X\backslash A\right)=\Omega\backslash f^{-1}(A)\in \mathcal{A}.$$
-    So, $X\backslash A\in \mathcal{A}'$. Thus $\mathcal{A}'$ is a $\sigma$-algebra, $\sigma(\mathcal{C})\subseteq \mathcal{A}'$.
+    $$ f^{-1}\left(X\setminus A\right)=\Omega\setminus f^{-1}(A)\in \mathcal{A}.$$
+    So, $X\setminus A\in \mathcal{A}'$. Thus $\mathcal{A}'$ is a $\sigma$-algebra, $\sigma(\mathcal{C})\subseteq \mathcal{A}'$.
 \end{proofenv}
 \begin{definitionenv}
     Let $\Omega$ be a set, $(E_i,\mathcal{E}_i)_{i\in \Theta}$ be measurable spaces. 
@@ -942,7 +942,7 @@ Therefore, all intervals that are open in $\interval[open left]{-\infty}{+\infty
 
     Let $\mathcal{A}=\{A\in\mathscr{P}(\Omega)\mid \mathbbm{1}_{A}\in \mathcal{H}\}$.
     \newline
-    (1) If $A\in \mathcal{A}$, $\mathbbm{1}_{\Omega\backslash A}=\mathbbm{1}_{\Omega}-\mathbbm{1}_{A}\in \mathcal{H}$.
+    (1) If $A\in \mathcal{A}$, $\mathbbm{1}_{\Omega\setminus A}=\mathbbm{1}_{\Omega}-\mathbbm{1}_{A}\in \mathcal{H}$.
     \newline
     (2) If $(A_i)_{i\in \Theta}\in \mathcal{A}^\Theta$, with $\Theta$ countable, $\dis A=\bigcup_{i\in \Theta}A_i$. $\mathbbm{1}_{A}=\sup_{i\in \Theta}\mathbbm{1}_{A_i}\in\mathcal{H}$.
     Therefore $\mathcal{A}$ is a $\sigma$-algebra contained in $\sigma(\mathcal{H})$.
@@ -981,7 +981,7 @@ Therefore, all intervals that are open in $\interval[open left]{-\infty}{+\infty
     \newline
     (2) Let $\mathcal{A}=\{A\in \mathscr{P}(\Omega)\mid \mathbbm{1}_{A}\in \mathcal{L}^\uparrow\}$.
     \begin{enumerate}
-        \item If $(A,B)\in\mathcal{A}^2$, $B\backslash A\in \mathcal{A}$.
+        \item If $(A,B)\in\mathcal{A}^2$, $B\setminus A\in \mathcal{A}$.
         \item If $\Theta$ is countable and $(A_i)_{i\in \Theta}\in \mathcal{A}^{\Theta}$, then $\dis \bigcup_{i\in \Theta}A_i\in \mathcal{A}$.
     \end{enumerate}
     (3) Let $f\in \mathcal{L}^\uparrow$, $f\ge 0$. Suppose that
@@ -1002,7 +1002,7 @@ Therefore, all intervals that are open in $\interval[open left]{-\infty}{+\infty
     (2)
     \begin{enumerate}
         \item $$ \mathbbm{1}_{A\cap B}=\inf\{\mathbbm{1}_A,\mathbbm{1}_B\}\in \mathcal{L}^\uparrow.$$
-            $$ \mathbbm{1}_{B\backslash A} =\mathbbm{1}_{B}-\mathbbm{1}_{A\cap B}\in \mathcal{L}^\uparrow (\text{by (1)}).$$
+            $$ \mathbbm{1}_{B\setminus A} =\mathbbm{1}_{B}-\mathbbm{1}_{A\cap B}\in \mathcal{L}^\uparrow (\text{by (1)}).$$
         \item If $(A,B)\in \mathcal{A}^2$, then
         $$ \mathbbm{1}_{A\cup B}=\sup\{\mathbbm{1}_{A}, \mathbbm{1}_{B}\}\in \mathcal{L}^\uparrow.$$
         So $A\cup B\in \mathcal{A}$. The case where $\Theta$ is finite is true.
@@ -1016,7 +1016,7 @@ Therefore, all intervals that are open in $\interval[open left]{-\infty}{+\infty
         So, $\{0<f<t\}\in \mathcal{A}$.
 
 (4)
-Let $$f_n = \sum_{k=1}^{n2^n-1} \frac{k}{2^n} \mathbbm{1}_{\{ \frac{k}{2^n} \leq f < \frac{k+1}{2^n} \}}+ n \mathbbm{1}_{\{ f \geq n \}}=\sum_{k=1}^{n2^n-1} \frac{k}{2^n} \mathbbm{1}_{A_{\frac{k+1}{2}}\backslash A_{\frac{k}{2^n}}} + n \mathbbm{1}_{B\backslash A}\in \mathcal{L}^\uparrow. $$
+Let $$f_n = \sum_{k=1}^{n2^n-1} \frac{k}{2^n} \mathbbm{1}_{\{ \frac{k}{2^n} \leq f < \frac{k+1}{2^n} \}}+ n \mathbbm{1}_{\{ f \geq n \}}=\sum_{k=1}^{n2^n-1} \frac{k}{2^n} \mathbbm{1}_{A_{\frac{k+1}{2}}\setminus A_{\frac{k}{2^n}}} + n \mathbbm{1}_{B\setminus A}\in \mathcal{L}^\uparrow. $$
 Since \( f \) is the limit of \( (f_n)_{n \in \mathbb{N}} \), we obtain \( f \in \mathcal{L}^\uparrow \).
 \end{proofenv}
 \begin{remark}
@@ -1026,6 +1026,7 @@ Since \( f \) is the limit of \( (f_n)_{n \in \mathbb{N}} \), we obtain \( f \in
     $$ \inf\{f,g\}\in \mathcal{L}^1(I)^{\uparrow}\text{ and } I\left(\inf\{f,g\}\right)\le I(f)<+\infty.$$
     So, $\inf\{f,g\}\in \mathcal{L}^{1}(I)$ by Beppo Levi's theorem.
 \end{remark}
+\newpage
 
 \section{Measure Space}
 \begin{definitionenv}
@@ -1041,7 +1042,7 @@ Since \( f \) is the limit of \( (f_n)_{n \in \mathbb{N}} \), we obtain \( f \in
     Let $(\Omega,\mathcal{A},\mu)$ be a measure space. Let $(A_n)_{n\in\NN}$ be an increasing sequence in $\mathcal{A}$ and $\dis A=\bigcup_{n\in \NN}A_n$.
     Then 
     $$ \mu(A)=\lim_{n\rightarrow +\infty} \mu(A_n).$$
-    In fact, if we let $B_n=A_n\backslash A_{n-1}, (n\ge 1)$, $B_0,\cdots,B_n$ are pairwise disjoint and $B_0=A_0$.
+    In fact, if we let $B_n=A_n\setminus A_{n-1}, (n\ge 1)$, $B_0,\cdots,B_n$ are pairwise disjoint and $B_0=A_0$.
     $$ A_n=B_0\cup \cdots \cup B_n, \mu(A_n)=\mu(B_0)+\cdots+ \mu(B_n).$$
     So,
     $$ \lim_{n\rightarrow +\infty} \mu(A_n)=\sum_{n\in \NN} \mu(B_n)=\mu\left(\bigcup_{n\in\NN}B_n\right)=\mu(A).$$
@@ -1053,8 +1054,8 @@ Since \( f \) is the limit of \( (f_n)_{n \in \mathbb{N}} \), we obtain \( f \in
 \end{propositionenv}
 \begin{proofenv}
     $\mu(\varnothing)=0\Rightarrow \varnothing\in \mathcal{C}$.
-    If $(A,B)\in \mathcal{C}\times \mathcal{C}$, $\mu(A\cap B)\le \mu (A)$ ($\mu(A)=\mu(A\cap B)+\mu(A\backslash B)$).
-    So $A\cap B\in \mathcal{C}$, $A\backslash B\in \mathcal{C}$.
+    If $(A,B)\in \mathcal{C}\times \mathcal{C}$, $\mu(A\cap B)\le \mu (A)$ ($\mu(A)=\mu(A\cap B)+\mu(A\setminus B)$).
+    So $A\cap B\in \mathcal{C}$, $A\setminus B\in \mathcal{C}$.
 \end{proofenv}
 \begin{definitionenv}
     Let $(\Omega,\mathcal{A},\mu)$ be a measure space, 
@@ -1065,9 +1066,9 @@ Since \( f \) is the limit of \( (f_n)_{n \in \mathbb{N}} \), we obtain \( f \in
     If $f\in \mathcal{L}^1(\Omega, \mathcal{A},\mu)$, we denote by 
     $$ \int_{\Omega} f \dd\mu \text{ or } \int_{\Omega} f(\omega) \mu(\dd\omega)$$
     the valued of $I(f)$. If 
-    $$ f:\Omega\longrightarrow \RR\cup\{+\infty\}$$
+    $f:\Omega\longrightarrow \RR\cup\{+\infty\}$
     is $\mathcal{A}$-measurable and bounded from below by the same element of $\mathcal{L}^1(\Omega,\mathcal{A},\mu)$.
-    When $f\notin \mathcal{L}^1(\Omega,\mathcal{A},\mu)$. By convention, $\int_{\Omega} f \dd\mu\coloneq +\infty$.
+    When $f\notin \mathcal{L}^1(\Omega,\mathcal{A},\mu)$. By convention, $\displaystyle \int_{\Omega} f \dd\mu\coloneq +\infty$.
 \end{definitionenv}
 \begin{propositionenv}
     For any $A\in \mathcal{A}$, $\dis \int_{\Omega} \mathbbm{1}_A \dd\mu=\mu(A)$.
@@ -1093,7 +1094,7 @@ Since \( f \) is the limit of \( (f_n)_{n \in \mathbb{N}} \), we obtain \( f \in
     (1) Let $f:\Omega\longrightarrow \RR_{\ge 0}$ be an $\mathcal{A}$-measurable mapping.
     If $f\in \mathcal{L}^1(\Omega,\mathcal{A},\mu)$, then $\forall t\in \RR_{\ge 0}$, $\mu(\{\omega\in \Omega \mid f(\omega)\ge t\})<+\infty$.
     \newline
-    (2) Let $f,g$ be measurable mappings from $\Omega$ to $\RR$ such that $f\le g$. If $g\in \mathcal{L}^1(\Omega,\mathcal{A},\mu)$ then $f\in \mathcal{L}^1(\Omega,\mathcal{A},\mu)$
+    (2) Let $f,g$ be measurable mappings from $\Omega$ to $\RR$ such that $|f|\le |g|$. If $g\in \mathcal{L}^1(\Omega,\mathcal{A},\mu)$ then $f\in \mathcal{L}^1(\Omega,\mathcal{A},\mu)$
     \newline
     (3) An $\mathcal{A}$-measurable mapping $f:\Omega \longrightarrow \RR$ belongs to $\mathcal{L}^1(\Omega,\mathcal{A},\mu)$ if and only if $|f|\in \mathcal{L}^{1}(\Omega,\mathcal{A},\mu)$.
 \end{propositionenv}
@@ -1115,7 +1116,7 @@ Since \( f \) is the limit of \( (f_n)_{n \in \mathbb{N}} \), we obtain \( f \in
     Therefore, (by monotone class theorem) $f\in \mathcal{L}^1(I)^\uparrow$.
     Hence $I(f)\le I(g)<+\infty$. So $f\in \mathcal{L}^(I)$.
     \newline
-    (3) $\Rightarrow$: $|f|=\sup\{f,0\}=\inf\{f,0\}\in \mathcal{L}^1(I)$, if $f\in \mathcal{L}^1(I)$.
+    (3) $\Rightarrow$: $|f|=\sup\{f,0\} - \inf\{f,0\}\in \mathcal{L}^1(I)$, if $f\in \mathcal{L}^1(I)$.
 
     $\Leftarrow$: $$ 0\le \sup\{f,0\}\le |f|,\ 0\le \sup\{-f,0\}\le |f|.$$
     So $\sup\{f,0\}$, $\sup\{-f,0\}\in \mathcal{L}^1(\Omega,\mathcal{A},\mu).$
@@ -1136,12 +1137,12 @@ Since \( f \) is the limit of \( (f_n)_{n \in \mathbb{N}} \), we obtain \( f \in
     \newline
     (1) $\forall n\in \NN$, $\mu(A_n)<+\infty$.
     \newline
-    (2) $\Omega=\bigcup_{n\in \NN}A_n$, then we say that $(\Omega,\mathcal{A}, \mu)$ is $\sigma$-finite.
+    (2) $\displaystyle\Omega=\bigcup_{n\in \NN}A_n$, then we say that $(\Omega,\mathcal{A}, \mu)$ is $\sigma$-finite.
 \end{definitionenv}
 \begin{remark}
     If $(\Omega,\mathcal{A},\mu)$ is $\sigma$-finite, then $\mathbbm{1}_{\Omega}\in \mathcal{L}^1(I)^\uparrow$.
 \end{remark}
-\begin{theoremenv}[Carathéodory]
+\begin{theoremenv}[Carath\'eodory]
     Let $\Omega$ be a set, $\mathcal{C}$ be a semiring on $\Omega$, $\mu:\mathcal{C}\longrightarrow \RR_{\le 0}$ be a $\sigma$-additive mapping. If there exists an increasing sequence $(A_n)_{n\in \NN}$ in $\mathcal{A}$ such that
     \newline
     (1) $\forall n\in \NN$, $\mu(A_n)<+\infty$.
@@ -1185,18 +1186,18 @@ $\mu_\varphi:\mathcal{C}\longrightarrow \RR_{\ge 0}$, $\interval[open left]{a}{b
 \begin{theoremenv}
     Let $Y$ be a metric space, $(X,\mathcal{A}, \mu)$ be a measure space. $f:X\times Y\longrightarrow \RR$ be a mapping, $g\in \mathcal{L}^1(X,\mathcal{A},\mu)$ and $p\in y$. Assume that
     \newline
-    (1) There exists $\mu$-negligeable set $S\in \mathscr{P}(\Omega)$ such that $\forall x\in X\backslash A$, $f(x,\cdot): Y\longrightarrow \RR$, $y\longmapsto f(x,y)$ is continuous at $p$.
+    (1) There exists $\mu$-negligeable set $S\in \mathscr{P}(\Omega)$ such that $\forall x\in X\setminus A$, $f(x,\cdot): Y\longrightarrow \RR$, $y\longmapsto f(x,y)$ is continuous at $p$.
     \newline
     (2) For any $y\in Y$, $f(\cdot,y): X\longrightarrow \RR,\ x\longmapsto f(x,y)$ is $\mathcal{A}$-measurable.
     \newline
-    (3) $\forall y\in Y$, $\exists A_y\in \mathscr{P}(\Omega)$ $\mu$-negligeable, such that $\forall x\in X\backslash A_y$, $|f(x,y)|\le g(x)$. Then $(y\in Y)\longmapsto \int_{X}f(x,y)\mu(\dd x)$ is continuous at $p$.
+    (3) $\forall y\in Y$, $\exists A_y\in \mathscr{P}(\Omega)$ $\mu$-negligeable, such that $\forall x\in X\setminus A_y$, $|f(x,y)|\le g(x)$. Then $(y\in Y)\longmapsto \int_{X}f(x,y)\mu(\dd x)$ is continuous at $p$.
 \end{theoremenv}
 \begin{proofenv}
     Let $(y_n)_{n\in\NN}$ be a sequence in $Y$ that converges to $p$. For any $n\in \NN$, let $f_n:X\longrightarrow \RR$, $f_n(x)\coloneq f(x,y_n).$
     Let $\dis B=A\cup\left(\bigcup_{n\in \NN} A_{y_n}\right)$, $\mu(B)=0$.
-    On $X\backslash B$, $f_n$ converges pointwise to $f(\cdot,p)$ and $|f_n(x)|\le g(x)$.
+    On $X\setminus B$, $f_n$ converges pointwise to $f(\cdot,p)$ and $|f_n(x)|\le g(x)$.
     By dominated convergence theorem,
-    $$ \lim_{n\rightarrow +\infty} \int_{X\backslash B} f(x,y_n)\mu(\dd x)=\int_{X\backslash B} f(x,p)\mu(\dd x).$$
+    $$ \lim_{n\rightarrow +\infty} \int_{X\setminus B} f(x,y_n)\mu(\dd x)=\int_{X\setminus B} f(x,p)\mu(\dd x).$$
 \end{proofenv}
 \begin{corollaryenv}
     Let $(a,b)\in \RR^2$, $a<b$, $\mu$ be a Borel measure on $[a,b]$, and $f:[a,b]\longrightarrow \RR$ be a Borel measurable mapping. Let $F:[a,b]\longrightarrow \RR$,

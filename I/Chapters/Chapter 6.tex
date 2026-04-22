@@ -60,7 +60,7 @@ Then $(A, +, \hat{*})$ forms a unitary ring. We call it the opposite unitary rin
     $f(-n)f(-m)=\dots$
 \end{proofenv}
 \begin{definitionenv}
-    Let $K$ be a unitary ring. We denote by $K^\times$ the invertible elements of $(K, \cdot)$. If $K^\times=K\backslash\{0\}$ then we say that $K$ is a division ring. If in addition,  $K$ is commutative,  then we say that $K$ is a \textbf{field}.
+    Let $K$ be a unitary ring. We denote by $K^\times$ the invertible elements of $(K, \cdot)$. If $K^\times=K\setminus\{0\}$ then we say that $K$ is a division ring. If in addition,  $K$ is commutative,  then we say that $K$ is a \textbf{field}.
 \end{definitionenv}
 \begin{exampleenv}
     $\QQ, \RR, \CC$ are fields.
@@ -106,12 +106,12 @@ Then $\sim_{\phi}$ is reflexive and transitive. It is an equivalence relation if
     Assume that $G$ is a group. If $y=ax$,  then $\iota(a)y=\iota(a)(ax)=(\iota(a)a)x=ex=x$,  so $x\sim_{\phi}y$ implies $y\sim_{\phi}x$.
 \end{proofenv}
 \begin{definitionenv}
-    Let $G$ be a group,  $X$ be a set and $\phi:G\times X\longrightarrow X$ be a left action. For any $x\in X$,  the equivalence class of $x$ under the equivalence relation $\sim_{\phi}$ is called the \textbf{orbit} of $x$ under the action $\phi$,  denoted as $\mathrm{orb}_\phi(x)$. We denote by $G\backslash X$ the set of all orbits of $X$ under the action $\phi$. (Resp. right action and $X/G$.)
+    Let $G$ be a group,  $X$ be a set and $\phi:G\times X\longrightarrow X$ be a left action. For any $x\in X$,  the equivalence class of $x$ under the equivalence relation $\sim_{\phi}$ is called the \textbf{orbit} of $x$ under the action $\phi$,  denoted as $\mathrm{orb}_\phi(x)$. We denote by $G\setminus X$ the set of all orbits of $X$ under the action $\phi$. (Resp. right action and $X/G$.)
 \end{definitionenv}
 \begin{remark}
     If $X$ is finite,  then 
-    $$\mathrm{card}(X)=\sum_{A\in G\backslash X}\mathrm{card}(A).$$
-    In particular,  if $(G, *)$ is a finite group,  and $H$ is a subgroup of $G$,  then $\mathrm{card}(G)=\mathrm{card}(H)\mathrm{card}(H\backslash G).$ In fact,  $H\backslash G=\{H*x\mid x\in G\}, H*x:=\{h*x\mid h\in H\}.$ 
+    $$\mathrm{card}(X)=\sum_{A\in G\setminus X}\mathrm{card}(A).$$
+    In particular,  if $(G, *)$ is a finite group,  and $H$ is a subgroup of $G$,  then $\mathrm{card}(G)=\mathrm{card}(H)\mathrm{card}(H\setminus G).$ In fact,  $H\setminus G=\{H*x\mid x\in G\}, H*x:=\{h*x\mid h\in H\}.$ 
 \end{remark}
 
 
@@ -464,8 +464,8 @@ $$\begin{pmatrix}
 \begin{theoremenv}
     Suppose that $A$ is of reduced echelon form. Let 
     $$I(A)=\{i\in \{1,\dots,n\}\mid \vec{a}^{(i)}\not=(0,\dots,0)\},$$
-    $$J_0(A)=\{1,\dots,p\}\backslash\{j\left(\vec{a}^{(i)}\right)\mid i\in I(A)\}.$$
-    (1) If there exists $i\in \{1,\dots,n\}\backslash I(A),b_i\not=0$ the equation $A\begin{pmatrix}
+    $$J_0(A)=\{1,\dots,p\}\setminus\{j\left(\vec{a}^{(i)}\right)\mid i\in I(A)\}.$$
+    (1) If there exists $i\in \{1,\dots,n\}\setminus I(A),b_i\not=0$ the equation $A\begin{pmatrix}
  x_1\\
  \vdots\\
 x_p
@@ -476,7 +476,7 @@ x_p
 b_n
 \end{pmatrix}$ has no solution.
 \newline
-(2) If $\forall i\in\{1,\dots ,n\}\backslash I(A),b_i=0$. The solution set of the equation is the image of the following mapping:
+(2) If $\forall i\in\{1,\dots ,n\}\setminus I(A),b_i=0$. The solution set of the equation is the image of the following mapping:
 $$\Phi:V^{I(A)}\longrightarrow V^p \text{ with}$$
 $$(z_l)_{l\in J_0(A)}\longmapsto (x_1,\dots,x_p),$$
 $$x_k=\left\{ \begin{matrix}
@@ -675,7 +675,7 @@ We write $C$ as $\begin{pmatrix}
     \vdots\\
     c_n
 \end{pmatrix}$
-where $c_2,\dots,c_k$ belong to $k^{p-1}\backslash\{(0,\dots,0)\},c_{k+1}=\dots=c_n=(0,\dots,0),j(c_2)<\dots<j(c_k)$. For any $i\in \{2,\dots,k\}$, we multiply $-\mu_{j(c_i)}$ times the $i^{\text{th}}$ row of $A$ to the first row. The result is a matrix of reduced row echelon form.
+where $c_2,\dots,c_k$ belong to $k^{p-1}\setminus\{(0,\dots,0)\},c_{k+1}=\dots=c_n=(0,\dots,0),j(c_2)<\dots<j(c_k)$. For any $i\in \{2,\dots,k\}$, we multiply $-\mu_{j(c_i)}$ times the $i^{\text{th}}$ row of $A$ to the first row. The result is a matrix of reduced row echelon form.
 \end{proofenv}
 
 
@@ -782,10 +782,10 @@ where $c_2,\dots,c_k$ belong to $k^{p-1}\backslash\{(0,\dots,0)\},c_{k+1}=\dots=
     If $A$ is a unitary ring, $\ZZ\longrightarrow A,\ n\longmapsto n1_A$ is the unique homomorphism of unitary rings. $\ker\left(\ZZ\longrightarrow A\right)$ is an ideal of $\ZZ$. It is of the form $d\ZZ,d\in \NN$. This natural number $d$ is called the \textbf{characteristic} of $A$, denoted as $\mathrm{char}(A)$.
 \end{remark}
 \begin{definitionenv}
-    Let $A$ be a communitative unitary ring. Let $a\in A$. If $\exists b\in A\backslash\{0\}$ such that $ab=0$, we say that $a$ is a zero divisor. If $0\in A$ is the ONLY zero divisor, we say that $A$ is an \textbf{(integral) domain}.
+    Let $A$ be a communitative unitary ring. Let $a\in A$. If $\exists b\in A\setminus\{0\}$ such that $ab=0$, we say that $a$ is a zero divisor. If $0\in A$ is the ONLY zero divisor, we say that $A$ is an \textbf{(integral) domain}.
 \end{definitionenv}
 \begin{box2}
-    $A$ is an integral domain if and only if $0\not=1$, and $\forall(a,b)\in \left(A\backslash\{0\}\right)^2,\ ab\not=0$.
+    $A$ is an integral domain if and only if $0\not=1$, and $\forall(a,b)\in \left(A\setminus\{0\}\right)^2,\ ab\not=0$.
 \end{box2}
 \begin{exampleenv}
     \quad \newline
@@ -920,7 +920,7 @@ Assume that $A$ is of reduced row echelon form.
     (2) ``$\Leftarrow$'': Suppose that $\underline{a}^{(i)}\not=(0,\dots,0)$ for $i\in \{1,\dots,p\}$. Since $1\le j(\underline{a}^{(1)})<\dots< j(\underline{a}^{(p)})\le p$, one has $j(\underline{a}^{(i)})=i, \forall i\in \{1,\dots,p\}$. Hence $$\lambda_1\underline{a}^{(1)}+\dots+\lambda_p\underline{a}^{(p)}=(\lambda_1,\dots,\lambda_p).$$
     ``$\Rightarrow$'': suppose that $(a_i)_{i=1}^n$ is a system of generators. There could not be more than $p$ non-zero elements among $\underline{a}^{(1)},\dots,\underline{a}^{(n)}$. If $\underline{a}^{(1)},\dots,\underline{a}^{(k)}$ are non-zero and 
     $$\underline{a}^{(k+1)}=\dots=\underline{a}^{(n)}=0,$$
-    let $(b_1,\dots,b_p)\in K^p\backslash\{(0,\dots,0)\}$, $\forall i\in \{1,\dots,k\}, b_{j(\underline{a}^{(1)})}=0$. If $(b_1,\dots,b_p)$ is a linear combination of $\underline{a}^{(1)},\dots,\underline{a}^{(n)}$, there exists $(\lambda_1,\dots,\lambda_k)$ such that 
+    let $(b_1,\dots,b_p)\in K^p\setminus\{(0,\dots,0)\}$, $\forall i\in \{1,\dots,k\}, b_{j(\underline{a}^{(1)})}=0$. If $(b_1,\dots,b_p)$ is a linear combination of $\underline{a}^{(1)},\dots,\underline{a}^{(n)}$, there exists $(\lambda_1,\dots,\lambda_k)$ such that 
     $$\lambda_1\underline{a}^{(1)}+\dots+\lambda_k\underline{a}^{(k)}=(b_1,\dots,b_p).$$
     So $\lambda_1=\dots=\lambda_k=0$.
 \end{proofenv}

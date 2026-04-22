@@ -62,17 +62,17 @@ More generally,  if $I$ is a set,  and for any $i \in I$,  we fix an $x_i$,  the
     $\mathscr{P} (\mathscr{P} (\varnothing))=\{\varnothing, \{\varnothing\}\}$.
 \end{exampleenv}
 \begin{definitionenv}
-    Let $A$ and $B$ be sets. We denote by $B \backslash A$ the set $$\{x\in B\mid x\notin A\}.$$ This is a subset of $B$ called the \textbf{set difference of $\mathbf{B}$ and $\mathbf{A}$}.
+    Let $A$ and $B$ be sets. We denote by $B \setminus A$ the set $$\{x\in B\mid x\notin A\}.$$ This is a subset of $B$ called the \textbf{set difference of $\mathbf{B}$ and $\mathbf{A}$}.
     \newline
-    If in condition $A \subseteq B$,  we say that $B\backslash A$ is the complement of $A$ inside $B$.
+    If in condition $A \subseteq B$,  we say that $B\setminus A$ is the complement of $A$ inside $B$.
 \end{definitionenv}
 \begin{exampleenv}
     If $A$ is a set, $P(\cdot)$ is  a condition on $A$,  then
-    $$\{x\in A \mid \neg P(x)\} = A\backslash\{x\in A\mid P(x)\}.$$
+    $$\{x\in A \mid \neg P(x)\} = A\setminus\{x\in A\mid P(x)\}.$$
 \end{exampleenv}
 \begin{propositionenv}
-    Let $A$ and $B$ be sets. Then $$B\backslash A=\varnothing \Leftrightarrow B\subseteq A.$$
-    If in condition $A$ is the subset of $B$,  then $$B\backslash A=\varnothing \Leftrightarrow A=B.$$
+    Let $A$ and $B$ be sets. Then $$B\setminus A=\varnothing \Leftrightarrow B\subseteq A.$$
+    If in condition $A$ is the subset of $B$,  then $$B\setminus A=\varnothing \Leftrightarrow A=B.$$
 \end{propositionenv}
 
 
@@ -114,10 +114,10 @@ More generally,  if $I$ is a set,  and for any $i \in I$,  we fix an $x_i$,  the
 \end{propositionenv}
 \begin{proofenv}
 \begin{align*}
-    \varnothing&=\{x\in A\mid P(x)\} \backslash \{x\in A\mid Q(x)\}\\
+    \varnothing&=\{x\in A\mid P(x)\} \setminus \{x\in A\mid Q(x)\}\\
     &=\{x\in A\mid P(x)\wedge (\neg Q(x))\}\\
-    &=A\backslash\{x\in A\mid (\neg P(x))\vee  Q(x)\}\\
-    &=A\backslash\{x\in A \mid P(x)\Rightarrow Q(x)\}.
+    &=A\setminus\{x\in A\mid (\neg P(x))\vee  Q(x)\}\\
+    &=A\setminus\{x\in A \mid P(x)\Rightarrow Q(x)\}.
 \end{align*}
 \end{proofenv}
 \begin{box2}
@@ -143,7 +143,7 @@ More generally,  if $I$ is a set,  and for any $i \in I$,  we fix an $x_i$,  the
     $$\{x\in B\mid\exists i\in I, P_i(x)\}=\bigcup_{i\in I}\{x\in B\mid P_i(x)\}.$$
 \end{corollaryenv}
 \begin{propositionenv}
-    $$\left( \bigcup _{i\in I}A_i\right)\backslash B=\bigcup_{i\in I}\left( A_i\backslash B\right).$$
+    $$\left( \bigcup _{i\in I}A_i\right)\setminus B=\bigcup_{i\in I}\left( A_i\setminus B\right).$$
 \end{propositionenv}
 \section{Intersection}
 \begin{definitionenv}
