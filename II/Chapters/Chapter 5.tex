@@ -1195,9 +1195,196 @@ pattern radius = 1pt}
     Thus
     $$\bigcap_{n \in \NN} K_{n} \neq \varnothing.$$
     This contradicts, the assumption that $(f_n)_{n\in \NN}$ converges to the constant $0$ function pointwise.
-    To conclude, we want to use Carath\'eodory's (extension) theorem.
+    
+    \quad To conclude, we want to use Carath\'eodory's (extension) theorem.
     (It gives us the existence of $\mu_I$.)
 
     \quad By proposition \ref{prop:5.3.7}, we have $(U_n)_{n \in \NN}$ family of open sets $\bar{U}_{i} \subseteq U_{i+1}$, $\bar{U}_{i}$ compact,
     and $\displaystyle X = \bigcup_{n \in \NN} U_{n}$.
 \end{proofenv}
+
+\begin{remark}
+    Let $X$ be a locally compact Hausdorff space,
+    $I : C_c(X) \rightarrow \RR$ be a positive linear functional.
+    Then, for any $f : X \rightarrow \RR_{\ge 0}$ bounded Borel measurable mapping,
+    one has $f \in \mathcal{L}^1(I)^\uparrow$.
+    So $I(f)$ is well defined.
+    \begin{enumerate}
+        \item For any Borel set $A \subseteq X$, $\mathbbm{1}_{A} \in \mathcal{L}^1(I)^\uparrow$.
+        \item Let $\mathcal{B}$  be the Borel $\sigma$-algebra, then 
+            $$\begin{array}{rrcl}
+                \mu_{I} : & \mathcal{B} & \rightarrow & \RR \cup \{+\infty\} \\
+                & A & \longmapsto & I(\mathbbm{1}_{A})
+            \end{array}$$
+            is a measure on $(X,\mathcal{B})$, called a \textbf{Radon measure} associated to $I$.
+    \end{enumerate}
+\end{remark}
+
+\begin{propositionenv}
+    Let $X$ be a locally compact Hausdorff space having a countable topological basis,
+    $I : C_{c} (X) \rightarrow \RR_{\ge 0}$ be a positive linear functional,
+    $\mu_{I}$ be the corresponding Radon measure.
+    \begin{enumerate}[label=(\arabic*)]
+        \item For any $K \subseteq X$ compact, $\mu_I(K) < +\infty$.
+        \item For any open subset $U$ of $X$, one has
+        $$\mu_{I} (U) = \sup_{\substack{K \subseteq U\\K \text{ compact}}} \mu_{I}(K) = \sup_{\substack{(f : X \rightarrow [0,1]) \in C_c(X)\\ \supp(f) \subseteq U}} I(f).$$
+        \item For any Borel subset $A$ of $X$,
+        $$\mu_{I} (A) = \inf_{\substack{U \text{ open}\\ A \subseteq U}} \mu_{I} (U).$$
+        \item For any Borel subset $A$ of $X$, one has 
+        $$\mu_{I}(A) = \sup_{\substack{K \subseteq A\\K \text{ compact}}} \mu_{I}(K).$$
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    \quad 
+    \begin{enumerate}[label=(\arabic*)]
+        \item There exists $f \in C_c (X)$, $f(X) \subseteq [0,1]$.
+            such that $f|_K \equiv 1$, $\mathbbm{1}_{K} \le f$, so $\mu_{I} (K) \le I(f)$,
+        \item There exists an increasing sequence $(K_n)_{n \in \NN}$ of compact subset of $U$ such that $\displaystyle \bigcup_{n \in \NN} K_{n} = U$.
+            $$\mu_{I} (U) = \lim_{n \rightarrow +\infty} \mu_{I} (K_{n}) \le \sup_{\substack{K \subseteq U\\ K \text{ compact}}} \mu_{I} (K).$$
+            For any compact $K \subseteq U$, there exists $f \in C_c(X)$ such that $f|_K \equiv 1$, $\supp(f) \subseteq U$.
+            $\mathbbm{1}_{K} \le f \le \mathbbm{1}_{U}$, so $\mu_{I} (K) \le I(f) \le \mu_{I}(U)$.
+            So,
+            $$\sup_{\substack{K \subseteq U\\ K \text{ compact}}} \mu_{I} (K) \le \sup_{\substack{(f : X \rightarrow [0,1]) \in C_c(X)\\ \supp(f) \subseteq U}} I(f) \le \mu_{I} (U).$$
+        \item We may assume that $\mathbbm{1}_{A} \in \mathcal{L}^1(I)$,
+            $$\mu_{I}(A) = \inf_{\substack{f \in C_{c}(X)^\uparrow\\ f \ge  \mathbbm{1}_{A}}} I(f).$$
+            ($\mu_{I}(A) < +\infty$.)
+
+            Let $f \in C_{c}(X)^\uparrow$, $t \in \RR$.
+            We claim that
+            $$U_{f,t} \coloneq \{x \in X \mid f(x) > t\} = f^{-1} \left(\interval[open]{t}{+\infty}\right)$$
+            is open.
+            In fact, if $(f_n)_{n \in \NN}$ is an increasing sequence of function in $C_{c}(X)$ that converges pointwise to $f$,
+            then
+            $$U_{f,t} = \bigcup_{n \in \NN} \{x \in X \mid f_{n}(x) > t\}.$$
+            Now let $(g_{n})_{n \in \NN}$ be a decreasing sequence in $C_c(X)^\uparrow$ such that $g_{n} \ge \mathbbm{1}_{A}$ for any $n \in \NN$ and $\dis \lim_{n \rightarrow +\infty} I(g_n) = \mu_{I}(A)$.
+            Let $\varepsilon \in \interval[open]{0}{1}$.
+            For any $n \in \NN$, 
+            $$U_{g,1-\varepsilon} \coloneq \{x \in X \mid g_{n}(x) > 1 - \varepsilon\}$$
+            is open, and $g_{n} \ge (1 - \varepsilon) \mathbbm{1}_{U_{g_{n}, 1 - \varepsilon}}$, $\mu_{I}(A) \le \mu_{I}(U_{g_n,1 - \varepsilon}) \le \frac{I(g_n)}{1 - \varepsilon}$.
+            $\dis \inf_{\substack{U \supseteq A\\ U \text{ open}}} \mu_{I}(U) \le \frac{\mu_{I}(A)}{1 - \varepsilon}$.
+            Take $\varepsilon \rightarrow 0$.
+        \item Suppose that $\mu_{I}(A)$ is finite.
+            Let $\varepsilon > 0$, and $U$ open such that $A \subseteq U$, and $\mu_{I}(U) \le \mu_{I}(A) + \varepsilon$.
+            By (2), there exists a compact subset $F$ such that $F \subseteq U$, and $\mu_{I}(U\setminus F) \le \varepsilon$.
+            By (3), there exists an open subset $V$ such that $U\setminus A \subseteq V$ and $\mu_{I}(V) \le 2 \varepsilon$.
+            Let $K = F \setminus V$.
+            It is compact and
+            $$K \subseteq F \setminus (U \setminus A) = \{x \in F \mid x \notin (U \setminus A)\} \subseteq A.$$
+            $$\mu_{I}(A \setminus K) \le \mu_{I}(U \setminus K) = \mu_{I}(U \setminus F) + \mu_{I}(F \setminus K) \le 3 \varepsilon.$$
+            Suppose that $\mu_{I}(A) < +\infty$.
+            Since $\mu_{I}$ is $\sigma$-finite,
+            there exists an increasing sequence $(A_n)_{n \in \NN}$ of Borel subsets of $X$ such that $\dis A = \bigcup_{n \in \NN} A_{n}$ and $\mu(A_n) < +\infty$, for any $n \in \NN$.
+
+            \quad For any $n \in \NN$, there exists a compact subset $K_n$ of $A_n$, such that
+            $$\sup_{\substack{K\subseteq A\\K \text{ compact}}}\mu_{I}(K) \ge \mu_{I}(K_n) \ge \mu_{I}(A_n) - 1.$$
+            Taking the limit when $n \rightarrow +\infty$.
+            We get $\dis \sup_{\substack{K \subseteq A\\ K \text{ compact}}} \mu_{I}(K) = +\infty$.
+    \end{enumerate}
+\end{proofenv}
+
+
+\section{Haar Measure}
+
+We fix a locally compact Hausdorff topological group $(G,*,\mathscr{T})$ having a countable topological basis.
+Denote by
+$$C_{c}^{+} (G) \coloneq \{(f : G \rightarrow \RR_{\ge 0}) \in C_c(G) \mid f \not\equiv 0\}$$
+Let
+$$\begin{array}{rrcl}
+    \| \cdot \|_{\sup} : & \cc(G) & \longrightarrow & \RR_{\ge 0}\\
+    & f & \longmapsto & \dis \sup_{x \in G} |f(x)|.
+\end{array}$$
+For any $a \in G$, let $L_a : \cc(G) \rightarrow \cc(G)$ such that $L_{a} f (x) = f(a * x)$,
+$R_a : \cc(G) \rightarrow \cc(G)$ such that $R_{a} f (x) = f(x * a)$.
+
+Let
+$$\begin{array}{rrcl}
+    \iota : & \cc(G) & \longrightarrow & \cc(G)\\
+    & f(\cdot) & \longmapsto & f (\iota (\cdot))
+\end{array}$$
+
+\begin{definitionenv}
+    Let $I : \cc(G) \rightarrow \RR$ be a non-zero positive linear functional.
+    If for any $a \in G$ and any $f \in \cc(G)$,
+    $$I(L_a f) = I(f),$$
+    we say that $I$ defines a \textbf{left Haar measure}.
+    (Resp. $I(R_a f) = I(f)$ and right Haar measure.)
+\end{definitionenv}
+
+\begin{theoremenv}
+    Let $(G,*,\mathscr{T})$ be a locally compact Hausdorff topological group.
+    \begin{enumerate}[label=(\arabic*)]
+        \item There exists a positive linear functional
+            $$I : \cc(G) \rightarrow \RR$$
+            that defines a left Haar measure.
+        \item If $I_1$ and $I_2$ are two non-zero positive linear functionals $\cc(G) \rightarrow \RR$ that define left Haar measures,
+            then there exists $\lambda > 0$ such that $I_2 = \lambda I_1$.
+    \end{enumerate}
+\end{theoremenv}
+
+
+\section{Change of Variables}
+
+
+\begin{definitionenv}
+    Let $(G,*)$ be a group.
+    If $(a,b) \in G \times G$, we define the \textbf{commutator} of $a$ and $b$ the element
+    $$\commutator{a}{b}\coloneq a * b * \iota (a) * \iota(b).$$
+    $$a * b = b * a \Leftrightarrow \commutator{a}{b} = e.$$
+    Denote by $\commutator{G}{G}$ the subgroup of $G$ generated by all commutators.
+
+    \quad If $g \in G$, denote by
+    $$\begin{array}{rrcl}
+        C_{g} : & G & \longrightarrow & G\\
+        & x & \longmapsto & g * x * \iota(g)
+    \end{array}$$
+    the mapping of conjugate by $g$.
+    (Check that $C_g$ is a group homomorphism.)
+\end{definitionenv}
+
+\begin{propositionenv}
+    Let $a,b \in G$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\iota(\commutator{a}{b}) = \commutator{b}{a}$.
+        \item $C_g\left(\commutator{a}{b}\right) = \commutator{C_g(a)}{C_g(b)}$.
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    \quad
+    \begin{enumerate}[label=(\arabic*)]
+        \item $$\begin{aligned}
+            \iota(a * b * \iota(a) * \iota(b)) = & \iota(\iota (b)) * \iota(\iota(a)) * \iota(b) * \iota(a)\\
+            = & b * a * \iota(b) * \iota(a)\\
+        \end{aligned}$$
+        \item $$C_g(a * b * \iota(a) * \iota(b)) = C_g(a) * C_g(b) * \iota(C_g(a)) * \iota(C_g(b))$$
+            since $C_{g}$ is a group homomorphism.
+
+    \end{enumerate}
+\end{proofenv}
+
+\begin{corollaryenv}
+    $\commutator{G}{G}$ is a normal subgroup of $G$.
+\end{corollaryenv}
+
+\begin{definitionenv}
+    Let $K$ be a field and $V$ be a finite dimensional vector space over $K$
+    $$\End_{K}(V) \coloneq \{K\text{-linear endomorphisms} V \rightarrow V\}.$$
+    Let
+    $$GL(V) \coloneq \End_{K}(V)^\times = \{\varphi \in \End_{K}(V) \mid \det (\varphi) \neq 0\},$$
+    called the \textbf{general linear group} of $V$.
+    Let
+    $$SL(V) \coloneq \{\varphi \in \End_{K}(V) \mid \det (\varphi) = 1\} = \ker (\det),$$
+    called the \textbf{special linear group} of $V$.
+\end{definitionenv}
+
+\begin{theoremenv}
+    Let $K$ be a field and $V$ be a finite dimensional vector space over $K$.
+    Assume that, either $\dim_{K}(V) \neq 2$, or $K \neq \ZZ /(2\ZZ)$.
+    Then
+    $$[GL(V), GL(V)]_{\circ} = SL(V).$$
+\end{theoremenv}
+
+\begin{remark}
+    $$\det : GL(V) \rightarrow K^\times.$$
+    For any $\tau \in [GL(V), GL(V)]_{\circ}$, $\det(\tau) = 1$.
+    So $\tau \in SL(V)$.
+\end{remark}
