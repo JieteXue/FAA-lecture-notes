@@ -1376,15 +1376,157 @@ $$\begin{array}{rrcl}
     called the \textbf{special linear group} of $V$.
 \end{definitionenv}
 
-\begin{theoremenv}
+\begin{lemmaenv}\label{lem:5.6.7}
+    Any element of $SL(V)$ can be written as a composition of elements of the form $S_{i,j}(\lambda)$.
+    Moreover, any $f \in GL(V)$ can be decomposed as $f = g \circ h$,
+    where $g \in SL(V)$, and
+    $$\begin{array}{rrcl}
+        h : & V & \longrightarrow & V\\
+        & \dis \sum_{i=1}^n a_i e_i & \longmapsto & \dis a_1 \det (f) + \sum_{i=2}^n a_i e_i.
+    \end{array}$$
+\end{lemmaenv}
+\begin{proofenv}
+    Let $\Theta$ be the family of $f \in GL(V)$ that can be written as $g \circ h$ with $g$ and $f$ satisfies the conditions in the statement.
+    We will prove by induction on $n = \dim (V)$ that
+    $$\Theta = GL(V).$$
+    The cases $n = 0$, $n = 1$ are trivial.
+    Now we assume that $n \ge 2$, and the induction hypothesis holds for $W = \Span_{K}\{e_1,\cdots,e_{n-1}\}$
+    and the basis $(e_i)_{i=1}^{n-1}$.
+    Note that for any $F \in GL(V)$ and $i\neq j$, $i,j \in \{1,\cdots,n\}$, $\lambda \in K$.
+    $F \in \Theta$ is equivalent to $S_{i,j}(\lambda) \circ F \in \Theta$.
+    So in the reasoning without losing of generality,
+    we can replace $f$ by $S_{i,j}(\lambda) \circ f$.
+    For any $f \in GL(V)$ and $(i,j) \in \{1,\cdots,n\}$, let $c_{i,j}(f)$ be such that
+    $$f(e_i) = \sum_{j=1}^{n} c_{i,j}(f) e_j.$$
+    $f \in GL(V)$ (it is invertible), so $c_{n,1}(f) = \cdots = c_{n,n}(f) = 0$ can't hold.
+    
+    \quad First consider the case when $c_{n,j}(f) \neq 0$, for some $j \in \{1,\cdots,n-1\}$.
+    Put
+    $$\lambda = \frac{1 - c_{n,n}(f)}{c_{n,j}(f)}.$$
+    One has
+    $$\left(S_{n,j}(\lambda)\circ f\right)(e_n) = f(e_n) + \lambda c_{n,j}(f) e_n = e_n + \sum_{i=1}^{n-1}c_{n,i}(f)e_{i}.$$
+    In the case where $c_{1,1}(f) = \cdots = c_{n,n-1}(f) = 0$, by replacing $f$ by $S_{1,n}(1) \circ f$ to reduce the problem, to the previous case.
+    Hence, without losing of generality, we may assume that $c_{n,n}(f) = 1$.
+    Replacing $f$ by
+    $$S_{1,n}(-c_{n,1}(f)) \circ \cdots \circ S_{n-1,n}(-c_{n,n-1}(f)) \circ f.$$
+    We may assume that $c_{n,1}(f) \circ \cdots \circ c_{n,n-1}(f) = 0$.
+    Let $I: W\rightarrow W$ be the automorphism defined as
+    $$\bar{f}(\sum_{i=1}^{n-1}a_i e_i) = \sum_{i=1}^{n-1}a_i \sum_{j=1}^{n-1}c_{i,j}(f)e_j.$$
+    Applying the induction hypothesis to $\bar{f}$, we reduce the problem to the case where
+    $$f(e_n) = e_n,\quad f(e_1) = c_{1,1} (f) e_1 + c_{1,n} (f) e_n,$$
+    $$\forall i \in \{2,\cdots,n-1\},\; f(e_i) = e_i + c_{i,n}(f) e_n.$$
+    $$\begin{aligned}
+        f(e_1) \wedge \cdots \wedge f(e_n) = & \left(c_{1,1}(f)e_1 + c_{1,n}(f) e_n\right) \wedge \left(e_2 + c_{2,n}(f) e_n\right) \wedge \cdots\\
+            & \wedge \left(e_{n-1} + c_{n-1,n}(f) e_n\right) \wedge e_n\\
+            & c_{1,1}(f) e_1 \wedge \cdots \wedge e_n.
+    \end{aligned}$$
+    So $\det(f) = c_{1,1} (f)$.
+    Finally, the mapping
+    $$S_{n,1}\left(-c_{1,n}(f)/c_{1,1}(f)\right) \circ S_{n,2}(-c_{2,n}(f)) \circ \cdots \circ S_{n,n-1}(-c_{n-1,n}(f)) \circ f$$
+    sends $\dis \sum_{i=1}^{n}a_ie_i$ to $\dis a_1 \det(f) + \sum_{i=2}^{n}a_ie_i.$
+\end{proofenv}
+
+\begin{theoremenv}\label{thm:5.6.*}
     Let $K$ be a field and $V$ be a finite dimensional vector space over $K$.
     Assume that, either $\dim_{K}(V) \neq 2$, or $K \neq \ZZ /(2\ZZ)$.
     Then
     $$[GL(V), GL(V)]_{\circ} = SL(V).$$
 \end{theoremenv}
+\begin{proofenv}
+    Since
+    $$\det : GL(V) \rightarrow K^\times$$
+    is a homeomorphism of groups from (non-commutative) $GL(V)$ to (commutative) $K^\times$,
+    so
+    $$[GL(V), GL(V)]_{\circ} \subseteq \ker (\det) = SL(V).$$
+    If $\dim (V) = 0$, then $GL(V) = SL(V)$ are both groups with one element.
+    Hence, $[GL(V), GL(V)]_{\circ} = SL(V)$.
+    If $\dim (V) = 1$, then $\det : GL(V) \rightarrow K^\times$ is an isomorphism, and
+    $$SL(V) = [GL(V), GL(V)]_{\circ} = \{\id_{V}\}.$$
+    In the rest of the proof, we fix a basis $(e_i)_{i=1}^{n}$ of $V$ over $K$ ($n = \dim (V)$).
+    For $i \neq j$, $i,j \in \{1,\cdots,n\}$ and $\lambda \in K$, we denote by $S_{i,j}(\lambda)$ the $K$-linear mapping:
+    $$\begin{array}{rrcl}
+        S_{i,j}(\lambda) : & V & \longrightarrow & V\\
+        & \dis x = \sum_{i=1}^n a_i e_i & \longmapsto & x + \lambda a_j e_i.
+    \end{array}$$
+    In other words,
+    $$S_{i,j}(\lambda)(e_j) = e_{j} + \lambda e_{i}, \quad \forall k \in \{1,\cdots,n\}\setminus \{j\},\ S_{i,j}(\lambda)(e_{k}) = e_{k}.$$
+    Note that $S_{i,j}(\lambda) \in SL(V)$, for any $i,j \in \{1,\cdots, n\}, \lambda \in K$.
+    Indeed,
+    $$\begin{aligned}
+        S_{i,j}(\lambda)(e_1) \wedge \cdots \wedge S_{i,j}(\lambda)(e_n) = & e_1 \wedge \cdots \wedge e_{j-1} \wedge (e_{j} + \lambda e_i) \wedge e_{j + 1} \wedge \cdots \wedge e_{n}\\
+        = & e_1 \wedge \cdots \wedge e_{n}.
+    \end{aligned}$$
+    By definition, $\left(S_{i,j}(\lambda)\right)^{-1} = S_{i,j} (-\lambda)$.
+    For any bijection $\sigma : \{1,\cdots,n\} \rightarrow \{1,\cdots,n\}$, we put
+    $$\begin{array}{rrcl}
+        P_{\sigma} : & V & \longrightarrow & V\\
+        & \dis \sum_{i=1}^n a_i e_i & \longmapsto & \dis \sum_{i=1}^n a_{\sigma(i)} e_i.
+    \end{array}$$
+    Notice that 
+    $$\sum_{i=1}^{n} a_{\sigma(i)} e_i = \sum_{i=1}^{n} a_i e_{\sigma^{-1}(i)},$$
+    One has
+    $$P_{\sigma}^{-1} = P_{\sigma^{-1}}.$$
+    Moreover, $P_{\sigma^{-1}} \circ S_{i,j}(\lambda) \circ P_{\sigma}$ sends $\dis \sum_{i=1}^{n}a_i e_i$ to $\dis \sum_{i=1}^{n}a_{\sigma(i)} e_{\sigma(i)} + \lambda a_{\sigma(j)} e_{\sigma(i)}$.
+    Hence $P_{\sigma^{-1}} \circ S_{i,j}(\lambda) \circ P_{\sigma} = S_{\sigma(i),\sigma(j)} (\lambda).$
+    For $b \in K^\times$, denote $D_b \in GL(V)$ such that
+    $$D_b(\sum_{i=1}^{n}a_ie_i) = b a_1 e_1 + \sum_{i=2}^{n}a_i e_i.$$
+    If $n=2$ and $K\not \cong \ZZ/(2\ZZ)$, then there exists $b\in K\setminus\{0,1\}$.
+    Then
+    $$[S_{1,2}(1), D_{b}]_{\circ} = S_{1,2}(1) \circ D_{b} \circ S_{1,2}(-1) \circ D_{b - 1}.$$
+    $$\begin{aligned}
+        [S_{1,2}(1), D_{b}]_{\circ} (a_1e_1 + a_2e_2) = & \left(S_{1,2}(1) \circ D_{b} \circ S_{1,2}(-1)\right)\left(a_1 b^{-1} e_1 + a_2 b_2\right)\\
+        = & S_{1,2}(1) \circ D_{b} \left(a_1 b^{-1} e_1 + a_2 e_2 - a_2 e_1\right)\\
+        = & S_{1,2}(-1) ((a_1 - b a_2) e_1 + a_2 e_2)\\
+        = & (a_1 + (1 - b)a_2)e_1 + a_2 e_2\\
+        = & S_{1,2}(1 - b) (a_1 e_1 + a_2 e_2).
+    \end{aligned}$$
+    Hence $$[S_{1,2}(1), D_{b}]_{\circ} = S_{1,2}(1 - b).$$
+    If $n \ge 2$, then
+    $$\begin{aligned}
+        [S_{1,3}(1), S_{3,2}(1)]_{\circ} (x) = & S_{1,3}(1) \circ S_{3,2}(1) \circ S_{1,3}(-1) \circ S_{3,2}(-1)(x)\\
+        = & S_{1,3}(1) \circ S_{3,2}(1) \circ S_{1,3}(-1) (x - a_2 e_3)\\
+        = & S_{1,3}(1) \circ S_{3,2}(1) (x - a_2 e_3 - (a_3 -a_2)e_1)\\
+        = & S_{1,3}(1 - a_2 - a_3 - (a_3 -a_2)e_2 +a_2 e_3)\\
+        = & x - (a_3 - a_2) e_1 + a_3 e_1\\
+        = & x + a_2 e_1\\
+        = & S_{1,2}(1)(x).
+    \end{aligned}$$
+    In both cases $n = 2$ and $n > 2$, we obtained $t \in K\times$ such that
+    $$S_{1,2}(t) \in [GL(V), GL(V)]_{\circ}.$$
+    For general $\lambda \in K^\times$, one has
+    $$S_{1,2}(\lambda) = D_{\lambda t^{-1}} \circ S_{12}(t) \circ D_{\lambda^{-1} t}.$$
+    Since
+    $$\begin{aligned}
+        D_{\lambda t^{-1}} \circ S_{1,2}(t) \circ D_{\lambda^{-1} t} (\sum_{i=1}^{n}a_ie_i) = & D_{\lambda t^{-1}} \circ S_{1,2}(t) = a_1 \lambda^{-1} t + \sum_{i=2}^{n}a_i e_i\\
+        = & D_{\lambda t^{-1}} \left(a_1 \lambda^{-1} t e_1 + a_2 t e_1 + \sum_{i=2}^{n}a_i e_i\right)\\
+        = & S_{1,2}(\lambda) \left(\sum_{i=1}^{n}a_i e_i\right).
+    \end{aligned}$$
+    Finally for a general $(i,j) \in \{1,\cdots,n\}^2$, $i \neq j$, there exists a permutation $\sigma : \{1,\cdots,n\} \rightarrow \{1,\cdots,n\}$ such that $\sigma(1) = i$, $\sigma(2) = j$.
+    We have $P_{\sigma^{-1}} \circ S_{i,j}(\lambda) \circ P_{\sigma} = P_{1,2}(\lambda)$.
+    By lemma \ref{lem:5.6.7},
+    $$[GL(V), GL(V)]_{\circ} = SL(V).$$
+\end{proofenv}
 
 \begin{remark}
     $$\det : GL(V) \rightarrow K^\times.$$
     For any $\tau \in [GL(V), GL(V)]_{\circ}$, $\det(\tau) = 1$.
     So $\tau \in SL(V)$.
+\end{remark}
+
+\begin{remark}[Some assumptions and settings in \ref{thm:5.6.*}]
+    Let $\varphi : GL(V) \rightarrow K^\times$ be a homeomorphism of groups.
+    There exists an endomorphism of groups $\psi : K^\times \rightarrow K^\times$ such that
+    $$\varphi = \psi \circ \det.$$
+    \quad In fact, since $SL(V) = [GL(V), GL(V)]_{\circ}$, $\varphi$ sends elements of $SL(V)$ to $1$.
+    Fix basis $(e_i)_{i=1}^{n}$ of $V$ over $K$.
+    Let $D_{b} : V \rightarrow V$,
+    $$\begin{array}{rrcl}
+        \psi : & K^\times & \longrightarrow & K^\times\\
+        & b & \longmapsto & \varphi(D_{b}).
+    \end{array}$$
+    This is also a homomorphism of groups.
+    $$\psi(bb') = \psi(D_{bb'}) = \varphi(D_{b}\circ D_{b'}) = \varphi(D_{b}) \varphi(D_{b'}) = \psi(b)\psi(b').$$
+    By lemma \ref{lem:5.6.7}, for any $f \in GL(V)$, there exists $g \in SL(V)$ such that
+    $$f = g \circ D_{\det(f)}.$$
+    Hence $\varphi(f) = \varphi(g) \varphi(D_{\det(f)}) = \psi(\det(f)).$
 \end{remark}
