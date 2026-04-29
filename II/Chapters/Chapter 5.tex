@@ -820,7 +820,7 @@ pattern radius = 1pt}
     Since $f$ is continuous and $\QQ$ is dense in $\RR$, we prove the result.
 \end{proofenv}
 
-\begin{corollaryenv}
+\begin{corollaryenv}\label{cor:5.2.26}
     Let $g : \RR^\times \rightarrow \RR_{\ge 0}$ be continuous, homomorphism of multiplicative groups.
     There exists $t \in \RR$ such that
     $$g(y) = |y|^t,\ \forall y \in \RR.$$
@@ -1220,7 +1220,7 @@ pattern radius = 1pt}
     \end{enumerate}
 \end{remark}
 
-\begin{propositionenv}
+\begin{propositionenv}\label{prop:5.4.4}
     Let $X$ be a locally compact Hausdorff space having a countable topological basis,
     $I : C_{c} (X) \rightarrow \RR_{\ge 0}$ be a positive linear functional,
     $\mu_{I}$ be the corresponding Radon measure.
@@ -1513,7 +1513,7 @@ $$\begin{array}{rrcl}
     So $\tau \in SL(V)$.
 \end{remark}
 
-\begin{remark}[Some assumptions and settings in \ref{thm:5.6.*}]
+\begin{remark}[Some assumptions and settings in \ref{thm:5.6.*}]\label{5.6.8}
     Let $\varphi : GL(V) \rightarrow K^\times$ be a homeomorphism of groups.
     There exists an endomorphism of groups $\psi : K^\times \rightarrow K^\times$ such that
     $$\varphi = \psi \circ \det.$$
@@ -1530,3 +1530,164 @@ $$\begin{array}{rrcl}
     $$f = g \circ D_{\det(f)}.$$
     Hence $\varphi(f) = \varphi(g) \varphi(D_{\det(f)}) = \psi(\det(f)).$
 \end{remark}
+
+\begin{theoremenv}[Linear change of variables]\label{thm:5.6.9}
+    Let $V$ be a finite dimensional vector space over $\RR$ and $\nu$ be a Haar measure on $V$.
+    For any $f \in GL(V)$, on has 
+    $$f_*(\nu) = \left| \det(f)\right|^{-1} \nu.$$
+    In other words, for any Borel subset $A \subseteq V$,
+    $$\nu(f(A)) = \left| \det(f)\right| \nu(A).$$
+\end{theoremenv}
+\begin{proofenv}
+    Let $(e_i)_{i=1}^n$ be a basis of $V$ over $\RR$.
+    $$\begin{array}{rrcl}
+        g : & \RR^n  & \longrightarrow & V\\
+        & (a_1,\cdots,a_n) & \longmapsto & \sum_{i=1}^{n} a_i e_i.
+    \end{array}$$
+    Note that, $g$ is an isomorphism of topological groups (isomorphism of groups is also a homeomorphism).
+    Let $\eta$ be the Lebesgue measure on $\RR^n$.
+    Then $\eta^{\otimes n}$ is a Haar measure on $\RR^n$,
+    and $g_*(\eta^{\otimes n})$ is a Haar measure on $V$.
+    Without losing of generality, $\nu = g_*(\eta^{\otimes n})$.
+    For $u \in \cc(V)$ and $y \in V$, one has
+    $$\begin{aligned}
+        \int_{V} u(x + y)f_*(\nu)(\dd x) = & \int_{V} u(f(x) + y) \nu(\dd x) = \int_{V} u(f(x + f^{-1}(y))) \nu(\dd x)\\
+        = & \int_{V} u(f(x)) \nu(\dd x) = \int_{V} u(x)f_*(\nu)(\dd x).
+    \end{aligned}$$
+    We conclude $f_*(\nu)$ is a Haar measure on $V$.
+    There exists $\phi(f) \in \RR_{>0}$ such that $f_*(\nu) = \varphi(f) \cdot \nu$.
+    Moreover, for any $f_1,f_2 \in GL(V)$,
+    $$\left(f_2 \circ f_1\right)_* (\nu) = \left(f_2\right)_*\left((f_1)_*(\nu)\right) = \varphi(f_2) \cdot \varphi(f_1) \cdot \nu.$$
+    Hence $\varphi$ is a morphism of groups from $GL(V)$ to $\RR_{>0}$
+    By \ref{5.6.8}, there exists a group homomorphism $\psi : \RR^\times \rightarrow \RR_{>0}$ such that
+    $$\varphi = \psi \circ \det.$$
+    In particular, if $f \in SL(V)$, then $\varphi(f) = 1$.
+    Let $b \in V$.
+    For any $u \in \cc(V)$, one has 
+    $$\begin{aligned}
+        \int_{V} u(x) (D_{b})_* (g_*(\eta^{\otimes n})) = & \int_{\RR^n} u(D_b(g(t_1,\cdots,t_n)))\eta^{\otimes n} \left(\dd (t_1,\cdots,t_n)\right)\\
+        = & \int_{\RR^n} u(bt_1e_1 + t_2e_2 + \cdots + t_n e_n)\eta^{\otimes n}(\dd (t_1,\cdots,t_n))\\
+        = & \int_{\RR^{n-1}}\left(\int_{\RR} u(bt_1e_1 + \sum_{i=2}^{n}t_ie_i)\eta(\dd t_1)\right) \eta^{\otimes n-1} \left(\dd (t_2,\cdots,t_n)\right).
+    \end{aligned}$$
+\end{proofenv}
+
+\begin{lemmaenv}
+    Let $h : \RR \rightarrow \RR$ be a non-negative Borel mapping.
+    For any $b \in \RR^\times$, one has
+    $$\int_{\RR} h(bt) \dd t = |b|^{-1} \int_{\RR} h(t) \dd t.$$
+\end{lemmaenv}
+\begin{proofenv}
+    The above arguments applied to the additive group $\RR$ shows that there exists $\lambda : \RR^\times \rightarrow \RR_{>0}$ such that
+    $$\int_{\RR} h(bt) \dd t = \lambda(b) \int_{\RR} h(t) \dd t.$$
+    For any $b \in \RR^\times$, and non-negative Borel mapping $h$.
+    Fixing $h \in \ccp(\RR)$, by dominated convergence,
+    we obtain that $\lambda : \RR^\times \rightarrow \RR_{>0}$ is a continuous.
+    By corollary \ref{cor:5.2.26}, there exists $\theta \in \RR$ such that $\lambda(b) = |b|^{\theta}$.
+    Let's consider $b = 2$ and $h = \mathbbm{1}_{\interval[open right]{0}{2}}$,
+    $$\int_{\RR} \mathbbm{1}_{\interval[open right]{0}{1}}(t) \dd t = \lambda(2) \int_{\RR} \mathbbm{1}_{\interval[open right]{0}{2}}(t) \dd t.$$
+    So that $\lambda(2) = \frac{1}{2}$, so
+    $$\forall b \in \RR,\ \lambda(b) = |b|^{-1}.$$
+    By lemma, we get
+    $$\int_{V} u(x) (D_b)_*(g_*(\eta^{\otimes n})) = |b|^{-1} \int_{V} u(x) g_{*} (\eta^{\otimes n})(\dd x).$$
+    Therefore, by lemma \ref{lem:5.6.7}, we obtain
+    $$\forall f \in GL(V),\ \psi(f) = |\det(f)|^{-1}$$
+    as required.
+\end{proofenv}
+
+\begin{theoremenv}[Change of variables]
+    Let $E$ be a finite dimensional vector space over $\RR$,
+    $\nu$ be a Haar measure on $E$.
+    Let $U,V$ be open subsets of $E$ and $\varphi : U \rightarrow V$ be a $C^1$-diffeomorphism.
+    Then, for any Borel measurable mapping $f : V \rightarrow \RR_{\ge 0}$,
+    one has
+    $$\int_{V} f(y) \nu(\dd y) = \int_{U} f(\varphi(x)) |\det(\DD \varphi(x))| \nu(\dd x).$$
+\end{theoremenv}
+\begin{proofenv}
+    Without losing of generality, we assume that $E = \RR^n$, $n = \dim(E)$.
+    The case $n = 0$ is trivial, so assume that $n \ge 1$.
+    We equip $\RR^n$ with the sup norm $\|\cdot\|$.
+    Let $\Theta$ be the set hyperrectangles, i.e. the sets of the form:
+    $$A = \prod_{i=1}^n \interval[open left]{a_i}{b_i}$$
+    such that $\{a_1,b_1,a_n,b_n\} \subseteq \QQ$ and $\bar{A} \subseteq U$.
+    If $b_1 - a_1 = \cdots = b_n - a_n$, then we say that $A$ is a hypercube.
+    In general, $b_i - a_i$, $i \in \{1,\cdots,n\}$ are called $i$-th side length of the hyperrectangle.
+\end{proofenv}
+
+\begin{lemmaenv}\label{lem:5.6.12}
+    For any hypercube $A \in \Theta$, one has
+    $$\nu\left(\varphi(A)\right) \le \sup_{x \in A} \|D(\varphi(x))\|^n \nu(A).$$
+\end{lemmaenv}
+\begin{proofenv}
+    Let $l$ be the side length of the hypercube.
+    By the mean value inequality,
+    for any $y,y' \in A$,
+    $$\|\varphi(y) - \varphi(y')\| \le (\sup_{x \in A}\|\DD \varphi(x)\|)\|y-y'\|.$$
+    So $\varphi(A)$ is contained in the hypercube of side length
+    $$\left(\sup_{x \in A}\|D\varphi(A)\|\right)l.$$
+\end{proofenv}
+
+\begin{lemmaenv}
+    For any hyperrectangle $A \in \Theta$, one has
+    $$\nu(\varphi(A)) \le \int_{A} |\det(\DD \varphi(x))| \nu(\dd x).$$
+\end{lemmaenv}
+\begin{proofenv}
+    Let $\varepsilon > 0$.
+    Since the vertices of $A$ have rational coordinates,
+    we can decompose $A$ into \textit{disjoint} finite union of hypercubes $(A_i)_{i\in I}$, $I$ finite, $\forall i \in I$, $A_i \in \Theta$,
+    such that, for any $i \in I$ and any $x,y \in A_i$, one has
+    $$\|\DD \varphi(y)^{-1} \circ \DD \varphi(x)\| \le (1 + \varepsilon)^{\frac{1}{n}}.$$
+    This comes from the fact that $\DD \varphi$ is continuous,
+    hence uniformly continuous on the compact set $\bar{A} \subseteq U$.
+    Then
+    $$\begin{aligned}
+        \|\DD \varphi(y)^{-1} \circ \DD \varphi(x)\| \le & 1 + \|\DD \varphi(y)^{-1} \circ \DD \varphi(x) - \id_{\RR^n}\|\\
+        \le & 1 + \|\DD \varphi(y)^{-1} \| \cdot \| \DD \varphi(x) - \DD \varphi(y)\|.
+    \end{aligned}$$
+    By the intermediate value theorem,
+    for any $i \in I$, there exists $x_i \in A_i$ such that 
+    $$|\det(\DD \varphi(x_i))| \nu(A_i) = \int_{A_i} |\det(\DD \varphi(x))| \nu(\dd x).$$
+    By lemma \ref{lem:5.6.12}, 
+    $$\nu(\DD(\varphi(x_i)^{-1})(\varphi(A_i))) \le \sup_{x \in A_i}\|\DD \varphi(x)^{-1} \circ \DD\varphi(x)\|^n \nu(A_i) \le (1 + \varepsilon)\nu(A_i).$$
+    Since
+    $$\varphi(A_i) = \DD\varphi (x_i) \left(\DD \varphi(x_i)^{-1}(\varphi(A_i))\right).$$
+    By theorem \ref{thm:5.6.9},
+    $$\begin{aligned}
+        \nu(\varphi(A_i)) = & |\det(\DD \varphi(x_i))| |\nu (\DD(\varphi(x_i)^{-1})(\varphi(A_i)))|\\
+        \le & |\det(\DD \varphi(x_i))| \cdot (1 + \varepsilon) \cdot \nu(A_i)\\
+        = & (1 + \varepsilon) \int_{A_i} |\det(\DD \varphi(x))| \nu(\dd x).
+    \end{aligned}$$
+    Taking the union with respect to $i \in I$,
+    we obtain
+    $$\nu(\varphi(A)) \le (1 + \varepsilon) \int_{A} |\det(\DD \varphi(x))| \nu(\dd x).$$
+    Note that $\Theta$ is countable and forms a (set theoretic) semi-ring on $U$.
+    For any non-empty open set $U' \subseteq U$, one has
+    $$U' = \bigcup_{\substack{A \in \Theta\\A \subseteq U'}}A.$$
+    In particular, $U'$ can be written as a disjoint union of a countable family of elements of $\Theta$.
+    By the monotone convergence theorem of Beppo-Levi, we obtain that,
+    for any open, non-empty $U'\subseteq U$,
+    $$\nu(\varphi(U')) \le \int_{U'} |\det(\DD \varphi(x))| \nu(\dd x).$$
+    We notice that both $\nu \circ \varphi$ and $A \mapsto \int_{A} |\det(\DD \varphi(x))| \nu(\dd x)$ are Radon on $U$.
+    By \ref{prop:5.4.4}, we obtain that for any Borel set $A$,
+    $$\nu(\varphi(A)) \le \int_{A} |\det(\DD \varphi(x))|\nu(\dd x).$$
+    Therefore, for any non-negative Borel mapping $f : V \rightarrow \RR$, one has
+    $$\int_{V} f(y) \nu(\dd y) \le \int_{U} f(\varphi(x)) |\det(\DD \varphi(x))|\nu(\dd x)$$
+    Indeed, we can write $f$ as a pointwise limit of the increasing sequence
+    $$f_n = \sum_{k = 0}^{n2^n - 1}\frac{k}{2^n}\mathbbm{1}_{f^{-1}(\interval[open right]{\frac{k}{2^n}}{\frac{k + 1}{2^n}})}.$$
+    Applying $\nu(\varphi(A)) \le \int_{A} |\det(\DD \varphi(x))|\nu(\dd x)$, we obtain
+    $$\begin{aligned}
+        \int_{V} f_n(y) \nu(\dd y) = & \sum_{k = 0}^{n2^n} \frac{k}{2^n} \nu(\varphi(f^{-1}(\interval[open right]{\frac{k}{2^n}}{\frac{k + 1}{2^n}})))\\
+        \le & \nu(\varphi(A)) \le \int_{A} |\det(\DD \varphi(x))|\nu(\dd x)\\
+        \le & \sum_{k=0}^{n2^n} \frac{k}{2^n} \int_{\varphi^{-1}(f^{-1}\interval[open right]{\frac{k}{2^n}}{\frac{k + 1}{2^n}})} |\det(\DD \varphi(x))|\nu(\dd x)\\
+        = & \int_{U} f_{n} (\varphi(x)) |\det(\DD \varphi(x))|\nu(\dd x).
+    \end{aligned}$$
+    Taking the monotone limit $n \to +\infty$,
+    we get
+    $$\int_{V} f(y) \nu(\dd y) \le \int_{U} f(\varphi(x)) |\det(\DD \varphi(x))|\nu(\dd x).$$
+    Applying this to $\varphi^{-1}$ and $h(x) = f(\varphi(x))|\det(\varphi(x))|$, we obtain
+    $$\int_{U} f(\varphi(x)) |\det(\DD \varphi(x))|\nu(\dd x) \le \int_{V} f(y) |\det(\DD \varphi(\varphi^{-1}(y)))||\det \DD \varphi^{-1}(y)|\nu(\dd y).$$
+    Since 
+    $$\DD \varphi^{-1} (y) = \DD \varphi(\varphi^{-1}(y))^{-1},$$
+    we obtain,
+    $$\int_{U} f(\varphi(x)) |\det(\DD \varphi(x))|\nu(\dd x) \le \int_{V} f(y) \nu(\dd y).$$
+    Hence the equality holds.
+\end{proofenv}
