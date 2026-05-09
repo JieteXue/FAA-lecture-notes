@@ -453,6 +453,166 @@
     the image of 
     $$(T\cdot \Id_{V} - \varphi)(F(T) \otimes x)$$
     in $V$ by the $K[T]$-linear mapping $K[T] \otimes V \rightarrow V$
-    described in definition \ref{def:6.2.3} vanishes cause
+    described in definition \ref{def:6.2.3} vanishes, cause
     $$\varphi \circ F(\varphi) = F(\varphi) \circ \varphi.$$
+    Indeed,
+    $$(T\Id_{V} - \varphi)(F \otimes x) = T (F \otimes x) - F \otimes \varphi(x),$$
+    $$\mu(T \Id_{V} - \varphi)(F \otimes x) = \varphi F (\varphi)(x) - F(\varphi)(\varphi(x)).$$
+    By linearity, we deduce that for any $\xi \in K[T] \otimes V$,
+    the image of $(T \Id_{V} - \varphi) (\xi)$ by the $K[T]$-linear mapping
+    $$\begin{array}{rrcl}
+        \mu : & K[T] \otimes V & \longrightarrow & V \\
+        & F(T) \otimes x & \longmapsto & F(\varphi)(x)
+    \end{array}$$
+    vanishes.
+    By proposition \ref{prop:6.2.6}, 
+    $$(T - \varphi) \circ (T - \varphi)^a = P_{\varphi}(T) \Id_{K[T] \otimes V}.$$
+    Let $x \in V$, consider $1 \otimes x$, then
+    $$P_{\varphi} (T) \otimes x = P_{\varphi}(T)(1 \otimes x) = (T\Id_{V} - \varphi)(\xi),$$
+    where $\xi = (T\Id_{V} - \varphi)^a(1 \otimes x)$.
+    Taking the image of this under $\mu$, we get
+    $$P_{\varphi}(\varphi)(x) = 0.$$
 \end{proofenv}
+
+\begin{definitionenv}
+    Let $K$ be a commutative unitary ring,
+    $V$ be a free $K$-module of finite rank $n$ and $\varphi \in \End_{K}(V)$.
+    The polynomial $P_\varphi(T) = \det(T \cdot \Id_{V} - \varphi)$ is called the \textbf{characteristic polynomial} of $\varphi$.
+
+    \quad Let $(e_i)_{i=1}^n$ be a basis of $V$ over $K$.
+    Then $(1 \otimes e_1)_{i=1}^{n}$ forms a basis of the $K[T]$-module $K[T] \otimes V$.
+    By abuse of notation, for any $x \in V$,
+    we still use the notation $x$ to denote the element $1 \otimes x$ in $K[T] \otimes V$.
+    We therefore identify $V$ as a sub-$K$-module of $K[T] \otimes V$ with this notation
+    $$(T\Id_{V} - \varphi)(e_i) = Te_i - \varphi(e_i).$$
+    Therefore,
+    $$(T\Id_{V} - \varphi)(e_1) \wedge \cdots \wedge (T\Id_{V} - \varphi)(e_n) = (Te_1 - \varphi(e_1)) \wedge \cdots \wedge (Te_n - \varphi(e_n)).$$
+    This can be written as 
+    $$\begin{aligned}
+        &T^n(e_1 \wedge \cdots \wedge e_n)\\
+        & - T^{n-1} \sum_{i=1}^{n}(e_1 \wedge \cdots \wedge e_{i-1} \wedge \varphi(e_i) \wedge e_{i+1} \wedge \cdots \wedge e_n) + \cdots \\
+        &+ (-1)^n \varphi(e_1) \wedge \cdots \wedge \varphi(e_n).
+    \end{aligned}$$
+    We see that $P_{\varphi}$ is a monic polynomial of degree $n$,
+    and the coefficient of the polynomial is $(-1)^n \det(\varphi)$.
+    We denote by $\tr(\varphi)$ the opposite of the coefficient of $T^{n-1}$ in $P_{\varphi}$,
+    namely,
+    $$(\tr (\varphi))(e_1 \wedge \cdots \wedge e_n) = \sum_{i=1}^{n} (e_1 \wedge \cdots \wedge e_{i-1} \wedge \varphi(e_i) \wedge e_{i+1} \wedge \cdots \wedge e_n).$$
+    We can write $P_{\varphi} (T)$ as
+    $$P_{\varphi}(T) = T^n - s_1 (\varphi) T^{n-1} + \cdots + (-1)^{n} s_n (\varphi).$$ 
+    In particular, $\tr(\varphi) = s_1 (\varphi)$ and $\det(\varphi) = s_n(\varphi).$
+\end{definitionenv}
+
+\begin{remark}
+    Assume that
+    $$P_{\varphi} (T) = (T - \lambda_1) \cdots (T - \lambda_n),$$
+    then
+    $$s_{l} = \sum_{1 \le i_1 \le \cdots \le i_{l} \le n} \lambda_{i_1} \cdots \lambda_{i_{l}}.$$
+    By definition, for any $(x_{1},\cdots,x_{n}) \in V^n$,
+    $$(Tx_1 + \varphi(x_1)) \wedge \cdots \wedge (Tx_n + \varphi(x_n)) = (T^n + s_1(\varphi) T^{n-1} + \cdots + s_d(\varphi)) x_1 \wedge \cdots \wedge x_{n}.$$
+    Hence,
+    $$s_l (\varphi)(x_1 \wedge \cdots \wedge x_n) = \sum_{\substack{I = (i_1,\cdots,i_{l})\\1\le i_1 \le \cdots \le i_{l} \le n}} z_1^I \wedge \cdots \wedge z_n^I,$$
+    where 
+    $$z_j^I = 
+    \begin{cases}
+        x_j, \ &j \notin I\\
+        \varphi(x_j), \ &j \in I
+    \end{cases}.$$
+    Let $F_{l} : \End_{K}(V)^l \rightarrow K$ be the multilinear mapping
+    $$F_{l}(\varphi_1, \cdots, \varphi_l) x_1 \wedge \cdots x_d = \sum_{\substack{I = (i_1,\cdots,i_{l})\\1\le i_1 \le \cdots \le i_{l} \le n}} u_1^I \wedge \cdots \wedge u_d^I,$$
+    where 
+    $$u_j^I = 
+    \begin{cases}
+        x_j \ &j \notin I\\
+        \varphi_k(x_j) \ &j \in I
+    \end{cases}.$$
+    $F_l$ is multilinear form and $s_l (\varphi) = F_{l}(\varphi,\cdots,\varphi)$.
+    Hence $s_l$ is a homogenous polynomial of degree $l$ on $\End_{K}(V)$.
+\end{remark}
+
+
+\section{Reduction of Linear Endomorphisms}
+
+
+In this section, we fix a field $K$.
+
+\begin{definitionenv}\label{def:6.3.1}
+    Let $V$ be a finite dimensional vector space over $K$.
+    If $\varphi$ is a $K$-linear endomorphism of $V$,
+    we let $\lambda_{\varphi}$ to be the homomorphism of $K$-algebras
+    $$\begin{array}{rrcl}
+        \lambda_{\varphi} : & K[T] & \longrightarrow & \End_{K}(V)\\
+        & F(T) & \longmapsto & F(\varphi).
+    \end{array}$$
+    By Cayley-Hamilton theorem, $P_{\varphi} \in \ker(\lambda_{\varphi})$.
+    As a consequence, $\ker (\lambda_{\varphi})$ is a non-zero ideal in $K[T]$ (a principal ideal domain).
+    We denote by $Q_{\varphi}(T)$ the unique monic polynomial that generates $\ker(\lambda_{\varphi})$.
+    
+    \quad Note that $F \in K[T]$ satisfies $F(\varphi) = 0$ if and only if $Q_{\varphi} \mid F$.
+    We call $Q_\varphi$ the \textbf{minimal polynomial} of $\varphi$.
+\end{definitionenv}
+
+\begin{propositionenv}\label{prop:6.3.2}
+    Let $V$ be a finite dimensional vector space over $K$,
+    $\varphi \in \End_{K}(V)$,
+    and $W$ be a vector subspace of $V$ such that $\varphi(W) \subseteq W$.
+    Let $\psi : W \rightarrow W$ be the restriction of $V$ to $W$.
+    Then $Q_{\psi} \mid Q_{\varphi}$.
+\end{propositionenv}
+\begin{proofenv}
+    $Q_{\varphi}(\varphi) = 0$, hence, for any $x \in W$,
+    $$Q_{\varphi}(\psi)(x) = Q_{\varphi}(\varphi)(x) = 0.$$
+    Hence, $Q_{\varphi}(\psi) = 0$, then $Q_{\psi} \mid Q_{\varphi}$.
+\end{proofenv}
+
+\begin{definitionenv}\label{def:6.3.3}
+    Let $V$ be a vector space over $K$,
+    $I$ be a set and $(V_i)_{i \in I}$ be a family of vector subspaces of $V$.
+    Recall that, in the case where the $K$-linear mapping
+    $$ \bigoplus_{i \in I} V_i \longrightarrow V, \quad (x_i)_{i \in I} \longmapsto \sum_{i \in I} x_i$$
+    is an isomorphism of $K$-vector spaces, we say that $V$ is a direct sum of $(V_i)_{i \in I}$.
+    
+    \quad Note that if for any $i \in I$, $(e_{i,j})_{j \in J_i}$ is a basis of $V_i$, then
+    $$e_{i,j}, \quad i \in I, j \in J_i$$
+    forms a basis of $V$ over $K$.
+\end{definitionenv}
+
+\begin{propositionenv}\label{prop:6.3.4}
+    Let $V$ be a finite dimensional vector space over $K$,
+    $\varphi \in \End_{K}(V)$,
+    $V_1,\cdots,V_n$ be vector subspaces of $V$.
+    We assume that, for any $i \in \{1,\cdots,n\}$, $\varphi(V_i) \subseteq V_{i}$.
+    Let $\varphi_i:V_i \rightarrow V_i$ be the restriction of $\varphi$ to $V_i$.
+    \begin{enumerate}
+        \item If $V = V_1 + \cdots + V_n$, then $Q_{\varphi} (T) = \lcm(Q_{\varphi_1}(T), \cdots, Q_{\varphi_n}(T))$.
+        \item If $V$ is the direct sum of $V_1,\cdots,V_n$, then 
+            $$P_{\varphi}(T) = P_{\varphi_1}(T) \cdots P_{\varphi_n}(T).$$
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    \quad
+    \begin{enumerate}
+        \item Let $G = \lcm(Q_{\varphi_1}, \cdots, Q_{\varphi_n})$.
+            For any $i \in \{1,\cdots,n\}$,
+            let $F_i \in K[T]$ be such that $G = F_{i} Q_{\varphi_i}$.
+            Let $x \in V$, $x = x_1 + \cdots + x_n$, $x_i \in V_i$, $i \in \{1,\cdots,n\}$.
+            One has
+            $$G(\varphi)(x) = \sum_{i=1}^{n} G(\varphi)(x_i) = \sum_{i=1}^{n} G(\varphi_i)(x_i) = \sum_{i=1}^{n} F_i (\varphi_i) Q_{\varphi_i}(\varphi_i)(x).$$
+            Hence, $G$ is a vanishing polynomial of $\varphi$, so $Q_\varphi \mid G$.
+            Conversely, by proposition \ref{prop:6.3.2}, one ahs that $Q_{\varphi_i} \mid Q_{\varphi}$ for any $i \in \{1,\cdots,n\}$.
+            Hence, $G \mid Q_{\varphi}$.
+        \item For any $i \in \{1,\cdots,n\}$, let $(e_{i,j})_{j=1}^{d_i}$ be a basis of $V_i$, $d_i = \dim(V_i)$.
+            One has
+            $$(Te_{i,1} - \varphi(e_{i,1})) \wedge \cdots \wedge (Te_{i,d_i} - \varphi(e_{i,d_i})) = P_{\varphi_i} (T) e_{i,1} \wedge \cdots \wedge e_{i,d_i}.$$
+            $$P_{\varphi}(T) = P_{\varphi_{1}}(T) \cdots P_{\varphi_{n}}(T).$$
+    \end{enumerate}
+\end{proofenv}
+
+\begin{theoremenv}
+    Let $V$ be a finite dimensional vector space over $K$,
+    let $F_1,\cdots,F_n$ be non-zero polynomials in $K[T]$ and $F = F_1 \cdots F_n$.
+    Assume that $F_1,\cdots F_n$ are pairwise coprime,
+    that is for any $i \neq j \in \{1,\cdots,n\}$, $F_i,F_j$ do not have any non-trivial common irreducible factor.
+    Then $\ker(F(\varphi))$ is the direct sum of
+    $$\ker(F_1(\varphi)), \cdots , \ker(F_n(\varphi)).$$
+\end{theoremenv}
