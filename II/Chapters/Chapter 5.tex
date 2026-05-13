@@ -406,16 +406,16 @@ pattern radius = 1pt}
         (\varphi,\psi) & \longmapsto & \varphi \circ \psi
     \end{array}$$
     is bounded and hence continuous.
-    Let $GL(V)$ be subset of $\mathcal{L}(V,V)$ of bounded $K$-linear isomorphisms.
+    Let $\GL(V)$ be subset of $\mathcal{L}(V,V)$ of bounded $K$-linear isomorphisms.
 
-    \quad Note that by Banach's open mapping theorem, for any $f \in GL(V)$, then $f^{-1} \in GL(V)$.
-    Hence $GL(V)$ forms a group under composition of mappings.
-    It also has been shown that the mapping of inversion $\iota : GL(V) \rightarrow GL(V)$ is of class $C^\infty$.
+    \quad Note that by Banach's open mapping theorem, for any $f \in \GL(V)$, then $f^{-1} \in \GL(V)$.
+    Hence $\GL(V)$ forms a group under composition of mappings.
+    It also has been shown that the mapping of inversion $\iota : \GL(V) \rightarrow \GL(V)$ is of class $C^\infty$.
     So it is continuous.
-    Therefore $GL(V)$ is a topological group.
+    Therefore $\GL(V)$ is a topological group.
     The mapping
     $$ \begin{array}{rcl}
-        GL(V) \times V & \longrightarrow & V\\
+        \GL(V) \times V & \longrightarrow & V\\
         (f,x) & \longmapsto & f(x)
     \end{array}$$
     is a continuous left action.
@@ -1369,7 +1369,7 @@ $$\begin{array}{rrcl}
     Let $K$ be a field and $V$ be a finite dimensional vector space over $K$
     $$\End_{K}(V) \coloneq \{K\text{-linear endomorphisms} V \rightarrow V\}.$$
     Let
-    $$GL(V) \coloneq \End_{K}(V)^\times = \{\varphi \in \End_{K}(V) \mid \det (\varphi) \neq 0\},$$
+    $$\GL(V) \coloneq \End_{K}(V)^\times = \{\varphi \in \End_{K}(V) \mid \det (\varphi) \neq 0\},$$
     called the \textbf{general linear group} of $V$.
     Let
     $$SL(V) \coloneq \{\varphi \in \End_{K}(V) \mid \det (\varphi) = 1\} = \ker (\det),$$
@@ -1378,7 +1378,7 @@ $$\begin{array}{rrcl}
 
 \begin{lemmaenv}\label{lem:5.6.7}
     Any element of $SL(V)$ can be written as a composition of elements of the form $S_{i,j}(\lambda)$.
-    Moreover, any $f \in GL(V)$ can be decomposed as $f = g \circ h$,
+    Moreover, any $f \in \GL(V)$ can be decomposed as $f = g \circ h$,
     where $g \in SL(V)$, and
     $$\begin{array}{rrcl}
         h : & V & \longrightarrow & V\\
@@ -1386,19 +1386,19 @@ $$\begin{array}{rrcl}
     \end{array}$$
 \end{lemmaenv}
 \begin{proofenv}
-    Let $\Theta$ be the family of $f \in GL(V)$ that can be written as $g \circ h$ with $g$ and $f$ satisfies the conditions in the statement.
+    Let $\Theta$ be the family of $f \in \GL(V)$ that can be written as $g \circ h$ with $g$ and $f$ satisfies the conditions in the statement.
     We will prove by induction on $n = \dim (V)$ that
-    $$\Theta = GL(V).$$
+    $$\Theta = \GL(V).$$
     The cases $n = 0$, $n = 1$ are trivial.
     Now we assume that $n \ge 2$, and the induction hypothesis holds for $W = \Span_{K}\{e_1,\cdots,e_{n-1}\}$
     and the basis $(e_i)_{i=1}^{n-1}$.
-    Note that for any $F \in GL(V)$ and $i\neq j$, $i,j \in \{1,\cdots,n\}$, $\lambda \in K$.
+    Note that for any $F \in \GL(V)$ and $i\neq j$, $i,j \in \{1,\cdots,n\}$, $\lambda \in K$.
     $F \in \Theta$ is equivalent to $S_{i,j}(\lambda) \circ F \in \Theta$.
     So in the reasoning without losing of generality,
     we can replace $f$ by $S_{i,j}(\lambda) \circ f$.
-    For any $f \in GL(V)$ and $(i,j) \in \{1,\cdots,n\}$, let $c_{i,j}(f)$ be such that
+    For any $f \in \GL(V)$ and $(i,j) \in \{1,\cdots,n\}$, let $c_{i,j}(f)$ be such that
     $$f(e_i) = \sum_{j=1}^{n} c_{i,j}(f) e_j.$$
-    $f \in GL(V)$ (it is invertible), so $c_{n,1}(f) = \cdots = c_{n,n}(f) = 0$ can't hold.
+    $f \in \GL(V)$ (it is invertible), so $c_{n,1}(f) = \cdots = c_{n,n}(f) = 0$ can't hold.
     
     \quad First consider the case when $c_{n,j}(f) \neq 0$, for some $j \in \{1,\cdots,n-1\}$.
     Put
@@ -1430,18 +1430,18 @@ $$\begin{array}{rrcl}
     Let $K$ be a field and $V$ be a finite dimensional vector space over $K$.
     Assume that, either $\dim_{K}(V) \neq 2$, or $K \neq \ZZ /(2\ZZ)$.
     Then
-    $$[GL(V), GL(V)]_{\circ} = SL(V).$$
+    $$[\GL(V), \GL(V)]_{\circ} = SL(V).$$
 \end{theoremenv}
 \begin{proofenv}
     Since
-    $$\det : GL(V) \rightarrow K^\times$$
-    is a homeomorphism of groups from (non-commutative) $GL(V)$ to (commutative) $K^\times$,
+    $$\det : \GL(V) \rightarrow K^\times$$
+    is a homeomorphism of groups from (non-commutative) $\GL(V)$ to (commutative) $K^\times$,
     so
-    $$[GL(V), GL(V)]_{\circ} \subseteq \ker (\det) = SL(V).$$
-    If $\dim (V) = 0$, then $GL(V) = SL(V)$ are both groups with one element.
-    Hence, $[GL(V), GL(V)]_{\circ} = SL(V)$.
-    If $\dim (V) = 1$, then $\det : GL(V) \rightarrow K^\times$ is an isomorphism, and
-    $$SL(V) = [GL(V), GL(V)]_{\circ} = \{\id_{V}\}.$$
+    $$[\GL(V), \GL(V)]_{\circ} \subseteq \ker (\det) = SL(V).$$
+    If $\dim (V) = 0$, then $\GL(V) = SL(V)$ are both groups with one element.
+    Hence, $[\GL(V), \GL(V)]_{\circ} = SL(V)$.
+    If $\dim (V) = 1$, then $\det : \GL(V) \rightarrow K^\times$ is an isomorphism, and
+    $$SL(V) = [\GL(V), \GL(V)]_{\circ} = \{\id_{V}\}.$$
     In the rest of the proof, we fix a basis $(e_i)_{i=1}^{n}$ of $V$ over $K$ ($n = \dim (V)$).
     For $i \neq j$, $i,j \in \{1,\cdots,n\}$ and $\lambda \in K$, we denote by $S_{i,j}(\lambda)$ the $K$-linear mapping:
     $$\begin{array}{rrcl}
@@ -1468,7 +1468,7 @@ $$\begin{array}{rrcl}
     $$P_{\sigma}^{-1} = P_{\sigma^{-1}}.$$
     Moreover, $P_{\sigma^{-1}} \circ S_{i,j}(\lambda) \circ P_{\sigma}$ sends $\dis \sum_{i=1}^{n}a_i e_i$ to $\dis \sum_{i=1}^{n}a_{\sigma(i)} e_{\sigma(i)} + \lambda a_{\sigma(j)} e_{\sigma(i)}$.
     Hence $P_{\sigma^{-1}} \circ S_{i,j}(\lambda) \circ P_{\sigma} = S_{\sigma(i),\sigma(j)} (\lambda).$
-    For $b \in K^\times$, denote $D_b \in GL(V)$ such that
+    For $b \in K^\times$, denote $D_b \in \GL(V)$ such that
     $$D_b(\sum_{i=1}^{n}a_ie_i) = b a_1 e_1 + \sum_{i=2}^{n}a_i e_i.$$
     If $n=2$ and $K\not \cong \ZZ/(2\ZZ)$, then there exists $b\in K\setminus\{0,1\}$.
     Then
@@ -1492,7 +1492,7 @@ $$\begin{array}{rrcl}
         = & S_{1,2}(1)(x).
     \end{aligned}$$
     In both cases $n = 2$ and $n > 2$, we obtained $t \in K\times$ such that
-    $$S_{1,2}(t) \in [GL(V), GL(V)]_{\circ}.$$
+    $$S_{1,2}(t) \in [\GL(V), \GL(V)]_{\circ}.$$
     For general $\lambda \in K^\times$, one has
     $$S_{1,2}(\lambda) = D_{\lambda t^{-1}} \circ S_{12}(t) \circ D_{\lambda^{-1} t}.$$
     Since
@@ -1504,20 +1504,20 @@ $$\begin{array}{rrcl}
     Finally for a general $(i,j) \in \{1,\cdots,n\}^2$, $i \neq j$, there exists a permutation $\sigma : \{1,\cdots,n\} \rightarrow \{1,\cdots,n\}$ such that $\sigma(1) = i$, $\sigma(2) = j$.
     We have $P_{\sigma^{-1}} \circ S_{i,j}(\lambda) \circ P_{\sigma} = P_{1,2}(\lambda)$.
     By lemma \ref{lem:5.6.7},
-    $$[GL(V), GL(V)]_{\circ} = SL(V).$$
+    $$[\GL(V), \GL(V)]_{\circ} = SL(V).$$
 \end{proofenv}
 
 \begin{remark}
-    $$\det : GL(V) \rightarrow K^\times.$$
-    For any $\tau \in [GL(V), GL(V)]_{\circ}$, $\det(\tau) = 1$.
+    $$\det : \GL(V) \rightarrow K^\times.$$
+    For any $\tau \in [\GL(V), \GL(V)]_{\circ}$, $\det(\tau) = 1$.
     So $\tau \in SL(V)$.
 \end{remark}
 
 \begin{remark}[Some assumptions and settings in \ref{thm:5.6.*}]\label{5.6.8}
-    Let $\varphi : GL(V) \rightarrow K^\times$ be a homeomorphism of groups.
+    Let $\varphi : \GL(V) \rightarrow K^\times$ be a homeomorphism of groups.
     There exists an endomorphism of groups $\psi : K^\times \rightarrow K^\times$ such that
     $$\varphi = \psi \circ \det.$$
-    \quad In fact, since $SL(V) = [GL(V), GL(V)]_{\circ}$, $\varphi$ sends elements of $SL(V)$ to $1$.
+    \quad In fact, since $SL(V) = [\GL(V), \GL(V)]_{\circ}$, $\varphi$ sends elements of $SL(V)$ to $1$.
     Fix basis $(e_i)_{i=1}^{n}$ of $V$ over $K$.
     Let $D_{b} : V \rightarrow V$,
     $$\begin{array}{rrcl}
@@ -1526,14 +1526,14 @@ $$\begin{array}{rrcl}
     \end{array}$$
     This is also a homomorphism of groups.
     $$\psi(bb') = \psi(D_{bb'}) = \varphi(D_{b}\circ D_{b'}) = \varphi(D_{b}) \varphi(D_{b'}) = \psi(b)\psi(b').$$
-    By lemma \ref{lem:5.6.7}, for any $f \in GL(V)$, there exists $g \in SL(V)$ such that
+    By lemma \ref{lem:5.6.7}, for any $f \in \GL(V)$, there exists $g \in SL(V)$ such that
     $$f = g \circ D_{\det(f)}.$$
     Hence $\varphi(f) = \varphi(g) \varphi(D_{\det(f)}) = \psi(\det(f)).$
 \end{remark}
 
 \begin{theoremenv}[Linear change of variables]\label{thm:5.6.9}
     Let $V$ be a finite dimensional vector space over $\RR$ and $\nu$ be a Haar measure on $V$.
-    For any $f \in GL(V)$, on has 
+    For any $f \in \GL(V)$, on has 
     $$f_*(\nu) = \left| \det(f)\right|^{-1} \nu.$$
     In other words, for any Borel subset $A \subseteq V$,
     $$\nu(f(A)) = \left| \det(f)\right| \nu(A).$$
@@ -1556,9 +1556,9 @@ $$\begin{array}{rrcl}
     \end{aligned}$$
     We conclude $f_*(\nu)$ is a Haar measure on $V$.
     There exists $\phi(f) \in \RR_{>0}$ such that $f_*(\nu) = \varphi(f) \cdot \nu$.
-    Moreover, for any $f_1,f_2 \in GL(V)$,
+    Moreover, for any $f_1,f_2 \in \GL(V)$,
     $$\left(f_2 \circ f_1\right)_* (\nu) = \left(f_2\right)_*\left((f_1)_*(\nu)\right) = \varphi(f_2) \cdot \varphi(f_1) \cdot \nu.$$
-    Hence $\varphi$ is a morphism of groups from $GL(V)$ to $\RR_{>0}$
+    Hence $\varphi$ is a morphism of groups from $\GL(V)$ to $\RR_{>0}$
     By \ref{5.6.8}, there exists a group homomorphism $\psi : \RR^\times \rightarrow \RR_{>0}$ such that
     $$\varphi = \psi \circ \det.$$
     In particular, if $f \in SL(V)$, then $\varphi(f) = 1$.
@@ -1590,7 +1590,7 @@ $$\begin{array}{rrcl}
     By lemma, we get
     $$\int_{V} u(x) (D_b)_*(g_*(\eta^{\otimes n})) = |b|^{-1} \int_{V} u(x) g_{*} (\eta^{\otimes n})(\dd x).$$
     Therefore, by lemma \ref{lem:5.6.7}, we obtain
-    $$\forall f \in GL(V),\ \psi(f) = |\det(f)|^{-1}$$
+    $$\forall f \in \GL(V),\ \psi(f) = |\det(f)|^{-1}$$
     as required.
 \end{proofenv}
 

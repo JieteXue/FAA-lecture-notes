@@ -1,0 +1,28 @@
+\chapter{Differential Geometry}
+
+
+\section{Differential Forms}
+
+
+We fix a finite dimensional vector space $E$ over $\RR$.
+We denote by $E^*$ the dual vector space of $E$.
+
+\begin{definitionenv}
+    Let $U \subseteq E$ be an open subset, $p \in \NN$.
+    We call $p$-form of $U$ any mapping $\omega$ from $U$ to $\bigwedge^p (E^*)$.
+    For any $l \in \NN \cup\{\infty\}$, denote by $\Omega^p(U)$ the vector space of $p$-forms on $U$ which are of class $C^l$.
+
+    \quad If $\omega: U \rightarrow \bigwedge^p(E^*)$ is a $p$-form, we define the support of $\omega$ the closure of
+    $$\{x \in U \mid \omega(x) \neq 0\}$$
+    in $U$, denote as $\supp(\omega)$.
+    If $\supp(\omega)$ is compact, we say that $\omega$ has a compact support.
+    Let $\Omega_{l,c}^{p}(U)$ be the set of $p$-forms of class $C^l$ on $U$ which are of compact support.
+
+    \quad Let $\alpha,\beta$ be $p$-form and $q$-form respectively.
+    We denote by
+    $$\begin{array}{rrcl}
+        \alpha \wedge \beta : & U & \longrightarrow & \bigwedge^{p+q}(E^*)\\
+        & x & \longmapsto & \alpha(x) \wedge \beta(x).
+    \end{array}$$
+    One has $\beta \wedge \alpha = (-1)^{pq} \alpha \wedge \beta$.
+\end{definitionenv}
