@@ -217,3 +217,141 @@ We denote by $E^*$ the dual vector space of $E$.
     Since $\DD^2f (x)$ is symmetric, one has $\dd(\DD f) = 0$.
     So $\dd^2 \alpha = 0$.
 \end{proofenv}
+
+\begin{definitionenv}
+    We fix a non-zero element $\xi \in \det(E) \coloneq \bigwedge^n (E)$.
+    Note that 
+    $$\xi = e_1 \wedge \cdots \wedge e_n,$$
+    where $(e_i)_{i=1}^{n}$, $n = \dim(E)$ is a basis of $E$ over $\RR$.
+    Let $\mu_{\xi}$ be a Haar measure on $E$ such that the measure of the parallellotope
+    $$\{a_1 e_1 + \cdots + a_n e_n \mid (a_1,\cdots,a_n) \in \interval[open left]{0}{1}^n\}$$
+    is equal to $1$.
+
+    \quad By theorem $\ref{thm:5.6.9}$, the Haar measure $\mu_{\xi}$ does not depend on the choice of the basis $(e_i)_{i=1}^{n}$.
+    It only depends on the choice of the non-zero element $\xi \in \det(E)$,
+    such that $\xi = e_1 \wedge \cdots \wedge e_n$. 
+
+    \quad Moreover, for any non-zero real number $b$, one has
+    $$\mu_{b \xi} = |b|^{-1} \mu_{\xi}.$$
+    Let $U$ be an open subset of $E$ and $\alpha : U \longrightarrow \bigwedge^n(E^*)$.
+    If the mapping
+    $$(x \in U) \longmapsto \alpha(x)(\xi) \in \RR$$
+    is integrable with respect to the Haar measure $\mu_{\xi}$,
+    then we say that $\alpha$ is integrable and we denote by 
+    $$\int_{U} \alpha$$
+    the integral
+    $$\int_{U} \alpha(x) (\xi) \mu_{\xi}(\dd x).$$
+    Note that the integral only depends on the orbit of $\xi$ in $\det(E)$ by the action of $\RR_{>0}$ which is called an orientation of $E$.
+
+    \quad Let $p$ be an element of the set $\{0,\cdots,n\}$ and let $\alpha : U \rightarrow \bigwedge^p(E^*)$ be a $p$-form.
+    If for any $\beta \in \Omega_{c}^{n-p}(U)$, $\alpha \wedge \beta$ is an integrable $n$-form, we say that $\alpha$ is locally integrable.
+    We denote by $\Omega_{\text{loc}}^{p}(U)$ the set of all locally integrable $p$-forms on $U$.
+\end{definitionenv}
+
+
+\section{Localization and Mollification}
+
+
+In this section, we fix a finite-dimensional vector space $E$ over $\RR$.
+
+\begin{lemmaenv}
+    The mapping
+    $$\begin{array}{rrcl}
+        b : & \RR & \longrightarrow & [0,1]\\
+        & t & \longmapsto & \begin{cases}
+            \exp\left(\frac{1}{t^2 - 1}\right), & |t| < 1\\
+            0, & |t|\ge 1
+        \end{cases}
+    \end{array}$$
+    is smooth.
+\end{lemmaenv}
+\begin{proofenv}
+    We first prove that for any natural number $n$,
+    $$\lim_{x \to +\infty} x^n \exp(-x) = 0.$$
+    In fact, by the equality
+    $$\exp(x) = \sum_{k \in \NN} \frac{x^k}{k!},$$
+    we obtain that
+    $$\exp(x) \ge \frac{x^{n+1}}{(n+1)!},$$
+    and hence
+    $$\forall x \in \RR_{>0},\; 0 \le x^n \exp(-x) \le \frac{x^{n+1}}{x}.$$
+    Taking the limit when $x \rightarrow +\infty$, we get
+    $$\lim_{x \to +\infty} x^n \exp(-x) = 0.$$
+    
+    \quad Now we prove by induction that the mapping $b$ is differentiable $n$ times and 
+    $$b^{(n)}(t) = \begin{cases}
+        \frac{F_n(t)}{(t^2 - 1)^{2n}} b(t), & |t| < 1\\
+        0, & |t|\ge 1
+    \end{cases},$$
+    where $F_n$ is a polynomial.
+    By definition, the statement is true when $n = 0$.
+    We assume that the statement is true for $n$.
+    Then the function $b^{(n)}$ is differentiable on $\interval[open]{-1}{1}$ and on this interval
+    $$\begin{aligned}
+        b^{(n-1)}(t) = & \frac{F_{n}(t)}{(t^2 - 1)^{2n}}b'(t) - \frac{4ntF_n(t)}{(t^2 - 1)^{2n+1}}b(t) + \frac{F'_n(t)}{(t^2 - 1)^{2n}} b(t)\\
+        = & \frac{-2t F_n(t) - 4nt (t^2 - 1) F_n(t) +(t^2 - 1)^2 F'_n(t)}{(t^2 - 1)^{2n+2}} b(t).
+    \end{aligned}$$
+    Moreover, $b^{(n)}$ is also differentiable on $\RR\setminus\interval{-1}{1}$ and $b^{(n+1)}(t) = 0$ for any $t \in \RR\setminus[-1,1]$.
+
+    \quad By the change of variable $x = - \frac{1}{t^2 - 1}$, we obtain
+    $$\lim_{|t| \to 1^-} \frac{b(t)}{(t^2 - 1)^{2n + 1}} = \lim_{x \rightarrow +\infty} x^{2n + 1} \exp(x) = 0.$$
+    As a consequence, we obtain that
+    $$\lim_{t \rightarrow 1} \frac{b^{n}(t)}{t - 1} = \lim_{t \rightarrow -1} \frac{b^{(n)}(t)}{t + 1} = 0.$$
+    In particular, $b^{(n)}$ is differentiable at $1,-1$ and 
+    $$b^{(n+1)}(1) = b^{(n+1)}(-1) = 0.$$
+\end{proofenv}
+
+\begin{propositionenv}
+    Let $U$ be an open subset of $E$ and $K \subseteq U$ be compact.
+    There exists a smooth mapping
+    $$\rho : E \longrightarrow [0,1]$$
+    such that $\rho(x) = 1$ for any $x \in K$ and $\supp(\rho) \subseteq U$.
+\end{propositionenv}
+\begin{proofenv}
+    Without losing of generality, we may assume that $E = \RR^n$, $n \in \ZZ_{>0}$.
+    We equip $\RR^n$ with the norm $\|\cdot\|$ such that
+    $$\|(x_1,\cdots,x_n)\| = \max_{i \in \{1,\cdots,n\}} |x_i|.$$
+    Let $\chi : \RR^n \rightarrow \RR$, $\chi(x_1,\cdots,x_n) = C b(x_1) \cdots b(x_n)$,
+    where $C$ is a positive constant such that
+    $$C\left(\int_{\RR} b(t) \dd t\right)^n = 1.$$
+    Note that by Fubini's theorem,
+    $$\int_{\RR^n} \chi(x_1,\cdots,x_n)\dd(x_1,\cdots,x_n) = 1$$
+    where $\dd (x_1,\cdots,x_n)$ denotes the Lebesgue measure on $\RR^n$.
+    For any $\varepsilon \in \RR_{>0}$, we obtain by $\chi_{\varepsilon}$,
+    $\chi_{\varepsilon} : E \rightarrow \RR$ defined as $\chi_{\varepsilon} \coloneq \frac{1}{\varepsilon^n} \chi(x/\varepsilon)$.
+    By the formula of change of variables
+    $$\int_{\RR} (x_1,\cdots,x_n) \dd(x_1,\cdots,x_n) = 1.$$
+    For any $\varepsilon \in \RR_{>0}$, define $K_{\varepsilon} = \bigcup_{y \in K}\bar{B}(y,\varepsilon)$.
+    Clearly, for any $x \in K_{\varepsilon}$, one has
+    $$\dd(x,K) \coloneq \inf_{y \in K} \dd(x,y) < \varepsilon.$$
+
+    \quad Conversely, if $x$ is an element of $E$ such that $\dd(x,K)\le \varepsilon$, the there exists a sequence $(y_n)_{n \in \NN}$ of elements in $K$ such that
+    $$\lim_{n\rightarrow +\infty}\|x - y_n\|\le \varepsilon.$$
+    By taking a subsequence, we may assume without losing of generality that $(y_n)_{n \in \NN}$ converges to some $y \in K$.
+    Hence
+    $$\dd(x,y) \le \varepsilon.$$
+    We obtain that
+    $$K_{\varepsilon} = \{x \in E \mid \dd(x,K) \le \varepsilon\}$$
+    is a compact subset of $E$ (closed and bounded).
+    
+    \quad We claim that there exists $\varepsilon > 0$ such that
+    $$K_{2\varepsilon} \subseteq U.$$
+    Let $(\varepsilon_n)_{n \in \NN}$ be a decreasing sequence converging to $0$.
+    Suppose by contradiction that for any $n \in \NN$, there exists $x_n \in K_{\varepsilon_n} \setminus U$.
+    Since $K_{\varepsilon_0}$ is compact,
+    by existing a subsequence of $(x_n)_{n \in \NN}$ we may assume without losing of generality that $(x_n)_{n \in \NN}$ converges to some $x \in K_{\varepsilon_0}$.
+    Since $U$ is open, $x \notin U$.
+    However, one has $\dd(x,K) = 0$ and hence $x \in K \subseteq U$ (contradiction).
+    
+    \quad We now let $\rho$ to be the convolution of $\mathbbm{1}_{K_{\varepsilon}}$ and $\chi_{\varepsilon}$, i.e.
+    $$\forall x \in \RR,\; \rho(x) = \int_{\RR} \mathbbm{1}_{K_{\varepsilon}}(y)\chi_{\varepsilon}(x-y)\dd y.$$
+    Since $\chi_{\varepsilon}$ is smooth and of compact support, by the theorem of differentiability under integral,
+    we get that $\rho$ is smooth.
+    By the formula of change of variable and the fact that $\chi_{\varepsilon}$ is an even function
+    $$\rho(x) = \int_{\RR^n} \mathbbm{1}_{K_{\varepsilon}} (x - y)\chi_{\varepsilon} (y) \dd y = \int_{\RR^n} \mathbbm{1}_{K_{\varepsilon}}(y) \dd y.$$
+    For any $x \in K$,
+    $$\rho(x) = \int_{\RR^n} \chi_{\varepsilon}(y) \dd y = 1.$$
+    For any $x \notin K_{2\varepsilon}$, one has
+    $$\rho(x) = \int_{K_{2\varepsilon}} \mathbbm{1}_{K_{\varepsilon}}(x+y)\chi_{\varepsilon}(y) \dd y = 0.$$
+    Hence the support of $\rho$ is contained $K_{2\varepsilon} \subseteq U$.
+    In particular $\supp(\rho) \subseteq U$.
+\end{proofenv}
