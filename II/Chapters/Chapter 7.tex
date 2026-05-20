@@ -355,3 +355,232 @@ In this section, we fix a finite-dimensional vector space $E$ over $\RR$.
     Hence the support of $\rho$ is contained $K_{2\varepsilon} \subseteq U$.
     In particular $\supp(\rho) \subseteq U$.
 \end{proofenv}
+
+\begin{remark}
+    Let $U$ be an open subset of $E$, $K \subseteq U$ be compact and $f : U \rightarrow \RR$ be a mapping.
+    We pick a smooth mapping $\rho : E \rightarrow \RR$ of compact support such that $\rho(x) = 1$ for any $x \in K$,
+    and $\supp(\rho) \subseteq U$.
+    Then the mapping
+    $$(x \in E) \longmapsto \begin{cases}
+        f(x) \rho(x), & x \in U\\
+        0, & x \in E \setminus U
+    \end{cases}$$
+    coincides with $f$ on $K$ and is of compact support contained in $U$ of class $C^l$ if $f$ is of class $C^l$.
+\end{remark}
+
+\begin{lemmaenv}\label{lem:7.2.4}
+    Let $\Omega$ be a set, $S \subseteq \RR^\Omega$ be a Riesz space and $I : S \rightarrow \RR$ be an integral operator.
+    Then $S$ is dense in $\mathcal{L}^{1}(I)$,
+    namely, for any $f \in \mathcal{L}^{1}(I)$ and any $\varepsilon > 0$,
+    there exists $g \in S$ such that $I(|f - g|) \le \varepsilon$.
+\end{lemmaenv}
+\begin{proofenv}
+    Without losing of generality, we may assume that $f$ is non-negative ($f = f^+ - f^-$).
+    
+    For any $\varepsilon > 0$, $u \in S^\uparrow$ such that $u \ge f$ and $I(u) - I(f) \le \frac{\varepsilon}{2}$.
+    ($I(f) = \inf \{I(u), u\in S^\uparrow, u\ge f\}$).
+    Let $(g_n)_{n \in \NN} \in S^\NN$ be an increasing sequence of elements in $S$ that converges pointwise to $u$.
+    For any $n \in \NN$, let $f_n = \inf\{f, g_n\}$,
+    one has $f_n \le g_n$ and $g_n - f_n \le u - f$.
+    $$I(|g_n - f_n|) = I(g_n - f_n) \le I(u - f) \le \frac{\varepsilon}{2}.$$
+
+    The sequence $(f - f_n)_{n \in \NN}$ is decreasing and converges pointwise to $0$.
+    Since $I : \mathcal{L}^{1}(I) \rightarrow \RR$ is an integral operator,
+    $$\lim_{n \rightarrow +\infty} I(|f - f_n|) = 0.$$
+    Hence, there exists $n_0 \in \NN$ such that 
+    $$I(|f - f_n|) = I(f - f_n) \le \frac{\varepsilon}{2}.$$
+    Hence $I(|g_{n_0} - f|) \le \varepsilon$.
+\end{proofenv}
+
+\begin{propositionenv}
+    We equip $E$ with a norm $\|\cdot\|$ and with a Haar measure $\mu$.
+    Let $\chi : E \rightarrow [0,1]$ be a smooth mapping with support contained in
+    $$B = \{x \in E \mid \|x\| \le 1\}$$
+    such that
+    $$\int_{E} \chi(x) \mu(\dd x) = 1.$$
+    Let $f : E \rightarrow \RR$ be a mapping that is integrable with respect to the measure $\mu$.
+    For any $\varepsilon > 0$, we let $\chi_{\varepsilon} : E \rightarrow \RR$ be the mapping defined as $\chi_{\varepsilon} = \frac{1}{\varepsilon^n}\chi(\frac{x}{\varepsilon})$,
+    where $n = \dim_{\RR} E$.
+    Let $f_\varepsilon$ be the convolution of $f$ and $\chi_{\varepsilon}$, i.e.
+    $$f_\varepsilon(x) = \int_{E} f(x-y)\chi_{\varepsilon}(y)\dd y = \int_{E} f(y)\chi_{\varepsilon}(x-y)\dd y.$$
+    \begin{enumerate}[label=(\arabic*)]
+        \item Suppose that $f$ is continuous at $x_0 \in E$, then
+            $$\lim_{\varepsilon \to 0} f_\varepsilon(x_0) = f(x_0).$$
+        \item Let $U \subseteq E$ be open such that $f|_U$ is uniformly continuous.
+            For any compact $K \subseteq U$, the family $(f_{\varepsilon})_{\varepsilon > 0}$ converges uniformly to $f$ on $K$.
+        \item Suppose that $f$ is integrable on $E$, then
+            $$\lim_{\varepsilon \to 0} \int_{E} |f_\varepsilon(x) - f(x)| \mu(\dd x) = 0.$$
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    For any $\varepsilon > 0$, let $B_{\varepsilon} = \{x \in E \mid \|x\| \le \varepsilon\}$.
+    \begin{enumerate}
+        \item Since
+            $$\int_E \chi_{\varepsilon}(y) \mu(\dd y) = 1.$$
+            We obtain that
+            $$\begin{aligned}
+                |f_\varepsilon(x_0) - f(x_0)| = & \left|\int_E (f(x_0-y) - f(x_0))\chi_{\varepsilon}(y)\mu(\dd y)\right|\\
+                \le & \int_E |f(x_0-y) - f(x_0)|\chi_{\varepsilon}(y)\mu(\dd y)\\
+                \le & \sup_{y \in B_{\varepsilon}}|f(x_0 - y) - f(x_0)|.
+            \end{aligned}$$
+            Since $f$ is continuous at $x_0$, 
+            $$\lim_{\varepsilon \to 0} \sup_{y \in B_{\varepsilon}}|f(x_0 - y) - f(x_0)| = 0,$$
+            which leads to $\lim_{\varepsilon \to 0} f_\varepsilon(x_0) = f(x_0)$.
+        \item Let $\varepsilon > 0$ be such that
+            $$K_{\varepsilon} = \{x \in E \mid \dd(x,K) \le \varepsilon\} \subseteq U.$$
+            By (1), for any $x \in K$, one has
+            $$\sup_{x \in K} |f_{\varepsilon}(x) - f(x)| \le \sup_{x \in K} \sup_{y \in B_{\varepsilon}} |f(x-y) - f(x)| \le \sup_{\substack{a,b \in U\\ \|a-b\|\le \varepsilon}}|f(a) - f(b)|.$$
+            Hence
+            $$\lim_{\varepsilon \to 0} \sup_{x \in K}|f_{\varepsilon}(x) - f(x)| = 0.$$
+        \item We first consider the case where $f \in \cc(E)$.
+            Let $K$ be the compact set such that $\supp(f) = K$.
+
+            \quad Note that $f$ is uniformly continuous on $E$.
+            Let $K_1 = \{y \in E \mid \dd(y,K) \le 1\}$.
+            For any $0 < \varepsilon < 1$, the support of $f_{\varepsilon}$ is contained in the $K_1$.
+            By (2),
+            $$\lim_{\varepsilon \rightarrow 0} \sup_{x \in E} |f_{\varepsilon}(x) - f(x)| = 0.$$
+            Since for any $\varepsilon \in \interval[open]{0}{1}$,
+            $$0 \le \int_{E} |f_{\varepsilon}(x) - f(x)| \mu(\dd x) \le \mu(K_1) \sup_{x \in E}|f_{\varepsilon}(x) - f(x)|$$
+            we obtain
+            $$\lim_{\varepsilon \rightarrow 0} \int_{E} |f_{\varepsilon} - f(x)|\mu(\dd x) = 0.$$
+            
+            \quad We now consider the general case.
+            Let $\delta > 0$, by lemma \ref{lem:7.2.4}, there exists $g \in \cc(E)$ such that 
+            $$\int_{E} |f(x) - g(x)|\mu(\dd x) \le \delta,$$
+            $$\begin{aligned}
+                \int_{E} |f_{\varepsilon}(x) - g_{\varepsilon}(x)| \mu(\dd x) = & \int_{E} \left|\int_{E} (f(y) - g(y))\chi_{\varepsilon}(x - y)\dd y\right| \mu(\dd x)\\
+                \le & \int_{E} \int_{E} |f(y) - g(y)|\chi_{\varepsilon}(x-y)\mu(\dd y) \mu(\dd x)\\
+                = & \int_{E} \int_{E} |f(y) - g(y)|\chi_{\varepsilon}(x-y)\mu(\dd x) \mu(\dd y)\\
+                = & \int_{E} |f(y) - g(y)| \mu(\dd y) \le \delta.
+            \end{aligned}$$
+            By the triangle inequality applied to
+            $$f_{\varepsilon} - f = f_{\varepsilon} - g_{\varepsilon} + g_{\varepsilon} - g + g - f$$
+            we get that
+            $$\int_{E} |f_{\varepsilon}(x) - f(x)| \mu(\dd x) \le \int_{E} |g_{\varepsilon}(x) - g(x)| \mu(\dd x) + 2 \delta,$$
+            which leads to
+            $$\limsup_{\varepsilon \to 0} \int_{E} |f_{\varepsilon}(x) - f(x)| \mu(\dd x) \le \delta.$$
+            Since $\delta$ is arbitrary, we obtain that
+            $$\lim_{\varepsilon \to 0} \int_{E} |f_{\varepsilon}(x) - f(x)| \mu(\dd x) = 0.$$
+    \end{enumerate}
+\end{proofenv}
+
+\begin{theoremenv}[Taylor's formula]\label{thm:7.2.6}
+    Let $(E,\|\cdot\|)$ e a Banach space, $U \subseteq E$ be open,
+    $a \in U$ and $h \in E$.
+    Suppose that for any $t \in [0,1]$, $a + th \in U$.
+    Let $f : U \rightarrow \RR$ be a mapping of class $C^{n+1}$.
+    The following equality holds:
+    $$f(a + h) = \sum_{k=0}^{n} \frac{1}{k!} \DD^k f(a)(h,\cdots,h) + \int_{0}^{1}\frac{(1 - t)^n}{n!} \DD^{n+1}f(a + th)(h,\cdots,h)\dd t.$$
+\end{theoremenv}
+\begin{proofenv}
+    We reason by induction on $n$.
+    In the case where $n = 0$, one has
+    $$\frac{\dd}{\dd t} f(a + th) = \DD f(a)(h,\cdots,h),$$
+    so that
+    $$\int_{0}^{t} \DD f(a + th)(h) \dd t = f(a + h) - f(a),$$
+    by the fundamental theorem of analysis.
+
+    \quad Suppose that the formula holds for $n$.
+    By the relation
+    $$\frac{\dd}{\dd t}\DD^n f(a + th)(h,\cdots,h) = \DD^{n+1}f(a + th)(h,\cdots,h),$$
+    Integrating by parts, we obtain
+    $$\begin{aligned}
+        & \int_{0}^{1} \frac{(1 - t)^n}{n!} \DD^{n+1}f(a + th)(h,\cdots,h) \dd t\\
+        = & \frac{1}{n!} f(a) (h,\cdots,a) + \int_{0}^{1} \frac{(1 - t)^{n-1}}{n!} \DD^n f(a + th)(h,\cdots,h) \dd t.
+    \end{aligned}$$
+    By inductive assumption, we obtain the desired formula.
+\end{proofenv}
+
+\begin{remark}
+    Let $E$ be a finite-dimensional vector space over $\RR$,
+    $U \subseteq E$ be open and convex.
+    Let $a \in U$ and $f : U \rightarrow \RR$ be a mapping of class $C^{l}$, $l \in \NN_{\ge 1} \cup \{\infty\}$.
+    By theorem \ref{thm:7.2.6},
+    $$f(a + h) = f(a) + \int_{0}^{1} \DD f(a + th)(h) \dd t.$$
+    Let $(e_i)_{i=1}^{n}$ be a basis of $E$ and $(e_i^\vee)_{i=1}^{n}$ be the dual basis.
+    One has
+    $$f(a + h) = f(a) + \sum_{i=1}^{n} e_i^\vee (h) \int_{0}^{1} \DD f(a + th)(e_i) \dd t.$$
+    In other words, there exist continuous mappings $g_1,\cdots,g_n : U \rightarrow \RR$, $i \in \{1,\cdots,n\}$ such that
+    $$\forall x \in U,\; f(x) = f(a) + \sum_{i=1}^{n} g_i(x) e^\vee_i (x - a)$$
+    where
+    $$g_i(x) = \int_{0}^{1} \DD f(tx + (1-t)a)(e_i) \dd t.$$
+\end{remark}
+
+\begin{definitionenv}
+    Let $K$ be a commutative unitary ring,
+    $A$ be a commutative algebra.
+    Let $P : A \rightarrow K$ be a homomorphism of $K$-algebras.
+    For any $f \in A$, we denote by $f(P)$ the image of $f$ in $K$ by the homomorphism $P$.
+    We call \textbf{point derivation} at $P$ any homomorphism of $K$-modules $\partial : A \rightarrow K$ which satisfies the following Leibniz rule:
+    $$\forall (f,g) \in A^2,\; \partial(fg) = f(P) \partial(g) + g(P) \partial(f).$$
+    We denote by $\Der_P(A)$ the set of all point derivations at $P$ of the $K$-algebra $A$.
+    It forms a sub-$K$-module of $K^A$.
+
+    \quad For any $c \in K$, we define $\partial(c)$ via the identification $c \mapsto c\cdot 1_A$.
+\end{definitionenv}
+
+\begin{exampleenv}
+    Let $(E,\|\cdot\|)$ be a Banach space over $\RR$, $\varnothing \neq U \subseteq E$ open, $p \in U$.
+    Let $l \in \NN_{\ge 1} \cup \{\infty\}$.
+    By abuse of notation, we denote by $P$ the evaluation mapping
+    $$P : C^l(U) \ni f \longmapsto f(P) \in \RR.$$
+    This is a homomorphism of $\RR$-algebras.
+    For any $v \in E$, the mapping
+    $$\left(f \in C^l(U)\right) \mapsto \DD f(P)(v)$$
+    is a point derivation at $P$.
+\end{exampleenv}
+
+\begin{propositionenv}
+    Let $K$ be a commutative unitary ring, $A$ be a commutative $K$-algebra and $P : A \rightarrow K$ be a homomorphism of $K$-algebras.
+    Let $I = \ker(P)$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item Let $\partial : A \rightarrow K$ be a derivation at $p$.
+            For any $f \in I^2$, $\partial(f) = 0$.
+            Hence $\partial$ induces a homomorphism of $K$-modules $I/I^2 \rightarrow K$.
+        \item  Suppose that $2$ is not a zero divisor in $K$.
+            For any $c \in K$, one has $\partial(c) = 0$.
+        \item Suppose that $2$ is not a zero divisor in $K$.
+            The mapping 
+            $$\begin{array}{rrcl}
+                \Der_p(A) & \longrightarrow & \Hom_K(I/I^2, K)\\
+                \partial & \longmapsto & ([f] \mapsto \partial(f))
+            \end{array}$$
+            is a isomorphism of $K$-modules.
+    \end{enumerate}
+\end{propositionenv}
+\begin{proofenv}
+    \quad 
+    \begin{enumerate}[label=(\arabic*)]
+        \item By definition, any $u \in I^2$ can be written as
+            $$u = \sum_{i=1}^{n} f_i g_i,\;f_i,g_i \in I,i\in\{1,\cdots,n\}.$$
+            In particular,
+            $$f_1(P) = \cdots = f_n(P) = g_1(P) = \cdots = g_n(P) = 0.$$
+            By Leibniz law
+            $$\partial(u) = \sum_{i=1}^{n} \partial(f_i g_i) = \sum_{i=1}^{n} f_i(P) \partial(g_i) + g_i(P) \partial(f_i) = 0.$$
+        \item By definition, one has 
+            $$\partial(1) = \partial(1^2) = \partial(1) + \partial(1) = 2 \partial(1) = 0.$$
+        \item For any $K$-linear mapping $\lambda : I/I^2 \rightarrow K$, we let $\Psi(\lambda)$ be the mapping
+            $$\begin{array}{rrcl}
+                \Psi(\lambda) : & A & \longrightarrow & K\\
+                & f & \longmapsto & \lambda([f - f(P)])
+            \end{array}$$
+            We claim that $\Psi(\lambda) \in \Der_P(A)$ and that
+            $$\Psi : \Hom_{K}(I/I^2, K) \longrightarrow \Der_P(A)$$
+            is the inverse of $\Phi$.
+            
+            \quad Let $f,g \in A$, $(f-f(P))(g-g(P)) \in I^2$ and
+            $$\begin{aligned}
+                [fg - f(P)g(P)] = & [f(P)(g - g(P)) + g(P)(f-f(P))]\\
+                = & f(P)[g - g(P)] + g(P)[f - f(P)]
+            \end{aligned}$$
+            in $I/I^2$.
+            Hence
+            $$\Psi(\lambda)(fg) = f(P)\Psi(\lambda)(g) + g(P)\Psi(\lambda)(f).$$
+            Finally, for any $\partial \in \Der_P(A)$, by (2),
+            $$\Psi\left(\Phi(\partial)\right)(f) = \Phi(\partial)([f - f(P)]) = \partial(f - f(P)) = \partial(f)$$
+            for any $\lambda \in \Hom_{K}(I/I^2, K)$ one has
+            $$\Phi(\Psi(\lambda))([f]) = \Psi(\lambda)([f]) = \lambda([f - f(P)]) = \lambda([f]).$$
+            since $f(P) = 0$.
+    \end{enumerate}
+\end{proofenv}
